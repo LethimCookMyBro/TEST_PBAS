@@ -82,7 +82,7 @@ tr:hover td{background:rgba(0,210,255,.05)}
 
 # Nav items
 parts.append('<a class="ni" onclick="go(\'concept\')" style="color:#ff8a00;font-weight:bold;"><span>💡</span>สรุปเปรียบเทียบ (ก่อนสอบ)</a>\n')
-parts.append('<a class="ni" onclick="go(\'showcmd\')" style="color:#4CAF50;font-weight:bold;"><span>🔍</span>เจาะลึกคำสั่ง Show (สำคัญ!)</a>\n')
+parts.append('<a class="ni" onclick="go(\'allcmd\')" style="color:#4CAF50;font-weight:bold;"><span>💻</span>เจาะลึกทุกคำสั่ง CLI (รวม Config + Show)</a>\n')
 parts.append('<a class="ni" onclick="go(\'mock\')" style="color:#00e5ff;font-weight:bold;"><span>📝</span>ข้อสอบจำลอง 30 ข้อ</a>\n')
 parts.append('<a class="ni" onclick="go(\'leak\')" style="color:var(--yw);font-weight:bold;"><span>&#127919;</span>เก็งข้อสอบ (จากโพย)</a>\n')
 for cid, title, _, _ in chapters:
@@ -108,59 +108,83 @@ summary_files = {
 # Write each summary to a temp file, then read back
 summaries = {}
 
-summaries["showcmd"] = '<div class="sc" style="border-color:#4CAF50; background:rgba(76, 175, 80, 0.05)"><h3 style="color:#4CAF50; font-size:1.3em;">🔍 เจาะลึกคำสั่ง Show (ตรวจสอบระบบ)</h3>'
-summaries["showcmd"] += '<p style="margin-bottom:15px; font-size:1.1em; color:var(--tx);">ในข้อสอบมักจะมีโจทย์ที่ให้ผลลัพธ์จากหน้าจอ (Output) แล้วถามว่าหมายความว่าอย่างไร นี่คือคำสั่งที่ต้องตีความให้เป็นครับ:</p>'
+summaries["allcmd"] = '<div class="sc" style="border-color:#4CAF50; background:rgba(76, 175, 80, 0.05)"><h3 style="color:#4CAF50; font-size:1.3em;">💻 เจาะลึกทุกคำสั่ง CLI (Configuration & Verification)</h3>'
+summaries["allcmd"] += '<p style="margin-bottom:15px; font-size:1.1em; color:var(--tx);">สรุปคำสั่งที่ใช้ในการตั้งค่า (Config) และตรวจสอบ (Show) ของทุกหัวข้อสำคัญในครึ่งเทอมหลัง:</p>'
 
-# 1. show spanning-tree
-summaries["showcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #4CAF50;">'
-summaries["showcmd"] += '<h4 style="color:#4CAF50; margin-top:0; font-size:1.1em;">1. <code class="hl">show spanning-tree</code></h4>'
-summaries["showcmd"] += '<p style="color:var(--tx); margin-bottom:10px;">ใช้เช็คการทำงานของ STP ว่าใครเป็นบอส (Root Bridge) และพอร์ตไหนถูกบล็อกกัน Loop</p>'
-summaries["showcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>Root ID:</b> ข้อมูลของสวิตช์ที่เป็น <span style="color:var(--yw);">"ศูนย์กลาง (Root Bridge)"</span> ของระบบ</li>'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>Bridge ID:</b> ข้อมูลของ <span style="color:var(--yw);">"สวิตช์ตัวที่เรากำลังพิมพ์คำสั่งอยู่"</span> (ตัวมันเอง)</li>'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>This bridge is the root:</b> ถ้ามีประโยคนี้ปรากฎที่ Bridge ID แปลว่าเครื่องที่เราพิมพ์อยู่เนี่ยแหละ เป็นบอส (Root Bridge)!</li>'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>Role ของพอร์ต:</b><br>- <code class="hl">Root</code> (Root Port): เส้นทางหลักที่วิ่งไปหาบอส (ดีที่สุด)<br>- <code class="hl">Desg</code> (Designated Port): พอร์ตสำหรับส่งข้อมูลลงมาหาลูกน้อง (ส่งข้อมูลได้ปกติ)<br>- <code class="hl">Altn</code> (Alternate Port): พอร์ตสำรอง ที่จะถูกสั่ง <b>Block</b> ไว้ไม่ให้ส่งข้อมูล (เพื่อกัน Loop)</li>'
-summaries["showcmd"] += '<li><b>State ของพอร์ต:</b> <code class="hl">FWD</code> (Forwarding ส่งข้อมูลอยู่), <code class="hl">BLK</code> (Blocking ปิดกั้นอยู่)</li>'
-summaries["showcmd"] += '</ul></div>'
+# 1. Inter-VLAN Routing Commands
+summaries["allcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #ff8a00;">'
+summaries["allcmd"] += '<h4 style="color:#ff8a00; margin-top:0; font-size:1.1em;">1. คำสั่งสร้าง Inter-VLAN Routing (ROAS & SVI)</h4>'
+summaries["allcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b><u>แบบ Router-on-a-stick (ทำบน Router)</u></b><br>'
+summaries["allcmd"] += '<code>interface g0/0.10</code> → สร้าง Sub-interface<br>'
+summaries["allcmd"] += '<code>encapsulation dot1Q 10</code> → <b>(ห้ามลืม!)</b> กำหนดว่าพอร์ตย่อยนี้ใช้รับข้อมูลของ VLAN 10<br>'
+summaries["allcmd"] += '<code>ip address 192.168.10.1 255.255.255.0</code> → จ่าย IP ให้เป็น Gateway ของวง VLAN 10</li>'
+summaries["allcmd"] += '<li><b><u>แบบ SVI (ทำบน L3 Switch)</u></b><br>'
+summaries["allcmd"] += '<code>ip routing</code> → <b>(ห้ามลืม!)</b> เปิดหัวใจการ Routing ของ Switch ไม่งั้นคุยข้ามวงไม่ได้<br>'
+summaries["allcmd"] += '<code>interface vlan 10</code> → สร้าง Interface เสมือนสำหรับ VLAN นั้น<br>'
+summaries["allcmd"] += '<code>ip address 192.168.10.1 255.255.255.0</code> → จ่าย IP เพื่อให้เป็น Gateway ของก้อน VLAN 10<br>'
+summaries["allcmd"] += '<code>no shutdown</code> → เปิดใช้งานพอร์ตเสมือน</li>'
+summaries["allcmd"] += '</ul></div>'
 
-# 2. show etherchannel summary
-summaries["showcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #2196F3;">'
-summaries["showcmd"] += '<h4 style="color:#2196F3; margin-top:0; font-size:1.1em;">2. <code class="hl">show etherchannel summary</code></h4>'
-summaries["showcmd"] += '<p style="color:var(--tx); margin-bottom:10px;">ใช้ดูสรุปการมัดสาย (Link Aggregation) ว่าผูกสำเร็จไหม ทำงานด้วยโปรโตคอลอะไร (PAgP หรือ LACP)</p>'
-summaries["showcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>จุดสังเกตสถานะวงเล็บ:</b> ให้มองหาเลขกลุ่ม (เช่น Group 1) ตามด้วย <b><code class="hl">Po1 (SU)</code></b><br>👉 <b>S</b> (Layer 2 / Switch), <b>U</b> (In Use / ใช้งานได้ปกติ)<br>❌ ถ้าขึ้น <b>(SD)</b> แปลว่า D (Down = เสีย/ทำไม่สำเร็จ พอร์ตพังหรือตั้งค่าผิด)</li>'
-summaries["showcmd"] += '<li><b>Protocol:</b> ดูที่คอลัมน์นี้เพื่อดูว่าเป็น <code class="hl">LACP</code> (มาตรฐานกลาง/Active) หรือ <code class="hl">PAgP</code> (ของ Cisco/Desirable)</li>'
-summaries["showcmd"] += '</ul></div>'
+# 2. Spanning Tree (STP) Configs
+summaries["allcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #4CAF50;">'
+summaries["allcmd"] += '<h4 style="color:#4CAF50; margin-top:0; font-size:1.1em;">2. คำสั่งจัดการ Spanning Tree (STP)</h4>'
+summaries["allcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>การบังคับตั้งให้เป็น Root Bridge (บอส):</b><br>'
+summaries["allcmd"] += '<code>spanning-tree vlan 1 root primary</code> → คำสั่งลัด ให้สวิตช์ตัวนี้พยายามรับบทเป็นบอสหลักของ VLAN 1 (มันจะไปปรับค่า Priority ให้ต่ำๆ อัตโนมัติ)<br>'
+summaries["allcmd"] += '<code>spanning-tree vlan 1 root secondary</code> → ตั้งเป็นบอสสำรอง (รอเสียบแทนถ้าตัวหลักตาย)</li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>การแก้ค่า Priority ดิบๆ ด้วยตัวเอง:</b><br>'
+summaries["allcmd"] += '<code>spanning-tree vlan 1 priority 4096</code> → ยิ่งค่าน้อยยิ่งมีสิทธิ์เป็น Root Bridge (ต้องเพิ่มลดทีละ 4096 เท่านั้น)</li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>คำสั่งตรวจสอบ (Show Command):</b><br>'
+summaries["allcmd"] += '<code>show spanning-tree</code> → ดูว่าใครคือ <span style="color:var(--yw);">Root ID</span> (บอส) / <span style="color:var(--yw);">Bridge ID</span> (ตัวเราเอง) / และดูสถานะพอร์ตว่าเป็น <code>FWD</code> (ผ่านได้) หรือ <code>BLK</code> (ถูกบล็อกกัน Loop)</li>'
+summaries["allcmd"] += '</ul></div>'
 
-# 3. show ip route
-summaries["showcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #ff8a00;">'
-summaries["showcmd"] += '<h4 style="color:#ff8a00; margin-top:0; font-size:1.1em;">3. <code class="hl">show ip route</code></h4>'
-summaries["showcmd"] += '<p style="color:var(--tx); margin-bottom:10px;">ใช้ดู "แผนที่นำทาง" (Routing Table) ของ Router หรือ Layer 3 Switch ว่ารู้จักเครือข่ายวงไหนบ้าง</p>'
-summaries["showcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>C (Connected):</b> สัญลักษณ์ตัว C นำหน้าบรรทัด แปลว่าวงแลนนี้ <span style="color:var(--yw);">ต่อสายตรงเข้ากับเร้าเตอร์ตัวนี้โดยตรง</span> (รู้จักเองไม่ต้องมีใครมาสอน)</li>'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>S (Static):</b> สัญลักษณ์ตัว S นำหน้า แปลว่า <span style="color:var(--yw);">แอดมินพิมพ์คำสั่ง <code class="hl">ip route</code> ป้อนเส้นทางให้มันแบบ Manual ด้วยมือ</span> ผูกติดตายตัวไปเลย</li>'
-summaries["showcmd"] += '<li><b>Gateway of last resort:</b> หมายถึงไอพี <b>Default Route (`0.0.0.0`)</b> ถ้าเร้าเตอร์ไม่รู้จักว่าจะส่งไปไหน (ไม่อยู่ในตารางด้านล่างเลย) มันจะเตะโยนข้อมูลส่งไปให้ไอพีที่โชว์ตรง Gateway นี้ทั้งหมด (คล้ายๆ โยนให้รปภ.หน้าหมู่บ้าน)</li>'
-summaries["showcmd"] += '</ul></div>'
+# 3. EtherChannel Configs
+summaries["allcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #2196F3;">'
+summaries["allcmd"] += '<h4 style="color:#2196F3; margin-top:0; font-size:1.1em;">3. คำสั่งมัดสาย EtherChannel (LACP & PAgP)</h4>'
+summaries["allcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>สร้างกลุ่มพอร์ต (เช่น เอาพอร์ต 1-2 มารวมกันรัน PAgP):</b><br>'
+summaries["allcmd"] += '<code>interface range f0/1 - 2</code> → ครอบพอร์ตที่จะมัดรวม<br>'
+summaries["allcmd"] += '<code>channel-group 1 mode desirable</code> → สั่งมัดเข้ากลุ่มที่ 1 และใช้โหมด desirable (PAgP แบบบุกทักก่อน)</li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>โหมดจับคู่ที่ต้องจำ:</b><br>'
+summaries["allcmd"] += '- <b>LACP (สากล):</b> <code>active</code> คู่กับ <code>active</code> (หรือ passive)<br>'
+summaries["allcmd"] += '- <b>PAgP (Cisco):</b> <code>desirable</code> คู่กับ <code>desirable</code> (หรือ auto)<br>'
+summaries["allcmd"] += '- <b>มัดดื้อๆ (ไม่ใช้ Protocol):</b> <code>on</code> คู่กับ <code>on</code> เท่านั้น</li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>คำสั่งตรวจสอบ (Show Command):</b><br>'
+summaries["allcmd"] += '<code>show etherchannel summary</code> → ดูบรรทัดที่มีพอร์ตกรุ๊ป <code>Po1 (SU)</code> แปลว่า <span style="color:var(--yw);">S = Layer2</span> และ <span style="color:var(--yw);">U = In Use (ใช้งานสำเร็จ)</span> หากขึ้น (SD) คือพัง/ตั้งค่าผิด</li>'
+summaries["allcmd"] += '</ul></div>'
 
-# 4. show vlan brief & trunk
-summaries["showcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #9c27b0;">'
-summaries["showcmd"] += '<h4 style="color:#9c27b0; margin-top:0; font-size:1.1em;">4. <code class="hl">show vlan brief</code> และ <code class="hl">show interfaces trunk</code></h4>'
-summaries["showcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b><code class="hl">show vlan brief</code>:</b> ใช้ดูว่าสวิตช์นี้สร้าง VLAN หมายเลขอะไรและชื่ออะไรไว้บ้าง และมีพอร์ต Access ไหนบ้างที่เสียบใช้งาน VLAN นั้นอยู่ (ถ้ามีพอร์ตติ่งอยู่แปลว่าสวิตช์เครื่องนั้นสั่ง <code>switchport access vlan X</code> เรียบร้อยแล้ว)</li>'
-summaries["showcmd"] += '<li><b><code class="hl">show interfaces trunk</code>:</b> พอร์ต Trunk <b>"จะไม่โชว์ในคำสั่ง show vlan brief เด็ดขาด"</b> เราต้องใช้คำสั่งตระกูล trunk เพื่อดูว่าพอร์ตไหนเป็นสะพานเชื่อมข้ามสวิตช์บ้าง และคอลัมน์ <code>Vlans allowed and active in management domain</code> จะบอกว่าตอนนี้สาย Trunk เส้นนี้อนุญาตให้ VLAN เบอร์อะไรข้ามผ่านไปได้บ้าง (ถ้าเผลอ <code>switchport trunk allowed vlan 10</code> ก็จะเห็นแค่เลข 10 รอดไปได้วงเดียว)</li>'
-summaries["showcmd"] += '</ul></div>'
+# 4. Access Control List (ACL) Configs
+summaries["allcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #f44336;">'
+summaries["allcmd"] += '<h4 style="color:#f44336; margin-top:0; font-size:1.1em;">4. คำสั่งตั้งกฎกรองข้อมูล ACL</h4>'
+summaries["allcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>Standard ACL (บล็อกแค่ IP ต้นทาง / ใช้เลข 1-99):</b><br>'
+summaries["allcmd"] += '<code>access-list 10 deny 192.168.10.5 0.0.0.0</code> → บล็อกไม่ให้เครื่อง .5 นี้ผ่าน (Host เดียวใช้หน้ากาก 0.0.0.0)<br>'
+summaries["allcmd"] += '<code>access-list 10 permit 192.168.10.0 0.0.0.255</code> → อนุญาตให้ทั้งวง .10.x นี้ผ่านได้<br>'
+summaries["allcmd"] += '<code>access-list 10 permit any</code> → <b>(ห้ามลืม!)</b> อนุญาตคนที่เหลือทั้งหมดให้ผ่าน (เพื่อลบล้าง Implicit Deny)</li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>Extended ACL (ล็อกเป้าหมายและชนิดพอร์ตได้ / ใช้เลข 100-199):</b><br>'
+summaries["allcmd"] += '<code>access-list 100 deny tcp 192.168.10.0 0.0.0.255 host 10.10.1.50 eq 80</code> → สั่งแบน (deny) วง 10 ห้ามคุย tcp ผ่านพอร์ต 80 (เว็บ HTTP) ไปที่เซิร์ฟเวอร์ไอพี .50</li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>การนำกฎไปแขวนที่ประตู (Interface):</b><br>'
+summaries["allcmd"] += '<code>interface g0/0</code> → เข้าไปที่พอร์ตทางออกหรือทางเข้า<br>'
+summaries["allcmd"] += '<code>ip access-group 10 out</code> → เอากฎหมายเลข 10 ไปดักตรวจ<span style="color:var(--yw);">ขาออก (out)</span> หรือ <span style="color:var(--yw);">ขาเข้า (in)</span></li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>คำสั่งตรวจสอบ (Show Command):</b><br>'
+summaries["allcmd"] += '<code>show access-lists</code> → ตรวจดูว่ามีใครเข้าข่ายบ้าง (ดูตัวเลขหลังคำว่า <code>matches</code>) และเช็คว่าลำดับข้อ (Sequence Number) เรียงถูกต้องไหม (คำสั่ง Deny ควรอยู่บนๆ เสมอ)</li>'
+summaries["allcmd"] += '</ul></div>'
 
-# 5. show access-lists
-summaries["showcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:0; border-left:4px solid #f44336;">'
-summaries["showcmd"] += '<h4 style="color:#f44336; margin-top:0; font-size:1.1em;">5. <code class="hl">show access-lists</code> (หรือ <code class="hl">show ip access-lists</code>)</h4>'
-summaries["showcmd"] += '<p style="color:var(--tx); margin-bottom:10px;">ใช้ดูหน้าตากฎยามผ่านประตู (ACL) ว่าเรียงลำดับถูกไหม มีใครฝ่าฝืน/ผ่านกฎกี่คน</p>'
-summaries["showcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
-summaries["showcmd"] += '<li style="margin-bottom:8px;">ข้อมูลจะโชว์ <b>ลำดับเลข (Sequence Number)</b> ซึ่งปกติ Cisco จะตั้งออโต้เพิ่มทีละ 10 (เช่น 10, 20, 30...) เพื่อให้เรามีช่องว่างพิมพ์กฎแทรกเข้าไปตรงกลางได้ เช่น พิมพ์กฎเลข 15 แทรกระหว่างกฎ 10 กับ 20</li>'
-summaries["showcmd"] += '<li style="margin-bottom:8px;"><b>(X matches):</b> ท้ายแต่ละบรรทัดกฎ จะมีตัวเลขบอกจำนวน matches เช่น <code>(20 matches)</code> แปลว่ามีข้อมูลตรงกับเงื่อนไขนี้และโดนกฎข้อนี้ประมวลผลไปแล้ว 20 แพ็กเก็ต!</li>'
-summaries["showcmd"] += '<li>⚠️ <b>ข้อเตือนใจ:</b> คำสั่งนี้จะไม่โชว์บรรทัด <code class="hl">deny any </code> (Implicit Deny) ท้ายสุด แต่มันมีอยู่จริง ถ้าไม่มี matcher ขึ้นที่กฎที่เราตั้งไว้เลย และใช้งานเน็ตไม่ได้ แปลว่าโดน Implicit Deny บล็อกสกัดดาวรุ่งทิ้งไปหมดแล้ว!</li>'
-summaries["showcmd"] += '</ul></div>'
+# 5. Routing Tools (Static Route)
+summaries["allcmd"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:0; border-left:4px solid #9c27b0;">'
+summaries["allcmd"] += '<h4 style="color:#9c27b0; margin-top:0; font-size:1.1em;">5. คำสั่ง Routing พื้นฐาน</h4>'
+summaries["allcmd"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>การชี้เป้า Static Route เบสิค:</b><br>'
+summaries["allcmd"] += '<code>ip route [เครือข่ายปลายทาง] [Subnet Mask] [IP ด่านหน้าของฝั่งตรงข้าม (Next-Hop)]</code><br>'
+summaries["allcmd"] += 'เช่น <code>ip route 192.168.50.0 255.255.255.0 10.0.0.2</code></li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>Default Route (ทางออกสุดท้าย):</b><br>'
+summaries["allcmd"] += '<code>ip route 0.0.0.0 0.0.0.0 10.0.0.2</code> → ส่งข้อมูลอะไรก็ตามที่ไม่รู้จักในตาราง ไปที่ทางออก 10.0.0.2 ทั้งหมด</li>'
+summaries["allcmd"] += '<li style="margin-bottom:8px;"><b>คำสั่งตรวจสอบ (Show Command):</b><br>'
+summaries["allcmd"] += '<code>show ip route</code> → ดูแผนที่เข็มทิศของ Router <br>มองหาตัว <code>C</code> = วงตรงข้ามที่เสียบสายตรงไว้ <br>ตัว <code>S</code> = วง Static ที่แอดมินใช้คำสั่ง ip route มาร์คไว้ให้ <br>ถ้าขึ้น <code>Gateway of last resort</code> แปลว่ามีการตั้งค่า Default Route เตะส่งไว้แล้ว</li>'
+summaries["allcmd"] += '</ul></div>'
 
-summaries["showcmd"] += '</div>'
+summaries["allcmd"] += '</div>'
 
 summaries["concept"] = '<div class="sc" style="border-color:#ff8a00; background:rgba(255, 138, 0, 0.05)"><h3 style="color:#ff8a00; font-size:1.3em;">💡 สรุปเปรียบเทียบ (7 จุดสำคัญที่ต้องแยกให้ออก)</h3>'
 
