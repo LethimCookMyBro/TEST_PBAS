@@ -423,7 +423,9 @@ summaries["lab12"] += 'SwitchB(config-if-range)# channel-group 1 mode auto\n\n'
 summaries["lab12"] += '<span class="cm">! ตรวจสอบผล</span>\n'
 summaries["lab12"] += 'SwitchA# show etherchannel summary</div></div>'
 
-# Add leak section
+# Add concept, allcmd, mock, leak sections
+parts.append(f'<section id="concept" class="cs">\n{summaries["concept"]}\n</section>\n')
+parts.append(f'<section id="allcmd" class="cs">\n{summaries["allcmd"]}\n</section>\n')
 parts.append(f'<section id="mock" class="cs">\n<h2>📝 ข้อสอบจำลอง 30 ข้อ (แนวอาจารย์)</h2>\n{summaries["mock"]}\n</section>\n')
 parts.append(f'<section id="leak" class="cs">\n<h2>🎯 เก็งข้อสอบ 100% (จากโพย)</h2>\n{summaries["leak"]}\n</section>\n')
 
