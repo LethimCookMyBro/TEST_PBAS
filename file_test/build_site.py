@@ -106,6 +106,17 @@ summary_files = {
 summaries = {}
 
 summaries["leak"] = '<div class="sc" style="border-color:var(--yw); background:rgba(255, 215, 64, 0.05)"><h3 style="color:var(--yw); font-size:1.3em;">🔥 เก็งข้อสอบ 100% (คำอธิบายแบบเอาไปจดเข้าห้องสอบ)</h3>'
+
+# Add professor's hints
+summaries["leak"] += '<div style="background-color:rgba(255, 68, 68, 0.1); border-left:4px solid #ff4444; padding:15px; margin-bottom:20px; border-radius:4px;">'
+summaries["leak"] += '<h4 style="color:#ff4444; margin-top:0; font-size:1.1em;">🚨 คำใบ้สโคปข้อสอบจากอาจารย์ (อัปเดตล่าสุด!)</h4>'
+summaries["leak"] += '<ul style="margin-bottom:0; color:var(--tx);">'
+summaries["leak"] += '<li style="margin-bottom:5px"><b>จำนวนข้อสอบ:</b> แบบกากบาท (Multiple Choice) ประมาณ <b>25 - 30 ข้อ</b></li>'
+summaries["leak"] += '<li style="margin-bottom:5px"><b>ขอบเขต (Scope):</b> ออกสอบเฉพาะ <b>"เนื้อหาครึ่งเทอมหลัง"</b> เท่านั้น! (ให้อ่านเฉพาะบทที่ 9 ถึง 13 พอ ไม่ต้องอ่านครึ่งแรก)</li>'
+summaries["leak"] += '<li style="margin-bottom:5px"><b>แนวทฤษฎี:</b> ข้อสอบเน้นถาม <b>"หลักการการทำงาน (Concept)"</b> ให้อ่านทำความเข้าใจว่าแต่ละโปรโตคอลมีหน้าที่อะไร (เช่น ROAS vs SVI ต่างกันยังไง, STP มีไว้ทำไม)</li>'
+summaries["leak"] += '<li style="margin-bottom:0"><b>แนวคำนวณ / คำสั่ง Cisco:</b> จะมีโผล่มาประมาณ <b>3 ข้อ</b> (เก็งว่าหนีไม่พ้นเรื่อง ย่อเลข IPv6, คิด Wildcard Mask ใน ACL, หรือหาค่า Cost ของ STP)</li>'
+summaries["leak"] += '</ul></div>'
+
 summaries["leak"] += '<p style="margin-bottom:15px; font-size:1.1em; color:var(--tx);">สรุปเนื้อหาแบบเนื้อๆ เน้นๆ พร้อมคำสั่ง (Command) ที่ต้องใช้จริง สั้น กระชับ จำง่าย:</p>'
 summaries["leak"] += '<div style="margin-bottom:20px;"><h4>1. Hub vs Switch ต่างกันยังไง</h4>'
 summaries["leak"] += '<p><b>Hub (Layer 1):</b> ทำงานแบบ <u>Broadcast</u> คือส่งข้อมูลออกไปทุกช่องจิ๋วๆ เสี่ยงชนกัน (Collision) ทำงานแบบสลับกันส่ง (Half-Duplex)</p>'
