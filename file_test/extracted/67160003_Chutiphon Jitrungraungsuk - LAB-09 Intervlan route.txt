@@ -1,0 +1,56 @@
+Router on a stick
+
+ผลการ ping จาก เครื่อง 192.168.10.10 ไปยัง 192.168.10.11
+
+
+
+
+ผลการ ping จาก เครื่อง 192.168.10.10 ไปยัง 192.168.20.10
+
+คำสั่งทั้งหมดที่ใช้ใน Router
+enable
+configure terminal
+
+interface gigabitEthernet 0/0/0
+no shutdown
+exit
+
+interface gigabitEthernet 0/0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+
+interface gigabitEthernet 0/0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+exit
+
+end
+SVIs
+
+ผลการ ping จาก เครื่อง 192.168.10.10 ไปยัง 192.168.10.11
+
+
+
+
+ผลการ ping จาก เครื่อง 192.168.10.10 ไปยัง 192.168.20.10
+
+
+คำสั่งทั้งหมดที่ใช้ใน L3 switch
+enable
+configure terminal
+vlan 10
+exit
+vlan 20
+exit
+interface vlan 10
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+exit
+interface vlan 20
+ip address 192.168.20.1 255.255.255.0
+no shutdown
+exit
+ip routing
+end
+

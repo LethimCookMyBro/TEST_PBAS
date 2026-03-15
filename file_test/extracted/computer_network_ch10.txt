@@ -1,0 +1,262 @@
+
+=== Page 1 ===
+88723165
+Computer Network Technology
+CH9: Spanning -tree protocol
+=== Page 2 ===
+Agenda
+•Spanning -tree protocol
+•Root bridge 
+•Root port, Designated port, Block port
+=== Page 3 ===
+Network
+
+=== Page 4 ===
+Network
+
+=== Page 5 ===
+Network Redundancy
+
+=== Page 6 ===
+Network Redundancy
+
+=== Page 7 ===
+Network Redundancy
+
+=== Page 8 ===
+ป ั ญ หาข อ ง  Network Redundancy
+1. Broadcast storm
+2. Multiple Frame Transmissions
+3. MAC Database Instability
+=== Page 9 ===
+Broadcast Storm or Loop
+Broadcast Storm  ค ื อ ส ถ า น ก า ร ณ์ท ี ่เ ก ิ ด ข ึ ้ น เ ม ื ่อ ม ี  Broadcast Traffic  จ  า น ว น ม า ก ใ น เ ค ร ื อ ข ่ า ย Layer 
+2 (Data Link Layer)  จ น ท า ใ ห ้ เ ค ร ื อ ข ่ า ย ท า งา น ช ้ า หร ื อ ไ ม่ส า มา ร ถ ใ ช ้ งา น ไ ด ้
+=== Page 10 ===
+ก ร ะ บ ว นก าร เก ิ ด  Broadcast Storm
+1. อ ุป ก ร ณ ์ ส ่ ง Broadcast Packet 
+2. ส ว ิ ต ช ์ จ ะท า ก า รก ระ จ า ย แ พ ็ ก เ ก ็ ต น ี ้ ไ ป ย ั งทุก พ อ ร์ต  ( ยก เ ว ้ น พ อ ร์ต ท ี่ ร ั บ เ ข ้ า )
+3. ถ ้า ม ี  Loop ใ น เ ค ร ื อ ข ่ า ย แ พ ็ ก เ ก็ ต จ ะว น ก ล ั บ แ ล ะ ถ ูก ก ระ จ า ย ซ  ้ า ไ ม ่ ส ิ้ น ส ุด
+4. ท รา ฟ ฟ ิ ก ล ้ น เ ค ร ื อ ข่า ย  ส ่ งผ ล ใ ห ้ :
+1.CPU ขอ งส ว ิ ต ช ์ ท า งา น หน ัก เ ก ิ น ไ ป
+2. อ ุป ก ร ณ ์ ใ น เ ค ร ื อ ข่า ยช ้ า  หร ื อ ไ ม่ส า มา รถ ส ื่ อ ส า รไ ด ้
+=== Page 11 ===
+Redundant switch
+ก า รเ พ ิ่ ม switch เ พ ื ่อ เ ป ็ น เ ส ้ น ท า งส  า ร อ ง ซ ึ ่งอ า จ ส ่งผ ล ใ ห ้ เ ก ิ ด  Loop ถ ้า ไ ม ่ ม ี ก ล ไ ก ป ้ อ งก ั น
+=== Page 12 ===
+Broadcast Storm or Loop
+Broad castSwitch ส ่ง broadcast frame ต ่อ ก ั น ไ ป เ ร ื่ อ ย ๆ  ไ ม่ม ี ท ี่ ส ิ้ น ส ุด
+=== Page 13 ===
+Broadcast Storm or Loop
+Broad cast
+=== Page 14 ===
+Broadcast Storm or Loop
+Broadcast
+=== Page 15 ===
+ผล ก ร ะ ทบ ข อ ง  Broadcast Storm
+• ป ระส ิ ทธ ิ ภ า พ ล ด ล ง : ค ว า มเ ร ็ ว ขอ งเ ค ร ื อ ข ่ า ยล ด ล งอ ย่า งมา ก
+•Packet Loss: แ พ ็ ก เ ก็ ต ข ้ อ มูล ถ ู ก ด รอ ป  หร ื อ ส ูญ หา ย
+•Device Crash: เ ร า ท ์ เ ต อ ร ์ หร ื อ ส ว ิ ต ช ์ อ า จ ค ้ า ง ห ร ื อ ท  า งา น ผ ิ ด ป ก ต ิ
+•Network Outage: เ ค ร ื อ ข ่ า ย ท ั ้ งหมด ใ ช ้ งา น ไ ม่ไ ด ้
+=== Page 16 ===
+Multiple Frame Transmission
+Multiple Frame Transmission  ค ื อ ก า รส ่งเ ฟ ร มข ้ อ ม ู ล หล า ย ช ุด ใ น เ ค ร ื อ ข ่ า ยพ ร ้อ มก ั น หร ื อ ใ น ช ่ว งเ ว ล า ต ่อ เ น ื ่ อ ง ซ ึ ่ง
+ส า ม า รถ เ ก ิ ด ข ึ้ น ไ ด ้ ใ น หล า ย รูป แ บ บ ข ึ ้น อ ย ู ่ก ั บ เ ท ค โ น โ ล ย ี ท ี ่ใ ช ้  เ ช ่น  Ethernet , Wi-Fi, หร ื อ  Data Link  Layer  ใ น  
+OSI Model
+=== Page 17 ===
+Multiple Frame Transmission
+เ ค ร ื ่อ งป ล า ยทา งม ี โ อ ก า ส ไ ด ้ร ั บ  Frame ซ  ้า  ท า ใ ห ้ เ ส ี ย เ ว ล า ใ น ก า รป ร ะมว ล ผ ล แ ล ะเ ส ี ย bandwidth
+=== Page 18 ===
+MAC Database Instability
+Switch ไ ด ้ ร ั บ  Frame เ ด ิ มว น เ ข ้ า มา หา ต ั ว เ อ ง ท  า ใ ห้ MAC Database ขอ ง Switch ส ั บ ส น  ส ่งก ล ั บ ไ ม ่ ถ ูก
+MAC : 001 MAC : 001
+MAC : 001เ ค ร ื ่อ ง  001 ไ ป ท า ง ไ ห น ก ั น แ น ่ ??
+=== Page 19 ===
+Spanning Tree Protocol (STP)
+=== Page 20 ===
+Spanning Tree Protocol (STP)
+•Spanning Tree Protocol (STP)  เ ป ็ น โ ป ร โ ต ค อ ล เ ค ร ื อ ข ่า ยท ี ่ท  า งา น ใ น  Layer 2 (Data Link Layer)  ขอ ง OSI 
+Model  ม ี หน ้า ท ี่ ป ้ อ งก ั น ป ั ญ หา  Loop ใ น เ ค ร ื อ ข ่ า ย Ethernet  ท ี่ ม ี ก า รเ ช ื ่อ มต ่อ ส ว ิ ต ช ์ หล า ย ต ั ว เ ข ้ า ด ้ ว ยก ั น
+• หา ก ไ ม่ม ี  STP ใ น โ ค รงข่า ย ท ี ่ม ี เ ส ้ น ทา งเ ช ื่ อ มต ่อ ซ  ้ า ก ั น  จ ะเ ก ิ ด ป ั ญ หา  เ ช ่น :
+1.Broadcast Storm : ก า รส ่งข ้ อ ม ู ล ก ร ะจ า ย (Broadcast) ไ ม่ส ิ้ น ส ุด  ท  า ใ ห้เ ก ิ ด ค ว า มห น า แ น ่ น ขอ ง ท รา ฟ ฟ ิ ก
+2.MAC Table Instability : ส ว ิ ต ช ์ ไ ด ้ร ั บ  MAC Address จ า ก หล า ยเ ส ้ น ทา ง ท า ใ ห ้ เ ก ิ ด ค ว า ม ไ ม่แ น ่ น อ น
+3.Duplicate Frames : เ ฟ รมเ ด ี ย ว ก ั น อ า จ ถ ูก ส ่ งหล า ย ค ร ั ้ ง ส ร้า งค ว า มซ  ้า ซ ้ อ น แ ล ะค ว า มล ่า ช ้า
+=== Page 21 ===
+Spanning Tree Protocol (STP)
+หล ั ก ก า รท  า งา น ขอ ง STP
+1. เ ล ื อ ก  Root Bridge
+2. ค  า น ว ณเ ส ้ น ทา งท ี่ ด ี ท ี่ ส ุด  (Root Path Cost)
+3. เ ล ื อ ก  port ท ี่ จ ะ Block เ พ ื ่อ หย ุ ด ก า รว น ล ูป
+4. ส ่ง BPDU (Bridge Protocol Data Unit)
+=== Page 22 ===
+Bridge Protocol Data Units (BPDU)
+BPDU (Bridge Protocol Data Units)  ค ื อ เ ฟ รม พ ิ เ ศ ษท ี่ ใ ช ้ ใ น ก ระบ ว น ก า รท า งา น ขอ ง Spanning Tree Protocol 
+(STP)  โ ด ย  BPDU จ ะถ ูก ส ่งร ะหว ่ า งส ว ิ ต ช ์ ( หร ื อ บ ร ิ ด จ ์ ) เ พ ื ่อ ป ้อ งก ั น  Loop ใ น เ ค ร ื อ ข ่ า ย Layer 2 (Data L ink 
+Layer) 
+ข ้ อ มูล ท ี่ อ ย ู ่ใ น  BPDU
+•Root Bridge ID
+•Cost to Root Bridge
+•Sender Bridge ID
+•Port ID
+•STP timers
+=== Page 23 ===
+ก ร ะ บ ว นก าร ท  าง าน ข อ ง  BPDU ใน STP
+• ส ว ิ ต ช ์แ ต ่ ล ะ ต ั ว ส ่ง  BPDU  ไ ป ย ั งพ อ ร์ต ท ั ้ งหมด ท ี่ เ ช ื ่อ มต ่อ
+• เล ือ ก  Root Bridge : ส ว ิ ต ช ์ ท ี ่ม ี  Bridge ID  ต  ่ า ส ุ ด จ ะถ ูก เ ล ื อ ก เ ป ็ น  Root Bridge
+• ค  ำ น ว ณ  Path Cost : ส ว ิ ต ช ์ อ ื ่น  ๆ  จ ะ เ ล ื อ ก เ ส ้น ทา งท ี ่ส ั ้ น ท ี่ ส ุด ไ ป ย ั ง Root Bridge
+• ก  ำ ห น ด ส ถ ำ น ะ พ อ ร ์ ต :
+•Root Port : พ อ ร ์ ต ท ี ่ ม ี เ ส ้ น ท า ง ท ี ่ด ี ท ี่ ส ุด ไ ป ย ั ง  Root Bridge
+•Designated Port : พ อ ร ์ ต ท ี ่ เ ป ็ น ต ั ว แ ท น ใ น แ ต ่ล ะ เ ซ ก เ ม น ต ์
+•Blocked Port : พ อ ร ์ ต ท ี ่ ไ ม ่ใ ช ้ เ พ ื ่อ ป ้ อ ง ก ั น  Loop
+=== Page 24 ===
+เล ื อ ก  Root Bridge
+•Root Bridge  ค ื อ  ส ว ิ ต ช ์ห ล ั ก ท ี่ เ ป ็ น ศ ูน ย์ก ล า งข อ งเ ค ร ื อ ข่า ย Layer 2
+• ซ ึ ่งทุก ส ว ิ ต ช ์ใ น เ ค ร ื อ ข ่ า ย จ ะ ต ้อ งหา ว ิ ธ ี เ ช ื่ อ มต ่อ ก ั บ  Root Bridge ด ้ ว ย เ ส ้ น ท า งท ี ่ด ี ท ี่ ส ุด  ( ค่ า Path Cost  ต  ่ า ส ุ ด) 
+เ พ ื ่อ ป ้อ งก ั น  Loop ใ น เ ค ร ื อ ข ่ า ย
+• ส ว ิ ต ช ์ ท ี ่ม ี  Bridge ID (Priority + MAC Address)  ต  ่ า ส ุ ด จ ะก ล า ยเ ป ็ น  Root Bridge
+=== Page 25 ===
+เล ื อ ก  Root Bridge
+Bridge ID = Bridge Priority + MAC Address
+
+=== Page 26 ===
+Bridge ID
+ค ่า เ ร ิ่ มต ้ น  (Default) ขอ ง Bridge Priority  ค ื อ  32768
+ช ่ ว งค ่า ท ี่ ก  า หน ด ไ ด ้ : 0 –61440 ( ต ้ อ งเ ป ็ น เ ล ข ท ี่ หา ร ด ้ ว ย 4096 ล งต ั ว)
+=== Page 27 ===
+Bridge ID
+VLAN Priority
+VLAN 1 32768 + 1 32769
+VLAN 10 32768 + 10 32778
+VLAN 1 00 32768 + 100 32868
+=== Page 28 ===
+1. เล ื อ ก  Root Bridge
+=== Page 29 ===
+Select the Root Bridge
+
+=== Page 30 ===
+Select the Root Bridge
+ถ ้า  Priority เ ท ่า ก ั น  → เ ป ร ี ยบ เ ท ี ยบ  MAC Address
+=== Page 31 ===
+Select the Root Bridge
+
+=== Page 32 ===
+Select the Root Bridge
+Root bridge
+=== Page 33 ===
+2. ค  า น วณ เส ้ น ทา ง ท ี ่ ด ี ท ี ่ ส ุ ด  (Root Path  Cost)
+=== Page 34 ===
+STP Port Costs
+
+=== Page 35 ===
+ค  าน ว ณ ค ่า Cost
+Root bridgeพ อ ร ์ ท ท ี ่ไ ม ่ ไ ด ้อ ย ู ่ก ั บ  Root bridge แ ล ะม ี  cost ใ น ก า รว ิ่ งไ ป  Root bridge น ้อ ย ท ี ่ส ุ ด  จ ะ ไ ด ้เ ป ็ น  Root Port
+Fa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+=== Page 36 ===
+ค  าน ว ณ ค ่า Cost
+Root bridgeพ อ ร ์ ท ท ี ่ไ ม ่ ไ ด ้อ ย ู ่ก ั บ  Root bridge แ ล ะม ี  cost ใ น ก า รว ิ่ งไ ป  Root bridge น ้อ ย ท ี ่ส ุ ด  จ ะ ไ ด ้เ ป ็ น  Root Port
+Fa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+19
+19 + 4 = 23
+=== Page 37 ===
+ค  าน ว ณ ค ่า Cost
+Root bridgeพ อ ร ์ ท ท ี ่ไ ม ่ ไ ด ้อ ย ู ่ก ั บ  Root bridge แ ล ะม ี  cost ใ น ก า รว ิ่ งไ ป  Root bridge น ้อ ย ท ี ่ส ุ ด  จ ะ ไ ด ้เ ป ็ น  Root Port
+Fa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+19
+19 + 4 = 23Root port
+=== Page 38 ===
+ค  าน ว ณ ค ่า Cost
+Root bridgeFa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+Root portRoot portพ อ ร ์ ท ท ี ่ไ ม ่ ไ ด ้อ ย ู ่ก ั บ  Root bridge แ ล ะม ี  cost ใ น ก า รว ิ่ งไ ป  Root bridge น ้อ ย ท ี ่ส ุ ด  จ ะ ไ ด ้เ ป ็ น  Root Port
+19 + 19 = 38
+4 
+=== Page 39 ===
+3. เล ื อ ก  port ท ี่ จะ Block เพ ื ่อ ห ย ุ ด ก า รว น ลู ป
+=== Page 40 ===
+Configuration
+•Designated Port [DP] คื อ พ อร ์ ทท ี ่จ ะ ร ั บ แ ล ะ ส่ง ข ้ อม ูล  frame
+•Non-designated Port [NDP] คื อ พ อร ์ ทท ี ่จ ะ ถ ู ก บ ล ็ อก ไ ม ่ ใ ห ้ ส่ง ข ้ อม ู ล เ พ ื่ อหย ุ ด ล ูป
+•*Receives and processes Bridge Protocol Data Unit 
+=== Page 41 ===
+ก  าหน ด  Designated Port
+Root bridgeFa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+Root portRoot port
+DPใ น หน ึ ่ ง segment จ ะม ี  1Designated Port ( ไ ม่ซ  ้า ก ั บ  Root port ) 
+=== Page 42 ===
+ก  าหน ด  Designated Port
+Root bridgeFa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+Root portRoot port
+DPใ น หน ึ ่ ง segment จ ะม ี  1Designated Port ( ไ ม่ซ  ้า ก ั บ  Root port ) 
+DP
+=== Page 43 ===
+ก  าหน ด  Non designated Port
+Root bridgeFa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+Root portRoot port
+DPNon designated Port ค ื อ  path ท ี่ ม ี  cost มา ก ท ี่ ส ุด  เ ท ี ยบ ก ั บ  Root bridge
+DP
+NDP
+DP
+=== Page 44 ===
+ก  าหน ด  Non designated Port
+Root bridgeFa 0/1 G 0/1
+G 0/1
+G 0/1F 0/2F 0/2
+4 1919
+Root portRoot port
+DPNon designated Port ค ื อ  path ท ี่ ม ี  cost มา ก ท ี่ ส ุด  เ ท ี ยบ ก ั บ  Root bridge
+DP
+NDP
+DP
+=== Page 45 ===
+Spanning Tree Protocol Process (Normal)
+1.Switch port link established (plug in cable)
+2.Switch port begins in BLOCKING
+3.Transition all ports to LISTENING state and send/process BPDUs ( 15 seconds)
+•Transition non -designated ports to BLOCKING
+4.Transition all designated ports to LEARNING state ( 15 seconds)
+5.Transition all designated port to FORWARDING state
+=== Page 46 ===
+Spanning Tree Protocol Process (Switch link)
+1.Switch stops receiving BPDUs
+2.Transition all ports to BLOCKING ( 20 seconds)
+3.Transition all ports to LISTENING state and send/process BPDUs ( 15 seconds)
+•Transition non -designated ports to BLOCKING
+4.Transition all designated ports to LEARNING state ( 15 seconds)
+5.Transition all designated port to FORWARDING state
+•Time to Active link is 20 + 15 + 15 = 50 Seconds
+=== Page 47 ===
+Command Use
+•Disable STP VLAN 1
+•Switch(config)#no spanning -tree vlan 1
+•Check STP status
+•Switch#show  spanning -tree
+•Switch#show  spanning -tree ?
+•  active             Report on active interfaces only
+•  detail             Detailed information
+•  inconsistentports   Show inconsistent ports
+•  interface          Spanning Tree interface status and configuration
+•  summary            Summary of port states
+•  vlan               VLAN Switch Spanning TreesEnable STP VLAN 1
+Switch(config)#spanning -tree vlan 1
+=== Page 48 ===
+Simulation

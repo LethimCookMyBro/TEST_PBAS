@@ -1,0 +1,126 @@
+
+=== Page 1 ===
+88723165
+Computer Network Technology
+CH11: Ether channel
+=== Page 2 ===
+EtherChannel
+•EtherChannel  ค ื อ  เ ทค โ น โ ล ย ี ท ี่ ใ ช ้ ร ว มล ิ งก ์ เ ค ร ื อ ข ่ า ยหล า ยเ ส ้น เ ข ้ า ด ้ ว ยก ั น เ พ ื ่อ เ พ ิ่ มแ บ น ด ์ ว ิ ด ท ์ แ ล ะค ว า มท น ทา น
+ขอ งเ ค ร ื อ ข ่ า ย  เ ทค โ น โ ล ย ี น ี ้ ม ั ก ใ ช ้ก ั บ อ ุป ก รณ ์ เ ค ร ื อ ข ่ า ย ขอ ง Cisco แ ล ะส า มา รถ รอ งร ั บ ไ ด ้ ส ู งส ุด  8 พ อ ร ์ ต ใ น ก ล ุ่ม
+เ ด ี ยว ก ั น  โ ด ยพ อ ร ์ ต ท ั ้ งหมด จ ะท า งา น เ ป ็ น เ ส ม ื อ น ล ิ งก ์ เ ด ี ยว ก ั น
+=== Page 3 ===
+คุณส ม บ ั ต ิ หล ั ก ข อ ง  EtherChannel
+• ไ ด ้ แ บ น ด ์ว ิ ด ท ์เ พ ิ ่ ม ข ึ ้ น  (Bandwidth Aggregation)
+• ส า ม า รถ รว มล ิ งก ์ ห ล า ยเ ส ้ น เ ข ้ า ด ้ ว ย ก ั น  เ ช ่น  2 × 1Gbps = 2Gbps หร ื อ  4 × 1Gbps = 4Gbps เ ป ็ น ต ้น
+• เ พ ิ ่ ม คว า ม ท น ท า น  (Redundancy & Failover)
+• ถ ้า ล ิ งก ์ ใ ด ล ิ งก ์ ห น ึ ่ งล ้ มเ หล ว  พ อ ร ์ ต ท ี ่เ หล ื อ ย ั งค งใ ห ้ บ ร ิ ก า ร ไ ด ้
+• ล ดภ า ระข อง STP (Spanning Tree Protocol)
+•STP จ ะมอ ง EtherChannel เ ป ็ น เ พ ี ยงล ิ งก ์ เ ด ี ยว  ท า ใ ห ้ ล ด ป ั ญ หา  Loop ใ น เ ค ร ื อ ข ่ า ย
+=== Page 4 ===
+Multiple link between switch
+พ ย า ย า มท า  Redundant เ พ ื ่อ เ พ ิ ่ ม ค ว า ม ม ั ่ น ค งใ ห้ระบ บ
+=== Page 5 ===
+Multiple link between switch
+แ ต ่เ ม ื ่อ ต ่อ  link เ พ ิ่ ม Spanning tree จ ะบ ล ็ อ ก เ พ ื ่อ ป ้ อ งก ั น  
+loop
+
+=== Page 6 ===
+Multiple link between switch
+
+=== Page 7 ===
+Multiple link between switch
+
+=== Page 8 ===
+Aggregating Ethernet Links
+
+=== Page 9 ===
+Aggregating Ethernet Links
+Spanning tree จ ะมอ งเ ห ็ น เ ป ็ น  1logical port ต ่อ  1 channel
+=== Page 10 ===
+Aggregating Ethernet Links
+Port channel Port channel
+Port channel
+Port channelPort channelPort channel
+=== Page 11 ===
+EtherChannel
+ต ้ อ งรว ม  links ท ั ้ งส อ งฝ ั ่ ง
+รว ม links ฝ ั ่ งเ ด ี ยว
+=== Page 12 ===
+EtherChannel
+Link ท ี่ รว มก ั น  ต ้ อ งเ ป ็ น  Link เ ด ี ยว ก ั น
+=== Page 13 ===
+โหมด ข อ ง  EtherChannel
+1.Static Mode (Manual Configuration)
+• ก  า หน ด ค ่า ด ้ ว ยต น เ อ งโ ด ยไ ม่ต ้ อ งใ ช ้ โ ป รโ ต ค อ ล  (Mode “ON”)
+2.Dynamic Mode ( ใช ้  Protocol ช ่ ว ยจ ั ด ก า ร)
+•PAgP  (Port Aggregation Protocol) [Cisco Proprietary]
+•LACP (Link Aggregation Control Protocol) [IEEE 802.3ad]
+=== Page 14 ===
+ข ้ อ จ  าก ั ด  EtherChannel
+Port ต ้อ ง ม ี ค ว า ม เ ร ็ ว เ ท ่า ก ั น Port ต ้อ ง เ ป ็ น โห ม ด เ ด ี ยว ก ั น
+=== Page 15 ===
+ข ้ อ จ  าก ั ด  EtherChannel
+ม ี ไ ด ้ ส ูง ส ุด  8 physical links ต ่อ  channel
+
+=== Page 16 ===
+Static Mode (Manual Configuration)
+•Static Mode เ ป ็ น ก า รต ั ้ งค ่า  EtherChannel แ บ บ ก  า ห น ด เ อ ง ( ไ ม่ต ้ อ งใ ช ้ โ ป รโ ต ค อ ล ช ่ว ย ใ น ก า รค ว บ ค ุม ) 
+โ ด ย แ ต ่ล ะพ อ ร ์ ต ท ี ่รว ม ก ั น จ ะต ้อ งถ ูก ก  า หน ด ใ ห ้ ใ ช ้ โ หม ด  "on"
+Switch(config)# interface range GigabitEthernet  1/0/1 - 2 
+Switch(config -if-range)# channel -group 1 mode on 
+Switch(config -if-range)# exit
+=== Page 17 ===
+PAgP  (Port Aggregation Protocol)
+•PAgP  เ ป ็ น โ ป ร โ ต ค อ ล ขอ ง Cisco ใ ช ้ ส  า หร ั บ ค ว บ ค ุมก า รร ว มพ อ ร ์ต อ ั ต โ น ม ั ต ิ  ซ ึ ่งจ ะช ่ ว ย ใ ห้ส ว ิ ต ช ์ ต รว จ ส อ บ
+ว ่า ส า มา รถ รว มพ อ ร ์ ต เ ข ้ า ด ้ ว ย ก ั น ไ ด ้ห ร ื อ ไ ม่
+โ ห มด ข อ ง PAgP
+โ ห มด ค  า อ ธ ิ บ า ย ใ ช ้ ร ่ว มก ั บ
+desirable เ ร ิ่ มร ้ อ งขอ ก า รร ว มล ิ งก ์ ไ ป ย ั งพ อ ร์ต ฝ ั ่ งต รงข ้ า ม auto, desirable
+auto รอ ก า รร ้ อ งขอ จ า ก พ อ ร์ต ฝ ั ่ งต รงข ้ า มเ พ ื ่อ เ ร ิ่ มก า ร รว ม desirable
+=== Page 18 ===
+PAgP  (Port Aggregation Protocol)
+• ต ั ้ งค ่ า ใ ห้ใ ช ้ งา น  PAgP  โ ห มด  desirable
+• ต ั ้ งค ่ า ใ ห้ใ ช ้ งา น  PAgP  โ ห มด  autoSwitch(config)# interface range GigabitEthernet  1/0/1 - 2 
+Switch(config -if-range)# channel -group 1 mode desirable 
+Switch(config -if-range)# exit
+Switch(config)# interface range GigabitEthernet  1/0/1 - 2 
+Switch(config -if-range)# channel -group 1 mode auto 
+Switch(config -if-range)# exit
+=== Page 19 ===
+LACP (Link Aggregation Control Protocol)
+•LACP  เ ป ็ น โ ป ร โ ต ค อ ล มา ต รฐ า น  IEEE 802.3ad ซ ึ ่งส า มา รถ ใ ช ้ ก ั บ อ ุป ก รณ์เ ค ร ื อ ข่า ยทุก ย ี ่ห ้ อ ท ี่ รอ งร ั บ
+มา ต รฐ า น น ี ้
+โ ห มด ข อ ง LACPโ ห มด ค  า อ ธ ิ บ า ย ใ ช ้ ร ่ว มก ั บ
+active เ ร ิ่ มร ้ อ งขอ ก า รร ว มล ิ งก ์ ไ ป ย ั งพ อ ร์ต ฝ ั ่ งต รงข ้ า ม passive, active
+passive รอ ใ ห ้ ฝ ั ่ งต รงข ้ า ม ร ้ อ งข อ ก า ร รว ม ล ิ งก ์ active
+=== Page 20 ===
+PAgP  (Port Aggregation Protocol)
+• ต ั ้ งค ่ า ใ ห้ใ ช ้ งา น  LACP โ ห มด Active
+• ต ั ้ งค ่ า ใ ห้ใ ช ้ งา น  LACP โ ห มด  passiveSwitch(config)# interface range GigabitEthernet  1/0/1 - 2 
+Switch(config -if-range)# channel -group 1 mode active 
+Switch(config -if-range)# exit
+Switch(config)# interface range GigabitEthernet  1/0/1 - 2 
+Switch(config -if-range)# channel -group 1 mode passive 
+Switch(config -if-range)# exit
+=== Page 21 ===
+ต าร าง เป ร ี ย บ เท ี ย บ โหมด ท ั ้ ง หมด
+โ ห มด โ ปร โ ต ร ค อ ล ค  า อ ธ ิ บ า ย
+on manual ก  า หน ด ใ ห ้ พ อ ร ์ ต ท า  EtherChannel โ ด ย ไ ม่ต ้ อ งเ จ รจ า
+desirable PAgP เ ร ิ่ มร ้ อ งขอ ก า รร ว มล ิ งก ์ แ บ บ  PAgP
+auto PAgP รอ ฝ ั ่ งต รงข ้ า ม ร ้ อ งข อ  ( ไ ม่เ ร ิ ่ มเ อ ง )
+active LACP เ ร ิ่ มร ้ อ งขอ ก า รร ว มล ิ งก ์ แ บ บ  LACP
+passive LACP รอ ฝ ั ่ งต รงข ้ า ม ร ้ อ งข อ  ( ไ ม่เ ร ิ ่ มเ อ ง )
+=== Page 22 ===
+Etherchannel  configuration
+Switch(config -if-range)#channel -group 1 mode active<1-6> Channel group number
+active Enable LACP unconditionally
+auto Enable PAgP  only if a PAgP  device is detected
+desirable Enable PAgP  unconditionally
+on Enable Etherchannel  only
+passive Enable LACP only if a LACP device is detected
+=== Page 23 ===
+Etherchannel  configuration
+Switch# show etherchannel  summaryด ูก า รต ั ้ งค ่า  Etherchannel
+
+=== Page 24 ===
+Simulation

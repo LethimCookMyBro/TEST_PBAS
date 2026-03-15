@@ -1,0 +1,215 @@
+
+=== Page 1 ===
+88723165
+Computer Network Technology
+CH13: IPv6
+=== Page 2 ===
+IPv6 Introduction
+•IPv4 ก  ำ ล ั งจ ะหมด ไ ป ใ น ไ ม่ช ้ ำ น ี ้ ถ ึ งต อ น น ี ้ จ ะย ั งไ ม่หมด  ว ั น น ึงจ ะต ้ อ งเ ล ิ ก ใ ช ้  IPv4 อ ย่ำ งแ น ่ น อ น ซ ึ ่งก ็ ไ ม่ร ู ้ว ่ ำ ก ว ่ำ
+จ ะถ ึ งเ ว ล ำ น ั ้ น  จ ะ เ ป ล ี่ ย น จ ำ ก  IPv4 ไ ป เ ป ็ น  IP version อ ะไ ร  อ ำ จ จ ะเ ป ็ น  6, 7 หร ื อ  8 ก ็ ไ ด ้ แ ต ่ท ี่ ม ี อ ย ู ่ แ ล ะใ ช ้ งำ น
+จ ร ิ งก ั น แ ล ้ ว ใ น ป ั จ จ ุบ ั น น ี ้  ท ี่ น อ ก เ หน ือ จ ำ ก  IPv4 ก ็ ค ื อ  IPv6 
+•IP version 6 (IPv6) ค ื อ  ร ู ป แ บ บ ใ หม่ขอ ง Internet Protocol (IP) ท ี่ ถ ูก พ ั ฒ น ำ ข ึ ้ น มำ เ พ ื ่อ ใ ช ้ แ ทน ท ี่ ก ำ ร ใ ช ้ งำ น  IP 
+version 4 (IPv4) โ ด ยว ั ต ถ ุป ระส งค ์ ห น ึ ่ งใ น ก ำ รพ ั ฒ น ำ  IPv6 ข ึ้ น มำ เ พ ื่ อ ล ด ป ั ญ หำ ก ำ รขำ ด แ ค ล น หมำ ยเ ล ข IP 
+Address เ น ื ่ อ งจ ำ ก  IPv6 น ั ้ น ส ำ มำ ร ถ น  ำ มำ ก  ำ ห น ด เ ป ็ น  IP Address ไ ด ้ จ  ำ น ว น มำ ก  แ ล ะถ ูก อ อ ก แ บ บ ใ ห ้ ช ่ ว ย ล ด
+ค ว ำ มย ุ่งยำ ก ใ น ก ำ รท  ำ งำ น ขอ งโ พ ร โ ท ค อ ล ใ ห ้ น ้ อ ย ล ง 
+=== Page 3 ===
+ส ิ่ ง ท ี ่ ม ี ก ำร เปล ี่ ย นแ ป ลง จำก IPv4 ไปเป ็ น IPv6
+• ม ี  Addresses ท ี่ ย ำ ว กว ่ำ
+• โ ด ยม ี ก ำ รค ำ ด หว ั งว ่ำ ป ระช ำ ก รทุก ค น ส ำ มำ รถ เ ข ้ ำ ใ ช ้ งำ น อ ิ น เ ทอ ร์เ น ็ต ไ ด ้ โ ด ยท ี ่แ ต ่ล ะค น ม ี หมำ ยเ ล ข IP
+Address ท ี่ ไ ม่ซ  ้ำ ก ั น  ซ ึ ่ง IPv6 ต อ บ โ จ ทย ์ น ี ้ ไ ด ้ เ พ รำ ะม ี ขน ำ ด  128 bit รอ งร ั บ  IP Address ไ ด ้ ถ ึ ง 2128 หร ื อ ม ี
+ค ่ำ เ ท่ำ ก ั บ  340,282,366,920,938,463,463,374,607,431,768,211,456 ส ่งผ ล ใ ห ้ อ ุป ก รณ์ทุก อ ย่ำ งจ ะม ี  IP
+Address ไ ม่ซ  ้ำ ก ั น  เ ม ื ่อ เ ท ี ยบ ก ั บ อ ั ต รำ ก ำ รข ย ำ ยต ั ว อ ย ่ำ งต ่อ เ น ื ่ อ งขอ งก ำ รใ ช ้ งำ น อ ิ น เ ทอ ร ์เ น ็ ต ก ็ ย ั งส ำ มำ รถ ใ ช ้
+งำ น ไ ด ้ เ พ ี ย งพ อ ใ น อ น ำ ค ต
+=== Page 4 ===
+ส ิ่ ง ท ี ่ ม ี ก ำร เปล ี่ ย นแ ป ลง จำก IPv4 ไปเป ็ น IPv6
+• ม ี  Headers ท ี่ เ ข ้ ำ ใ จง ่ ำ ย ข ึ้ น
+• ใ น  IPv6 Header ม ี  จ  ำ น ว น  Field ท ี่ น ้ อ ยล ง จ ำ ก  13 Fields ใ น  IPv4 เ ห ล ื อ  7 Fields แ ล ะม ี ข น ำ ด ข อ ง 
+Header ท ี่ ก  ำ ห น ด ไ ว ้ แ น ่ น อ น  ท ำ ใ ห ้ ล ด ค ่ำ  Overhead ล ง ท ำ ใ ห ้  Router ม ี ก ำ ร ป ระมว ล ผ ล ท ี่ เ ร ็ ว ข ึ้ น  แ ล ะเ พ ิ่ ม
+ค ่ำ  Throughput
+• รองร ั บ กำ รเ พ ิ่ ม  Options ไ ด ้ ด ี กว ่ำ
+• ใ น  IPv6 Header น ี ้  จ ะไ ม ่ ม ี  Option Field ท ี่ ม ี ใ น  IPv4 Header Packet โ ด ยท ำ ก ำ รแ ยก  Header อ อ ก มำ
+ต ่อ ท ้ ำ ย แ ล ะ เ ร ี ย ก ช ื ่อ ใ หม่ว ่ ำ  “Extended Header ” โ ด ย ส ำ มำ รถ ม ี  Extended Header ไ ด ้ หล ำ ย ต ั ว  จ ึ งม ี ค ว ำ ม
+ย ื ด หยุ ่ น ใ น ก ำ รเ พ ิ่ ม Option ใ หม่ข ึ ้ น ใ ช ้งำ น ใ น อ น ำ ค ต  แ ล ะย ั งส น ับ ส น ุ น  Option ท ี่ ใ ช ้ใ น  IPv4 ไ ด ้ เ ช ่น เ ด ิ ม
+=== Page 5 ===
+IPv6 Addresses
+
+=== Page 6 ===
+ส ิ่ ง ท ี ่ ม ี ก ำร เปล ี่ ย นแ ป ลง จำก IPv4 ไปเป ็ น IPv6
+• มี ก ำ รท  ำ Flow Labelling
+• ค ว ำ ม ส ำ ม ำ ร ถ ใ ห ม ่ท ี่ ม ี ก ำ ร ต ิ ด  Label ใ ห ้ ก ั บ  Packet เ พ ิ่ ม ก ำ ร ก  ำ ห น ด เ ส ้ น ท ำ ง ก ำ ร ส ่ง ข ้ อ ม ูล ห ร ื อ ร ะ ด ั บ  ค ว ำ ม ส  ำ ค ั ญขอ ง ข ้ อ ม ูล  
+โด ยม ี ก ำ ร เ พ ิ่ ม  Field ช ื ่อ  "Flows" เ พ ื ่อ ใ ห ้  ผ ู ้ ส ่ง ส ำ ม ำ ร ถ เ พ ิ่ ม ก ำ ร จ ั ด ก ำ ร พ ิ เ ศ ษ  เ ช ่น  QoS ห ร ื อ  "Real-Time" Serv ice เ ป ็ น ต ้ น
+• ม ี ก ำ ร เ พ ิ ่ ม  Anycast Address แ ล ะ ป ร ั บ เ ป ล ี่ ย น  Multicast Address
+• โด ย Anycast Address จะ เ ป ็ น ก ำ ร ต ิ ด ต ่อ ร ะ ห ว ่ำ ง ผ ู ้ ส ่ง ร ำ ยเ ด ี ยว ก ั น ก ั บ ผ ู ้ ร ั บ ห ล ำ ยร ำ ยท ี ่เ ป ็ น ก ล ุ่ม ท ี ่ใ ก ล ้ ท ี ่ ส ุด  เ ป ็ น ค  ำ ศ ั พ ท ์ท ี่
+แ ต ก ต ่ำ ง จำ ก  Multicast ท ี่ ห ม ำ ยถ ึง ก ำ ร ต ิ ด ต ่อ ร ะ ห ว ่ำ ง ผ ู ้ส ่ ง ร ำ ยเ ด ียว ก ั บ ผ ู ้ ร ั บ ห ล ำ ยร ำ ย ส ่ว น  Multicast Address ก็ ม ี ก ำ ร เ พ ิ่ ม  
+“Scope ” Field เ พ ื ่อ ก  ำ ห น ด ขอ บ เ ขต ใ น ก ำ ร ส ่ ง ข ้ อ ม ูล
+=== Page 7 ===
+ส ิ่ ง ท ี ่ ม ี ก ำร เปล ี่ ย นแ ป ลง จำก IPv4 ไปเป ็ น IPv6
+•Automatic Configuration
+•IPv6 ม ี ก ำ ร จั ด ส ร ร ร ะ บ บ ใ ห ้ เ ป ็ น แ บ บ  "Plug-and-Play" Automatic Configuration ซ ึ ่ง ล ด ค ว ำ ม ซ ั บ ซ ้ อ น ขอ ง ก ำ ร  Deployment 
+แ ล ะ  Administration
+•Backwards Compatibility
+• ร อ ง ร ั บ ก ั บ ร ะ บ บ เ ค ร ื อ ข ่ ำ ย IPv4 เ ด ิ ม แ ล ะ ส ำ ม ำ ร ถ ใ ช ้ ง ำ น ร ่ว ม ก ั น ไ ด ้ โด ยส ำ ม ำ ร ถ ใ ส ่ ห ม ำ ยเ ล ข IPv4Address เ ข ้ ำ ไ ป ใ น
+ห ม ำ ยเ ล ข IPv6 Address ไ ด ้ ห ร ื อ จะ ท  ำ ใ ห ้ร ะ บ บ ใ ช ้ ง ำ น ไ ด ้ ท ั ้ ง  IPv4 ห ร ื อ  IPv6 (Dual Stack) ห ร ื อ จะ  Encapsulating IPv 6 
+Packet โ ด ยก ำ ร น  ำ  IPv4 Headers ม ำ ค ร อ บ เ พ ื ่อ ท ี่ จะ ใ ห ้ Packet ว ิ่ ง ผ ่ำ น  Router ท ี่ ย ั ง ไ ม ่ร อ ง ร ั บ  IPv6 ห ร ื อ จะ เ ป ็ น เ ท ค น ิค ก ำ ร
+แ ป ล ง  (Header Translation Technique) เ พ ื ่อ ใ ห ้  Node ท ี่ ม ี แ ต ่ IPv6 Address อ ย่ำ ง เ ด ี ยว ส ำ ม ำ ร ถ ต ิ ด ต ่อ ส ื ่อ ส ำ ร ก ั บ ร ะ บบ
+เ ค ร ื อ ข่ำ ย IPv4 ไ ด ้
+=== Page 8 ===
+ส ิ่ ง ท ี ่ ม ี ก ำร เปล ี่ ย นแ ป ลง จำก IPv4 ไปเป ็ น IPv6
+
+=== Page 9 ===
+Header ข อ ง  IPv6 เท ี ย บ ก ั บ  IPv4
+•Field ท ี่ ม ี ก ำ รน  ำ อ อ ก :
+•Header Length ถ ูก ต ั ด อ อ ก ไ ป  เ พ ร ำ ะ  Header ขอ ง  IPv6 ม ี ขน ำ ด ค ง ท ี่ ท ี ่  40 bytes ท  ำ ใ ห ้ ป ร ะ ส ิ ท ธ ิ ภำ พ โ ด ยร ว ม ขอ ง ก ำ ร
+ป ร ะ ม ว ล ผ ล  Packet ด ี ข ึ ้น เ พ ร ำ ะ ไ ม ่เ ส ี ยเ ว ล ำ ใ น ก ำ ร  ค  ำ น ว ณขน ำ ด ขอ ง  Header
+•Identification, Flag, Segmentation, Protocol, Options, แ ล ะ  Padding ถ ูก ย ้ ำ ยไ ป อ ยู่ใ น ส ่ ว น ขยำ ยขอ ง  Header เ พ ร ำ ะ ว ่ำ
+เ ป ็ น ส ่ว น ท ี่ ไ ม ่จ ำ เ ป ็ น ต ้อ ง ป ร ะ ม ว ล ผ ล ใ น ท ุก  ๆ Router
+•Header Checksum ถ ูก น  ำ อ อ ก ไ ป เ พ ร ำ ะ ว ่ ำ ซ  ้ ำ ซ ้ อ น ก ั บ ฟั ง ก ์ ช ั ่ น ขอ ง โพ ร โท ค อ ล ใ น ช ั ้ น ท ี่ อ ยู่ส ู ง ก ว ่ำ  อ ี ก ท ั ้ ง เ พ ื ่อ เ พ ิ่ ม ป ร ะ ส ิ ท ธ ิ ภำ พ
+ขอ ง ก ำ ร ป ร ะ ม ว ล ผ ล ด ้ ว ย เ พ ร ำ ะ  Checksum จะ ต ้อ ง ม ี ก ำ ร ค  ำ น ว ณใ ห ม ่ท ี่ Router เ ส ม อ  ห ำ ก ต ั ด อ อ ก ก ็ จ ะ ล ด ภำ ร ะ ง ำ น ท ี ่ Router 
+ไ ป ไ ด ้
+=== Page 10 ===
+Header ข อ ง  IPv6 เท ี ย บ ก ั บ  IPv4
+•Field ท ี่ ม ี ก ำ รป ร ั บ เ ป ล ี่ ยน :
+•Total Length เ ป ล ี ่ยน ม ำ เ ป ็ น  Payload Length เ พ ื ่อ ร ะ บ ุขน ำ ด ขอ ง  Payload ใ น ห น ่ ว ย octets (bytes) ด ั ง น ั ้ น ขน ำ ด ขอ ง  
+Payload ส ูง ส ุ ด เ ป ็ น  65,535 octets
+•Time-To-Live (TTL) ขอ ง  IPv4 เ ป ล ี ่ยน ม ำ เ ป ็ น  Hop Limit เ พ ร ำ ะ  TTL ร ะ บ ุเ ว ล ำ ท ี ่ Packet ส ำ ม ำ ร ถ อ ยู ่ ใ น เ ค ร ื อ ข่ำ ยได ้ ( ห น ่ วย
+เ ป ็ น ว ิ น ำ ท ี ) โด ยร ะ บ ุว ่ำ แ ต ่ล ะ  Router ต ้อ ง ล ด  TTL ล ง อ ย่ำ ง น ้อ ย 1 ว ิ น ำ ท ี  Router จ ึ ง ล ด  TTL ค ร ั ้ ง ล ะ  1 ห น ่ ว ยเ ส ม อ แ ม ้ ว ่ำ จะ ใ ช ้
+เ ว ล ำ ป ร ะ ม ว ล ผ ล  Packet น ้อ ยก ว ่ำ น ั ้ น  ท  ำ ใ ห ้ ไ ม ่ต ร ง ก ั บ ค ว ำ ม ห ม ำ ยข อ ง  TTL ด ั ้ ง น ั ้ น จึ ง ถ ูก เ ป ล ี ่ยน เ ป ็ น  Hop Limit  เ พ ื ่อ ใ ห ้ ต ร ง
+ก ั บ ค ว ำ ม ห ม ำ ยจร ิ ง  ซ ึ ่ง เ ห ม ำ ะ ส ม แ ล ะ ง ่ำ ยต ่อ ก ำ ร ป ร ะ ม ว ล ผ ล
+•Protocol เ ป ล ี ่ยน ม ำ เ ป ็ น  Next Header ซ ึ ่ง ใ ช ้ เ ป ็ น ต ั ว บ อ ก ว ่ำ  Extended Header ต ั ว ถ ั ด ไ ป เ ป ็ น  Header ป ร ะ เ ภท ใ ด
+=== Page 11 ===
+Header ข อ ง  IPv6 เท ี ย บ ก ั บ  IPv4
+•Field ท ี่ ม ี ก ำ รเ พ ิ่ มเ ต ิ ม :
+•Flow Label ใ ช ้ ร ะ บ ุล ั ก ษ ณะ แ ล ะ ป ร ิ ม ำ ณก ำ ร ส ่ง ข ้ อ ม ูล  ร ะ ห ว ่ำ ง ต ้ น ท ำ ง ก ั บ ป ล ำ ยท ำ ง  เ ช ่น  Video Conference ม ี ก ำ ร ส ่ง ข ้ อ ม ูล
+ห ล ำ ยล ั ก ษ ณะ  ( เ ช ่น  ภำ พ  เ ส ี ยง  ต ั ว อ ั ก ษ ร  ฯ ล ฯ ) ส ำ ม ำ ร ถ ก  ำ ห น ด  Flow Label ไ ด ้ ห ล ำ ยล ั ก ษ ณะ แ ล ะ ส ำ ม ำ ร ถ แ ยก  Flow ขอ ง
+ภำ พ แ ล ะ เ ส ี ยง อ อ ก จำ ก ก ั น ไ ด ้
+•Traffic Class ใ ช ้ ร ะ บ ุก ล ุ่ม ขอ ง  Packet แ ล ะ ร ะ ด ั บ ค ว ำ ม ส  ำ ค ั ญเ พ ื ่อ ท ี่  Router จะ จ ั ด ล  ำ ด ั บ ข ั ้ น ก ำ ร ส ่ ง  Packet ใ ห ้ เ ห ม ำ ะ ส ม
+=== Page 12 ===
+Extended Header
+•Header ขอ งข ้ อ มูล แ บ บ  IPv6 ถ ูก อ อ ก แ บ บ มำ ใ ห ้ ม ี ขน ำ ด ค งท ี่ แ ล ะ ม ี รูป แ บ บ ท ี่ ง ่ ำ ยท ี ่ส ุด เ ท ่ ำ ท ี ่จ ะท  ำ ไ ด ้ โ ด ย Header 
+จ ะป ระ ก อ บ ด ้ ว ย  ข ้ อ มูล ต ่ำ ง ๆ  (Field) ท ี่ จ  ำ เ ป ็ น ต ้อ งใ ช ้ ใ น ก ำ รป ระ มว ล ผ ล  Packet ท ี่  Router ทุก  ๆ  ต ั ว เ ท ่ำ น ั ้ น  
+ส ่ว น ต  ำ แ หน ่ งท ี ่อ ำ จ ถ ูก ป ระมว ล ผ ล เ ฉพ ำ ะท ี่ ต ้ น หร ื อ ป ล ำ ยท ำ งหร ื อ ท ี่  Router บ ำ งต ั ว  จ ะถ ูก แ ยก  อ อ ก ม ำ ไ ว ้ ท ี่ ส ่ว น
+ขย ำ ยข อ ง Header แ ทน  ท ี่ เ ร ี ย ก ว ่ำ  “Extended Header ” ซ ึ ่งใ น  1 Packet เ ร ำ ส ำ ม ำ รถ ใ ช ้  Extended Header ไ ด ้
+มำ ก ก ว ่ำ  1 Header
+=== Page 13 ===
+Extended Header
+•Extended Headers น ั ้ น ม ี ก ำ รจ ั ด ล  ำ ด ั บ ต  ำ แ หน ่ งแ ต ่ล ะ ช น ิด  โ ด ยเ ร ี ย งล  ำ ด ั บ ด ั งน ี ้
+1. IPv6 Header
+2. Hop-by-Hop Options Header
+3. Destination Options Header
+4. Routing Header
+5. Fragment Header
+6. Authentication Header
+7. Encapsulating Security Payload Header
+8. Destination Options Header
+9. Upper -Layer Header (e.g., TCP, UDP)
+=== Page 14 ===
+ร ำย ละ เอ ี ย ด พ อ ส ั ง เข ป ข อ ง  Extended Header
+•1. Hop-by-Hop: เ ป ็ น  Option ท ี่ ระ บ ุใ ห ้ ท ุก  Router ท ี่ อ ยู่ใ น เ ส ้ น ท ำ งระห ว ่ ำ งต ้น ก ั บ ป ล ำ ยท ำ งจ ะ ต ้ อ งท ำ ต ำ ม  เ ช ่น  
+Jumbogram  Options เ พ ื ่อ ใ ห ้ ส ่ งต ่อ  IPv6 Packet ม ี ขน ำ ด ใ หญ ่ก ว ่ำ  65,535 Bytes ไ ด ้  ขน ำ ด ขอ ง Jumbogram  
+ส ูงส ุ ด ค ื อ  232Bytes
+•2. Routing: ใ ช ้ ส  ำ หร ั บ ท ำ  Source Routing ค ื อ ต ้ น ทำ งส ำ มำ รถ ระ บ ุเ ส ้ น ทำ งท ี ่ Packet ต ้ อ งผ ่ำ น ไ ด ้โ ด ย  List เ ป ็ น  
+Router ท ี่ ต ้อ งส ่ ง Packet ผ ่ำ น ไ ป จ น ถ ึ งป ล ำ ยท ำ ง Source Routing ขอ ง IPv6 ส ำ ม ำ รถ ระบ ุแ ต ่ล ะ Router ใ น  
+List ไ ด ้ เ ล ย ว ่ำ เ ป ็ น  Strict Source Routing หร ื อ  Loose Source Routing ( หมำ ย ค ว ำ มว ่ำ เ รำ ระ บ ุ ท ั ้ ง Strict แ ล ะ 
+Loose Source Routing ผ ส มก ั น ไ ด ้ ) ซ ึ ่งย ื ด หย ุ ่น มำ ก ก ว ่ำ  Source Routing ขอ ง IPv4 ท ี่ จ ะบ ั งค ั บ ว ่ำ  Router ใ น  
+List ต ้ อ งเ ป ็ น  Strict หร ื อ ไ ม่ก ็ เ ป ็ น  Loose Source Routing ท ั ้ งห ม ด
+=== Page 15 ===
+ร ำย ละ เอ ี ย ด พ อ ส ั ง เข ป ข อ ง  Extended Header
+•3. Fragment: ใ ช ้ ส  ำ หร ั บ ท ำ  Fragmentation เ ห ม ื อ น ใ น  IPv4 แ ต ่ท ี่ แ ต ก ต ่ำ งก ั น ก ็ ค ื อ  IPv6 จ ะม ี ฟั งก ์ ช ั ่ น ช ื ่ อ ว ่ำ  
+PMTUD (Path MTU Discovery) ใ ช ้ เ พ ื ่อ ร ู ้ขน ำ ด  Maximum Transfer Unit (MTU) ท ี่ เ หมำ ะ ส ม ขอ งเ ส ้ น ทำ งท ี ่ จะ
+ท ำ ก ำ รส ่ งข ้ อ มูล  ด ั งน ั ้ น ก ำ รท  ำ Fragmentation จ ึ งท ำ ท ี่ เ ค ร ื ่อ งต ้ น ทำ ง (Source) เ ท ่ำ น ั ้ น  (IPv4 จ ะท ำ  
+Fragmentation ท ั ้ งท ี ่เ ค ร ื ่อ งต ้น ทำ งแ ล ะ  Router ระห ว ่ำ งเ ส ้ น ทำ งท ี่ ข ้ อ มูล ถ ูก ส ่ งผ ่ำ น )
+•4. Authentication: ใ ช ้ ส  ำ หร ั บ ท ำ  Authentication โ ด ยก ำ ร ใ ช ้ IP Security (IPSEC) โ ด ยใ น  IPv4 เ ด ิ มจ ะม ี  
+Authentication Header แ ยก อ อ ก จ ำ ก  IPv4 Header แ ต ่ IPv6 ไ ด ้ น  ำ ส ่ว น น ี้เ ข ้ ำ มำ เ ป ็ น  Option หน ึ ่ งใ น  
+Extended Header แ ทน
+•5. Encapsulated Security Payload: ใ ช ้ ส  ำ หร ั บ ท ำ  Encryption แ ล ะ Cryptography อ ื ่น  ๆ
+=== Page 16 ===
+Service IPv4 Solution IPv6 Solution
+Addressing Range 32-bit, Network Address translation 128-bit, Multiple Scopes
+Auto Configuration DHCP Stateless, Reconfiguration, DHCP
+Security IPsec IPsec mandated, works end -to-end
+Mobility Mobile IP Mobile IP with direct routing
+Quality of Service Differentiated service, Integrated service Differentiated service, Integrated service
+Multicast IGMP/PIM/MBGP MLD/PIM/MBGP, Scope Identifier
+Broadcast Yes No
+Minimum MTU 576 Bytes 1280 Bytes
+Header Checksum Yes No
+กำ ร แ บ ่ง  Class Classful, Classless ไ ม ่ม ี กำ ร แ บ ่ง  Class
+กำ ร บ อ กข น ำ ดเ คร ื อ ข ่ำ ย ก ำ ห น ด Subnet mask 255.255.255.0 ก ำ ห น ด Prefix Length 2001:0432:2 ad::/48
+Life time น ับ  life time เ ป ็ น วิน ำ ท ี  (seconds) น ับ  life time เ ป ็ น  hops
+Fragmentation Router ร ะ ห ว่ำ ง ท ำ ง ท ี ่ Packet ผ ่ำ น  ส ำ ม ำ ร ถ ท  ำ  Fragmentation เ ม ื ่อ  Packet ม ี ข น ำ ดให ญ ่
+เ กิน  MTU ท  ำ  Fragmentation ท ี ่ Source เ ท ่ำ น ั ้ น  เ น ื่อ ง จ ำ ก IPv6 ม ี ว ิธ ี กำ ร ใ น กำ ร ตร ว จส อ บ ข น ำ ดข อ ง  segment ท ี ่ส ำ ม ำ ร ถ ส ่ง
+ไ ด้ก ่อ น ท ี ่จ ะ ส ่ง  Packet
+PMTUD (Path MTU Discovery) ใช ้ PMTUD กร ณ ีเ พ ื ่อ ห ล ีกเ ล ี ่ย ง กำ ร  fragmentation ใช ้ PMTUD ใน กำ ร ส ่ง  Packet ท ุกค ร ั้ ง  ถ ้ ำ ห ำ ก ไ ม ่ใช ้ PMTUD Packet ท ี ่ถ ูกส ่ง อ อ ก ไ ป จ ะ ถ ูก จ  ำ กั ดข น ำ ดไ ม ่ใ ห ้ เ กิน  
+1280 bytes
+Header Option Header มีOptions Field ท  ำ ให ้  Router ต้อ ง เ ส ี ย เ ว ล ำ ตร ว จส อ บ  แ ล ะ ท  ำ ใ ห ้ Header ม ี ข น ำ ด
+ให ญ ่ข ึ ้นม ี  Header แ ล ะ  Option แ ย กจ ำ กก ั น  ช ่วย ล ด ช ั ้ น ต อ น กำ ร ต ร วจส อ บ  Packet ท ำ ให ้ไ ม ่ ต ้อ ง ต ร ว จ ส อ บ  Option แ ต ่
+เ ม ื ่อ ใ ดก็ต ำ ม ท ี ่ม ี กำ ร ก ำ ห น ด Option เ พ ิ ่ม เ ต ิ ม ก ็จ ะ ม ี กำ ร ก  ำ หน ดHeader อ ีกอ ั น ข ึ ้น ไ ว ้ ส  ำ ห ร ั บ  Option ด ั ง กล ่ำ ว
+=== Page 17 ===
+Notation of IPv 6 Addresses
+• โ ด ย ใ น ก ำ รเ ข ี ย น ห มำ ย เ ล ข Address ขอ ง IPv4 น ั ้ น จ ะใ ช ้ ต ั ว เ ล ขฐ ำ น  10 จ  ำ น ว น  4 ช ุ ด ค ั ่ น ด ้ว ย เ ค ร ื ่อ งหมำ ย “.” แ ต ่
+เ น ื ่ อ งจ ำ ก หมำ ย เ ล ขหมำ ย เ ล ข Address ขอ ง IPv6 ม ี ขน ำ ด  128-bit ซ ึ ่งเ ป ็ น ต ั ว เ ล ขท ี่ ย ำ ว มำ ก  ย ำ ก ต ่อ ก ำ ร จ  ำ แ ละ
+เ ข ี ยน ห มำ ยเ ล ข Address ใ ห ้ เ ห ม ื อ น ก ั บ  IPv4 Address จ ึ งไ ด ้ ม ี ก ำ ร ก  ำ หน ด ร ู ป แ บ บ ใ น ก ำ รเ ข ี ยน  IPv6 Addres s 
+ข ึ้ น มำ ใ ห ม ่  โ ด ย หม ำ ย เ ล ข IPv6 Address ม ี ล ั ก ษ ณะป ระก อ บ ไ ป ด ้ว ย 8 ก ล ุ่มต ั ว เ ล ขแ ต ่ล ะก ล ุ่มม ี  16-bit ท ี่ เ ข ี ย น
+เ ป ็ น เ ล ขฐ ำ น  16 จ  ำ น ว น  4 ต ั ว  เ ข ี ย น ค ั ่ น ด ้ ว ย เ ค ร ื ่อ งหมำ ย  “:” ต ั ว อ ย ่ ำ งเ ช ่น
+•2001:0 dcb:78c3:0000:0000:8 a1e:4470:4571
+• โ ด ยใ น ก ำ รเ ข ี ยน เ ล ขฐ ำ น  16 น ั ้ น ส ำ มำ ร ถ ใ ช ้ ไ ด ้ ท ั ้ งต ั ว ใ ห ญ ่หร ื อ ต ั ว เ ล ็ ก ก ็ไ ด ้  หมำ ยเ ล ข IPv6 Address สำ มำ รถ
+เ ข ี ย น ย ่ อ ไ ด ้ โ ด ย ม ี ก ฎ อ ย ู่ด ั งน ี ้ :
+1. ห ำ ก ม ี เ ล ขศ ูน ย ์ ด ้ำ น ห น ้ำ ขอ ง ก ล ุ่ม ใ ด ส ำ ม ำ ร ถ ต ั ด อ อ ก ไ ป ไ ด ้
+2. ห ำ ก ม ี เ ล ขศ ูน ย ์ ต ิ ด ก ั น  4 ต ั ว  ส ำ ม ำ ร ถ เ ข ี ยน แ ท น ด ้ ว ยเ ล ขศ ูน ย ์ ต ั ว เ ด ี ยว ไ ด ้
+3. ห ำ ก ก ล ุ่ม ใ ด ก ล ุ่ม ห น ึ่ง  ห ร ื อ ห ล ำ ยก ล ุ่ม ท ี ่ต  ำ แ ห น ่ง ต ิด ก ั น  เ ป ็ น เ ล ขศ ูน ย์ท ั้ ง ห ม ด  ค ื อ  0000 ส ำ ม ำ ร ถ ต ั ด อ อ ก ไ ด ้  ( แ ต ่จะ ส ำ ม ำ ร ถ ท  ำ
+แ บ บ น ี ้ ไ ด ้ เ พ ี ยง  1 ต  ำ แ ห น ่ ง เ ท ่ำ น ั้ น  เ พ ื ่อ ไ ม ่ใ ห ้ เ ก ิด ค ว ำ ม ส ั บ ส น )
+=== Page 18 ===
+ต ั ว อ ย ่ ำง
+•IPv6 Address fe 80:0000:0000:0000:0202 :b3ff:fe1e:8329
+• เ ข ี ย น ย ่ อ ไ ด ้เ ป ็ น  fe80:0:0:0:202 :b3ff:fe1e:8329
+• หร ื อ  fe80::202:b3ff:fe1e:8329
+•IPv6 Address 2001:0000:0000:34fe:0000:0000:00 ff:0321
+• เ ข ี ย น ย ่ อ ไ ด ้เ ป ็ น  2001:0:0:34fe:0:0:ff:321
+• หร ื อ  2001::34fe:0:0:ff:321
+•IPv6 Address 0000:0000:0000:0000:0000:0000:0000:0001
+• เ ข ี ย น ย ่ อ ไ ด ้เ ป ็ น  0:0:0:0:0:0:0:1 หร ื อ  ::1IPv6 Address fe80 :0000 :0000 :0000 :0202 :b3ff :fe1e :8329
+หล ั ง ท ำ ก ฎ ข ้ อ  1 fe80 :0 :0 :0 :0202 :b3ff :fe1e :8329
+หล ั ง ท ำ ก ฎ ข ้ อ  2 fe80 : :0202 :b3ff :fe1e :8329
+=== Page 19 ===
+Types of Addresses
+• ส ิ่ งท ี ่ม ี ก ำ ร เ ป ล ี่ ย น แ ป ล งท ี่ ส  ำ ค ั ญ ข อ ง IPv6 น ั ้ น ก ็ ค ื อ  Address Type โ ด ย ใ น  IPv4 จ ะม ี อ ย ู ่ 3 ช น ิ ด  ไ ด ้ แ ก ่ : Unicast, 
+Multicast แ ล ะ Broadcast ส  ำ ห ร ั บ  IPv6 ก ็ ม ี อ ยู ่  3 ช น ิด  ไ ด ้ แ ก ่ Unicast, Multicast แ ล ะ Anycast
+=== Page 20 ===
+Unicast Addresses
+• ใ ช ้ ต ิ ด ต ่อ ก ั น แ บ บ  one-to-one จ ำ ก เ ค ร ื ่อ งหน ึ่งไ ป อ ี ก เ ค ร ื ่อ งห น ึ่ง
+•global unicast address ค ล ้ ำ ยก ั บ  public IPv 4 address เ ป ็ น ห ม ำ ยเ ล ขท ี่ อ ยู่ท ี่ ส ำ ม ำ ร ถ เ ข ้ ำ ถ ึง ไ ด ้ จำ ก เ ค ร ื อ ข่ำ ยภำ ยน อ ก
+•link-local address ม ี  prefix เ ป ็ น  FE80::/10 โด ยจะ ท  ำ ง ำ น ค ล ้ ำ ยก ั บ  link-local IPv 4 address ( 169.254.0.0 /16)
+•unique local address ม ี  prefix เ ป ็ น  FC00::/7 โด ยจะ ท  ำ ง ำ น ค ล ้ ำ ยก ั บ  private IPv 4 address
+•embedded IPv 4 address เ ป ็ น  IPv6 address ท ี่ ส ร ้ำ ง ม ำ เ พ ื ่อ ช ่ ว ยใ น ก ำ ร เ ป ล ี ่ ยน จ ำ ก ก ำ ร ใ ช ้ ง ำ น  IPv4 address เ ป ็ น  IPv6 
+address ใ ห ้ ส ะ ด ว ก ย ิ่ ง ข ึ้ น  เ ป ็ น ก ำ ร น  ำ  IPv4 address ม ำ แ ป ล ง เ ป ็ น  IPv6 address โด ยจะ ม ี แ ยก ย่อ ยอ ี ก  2 ช น ิด ค ื อ  
+•IPv4-Compatible IPv 6 address ใน ป ั จจ ุบ ั นไ ด ้เล ิ ก ใช ้ ง ำน ไ ป แ ล ้ว  โ ด ยจ ะ ม ี ร ูป แ บ บ ป ร ะ ก อ บ ไ ป ด ้ ว ยบ ิ ต ท ี ่ เป ็ น ศ ูน ย ์  "0" จ ำ นว น 96 bits แ ล ะ ต ำม ม ำ
+ด ้ว ยห ม ำย เล ข IPv4 address ท ี ่ถ ูก แ ป ล ง เป ็ น เล ขฐ ำน  16 อ ี ก  32 bits อ ย ่ำง เช ่นม ี ห ม ำยเล ข IPv4 address เป ็ น 222.1.41.90 ก ็ จะ ม ีห ม ำย เล ขท ี่
+อ ย ู่แ บ บ  IPv4-Compatible IPv 6 address เป ็ น ::de01:295 a เป ็ นต ้ น
+•IPv4-mapped IPv 6 address จะ น  ำ  IPv4 address ไ ป  mapped เข ้ ำก ั บ  IPv6 address โ ด ยร ูป แ บ บ จะ ป ร ะ ก อ บ ไ ป ด ้ ว ยบ ิต ท ี่ เป ็ นศ ูนย ์  "0" 
+จ ำ นว น 80 bits แ ล ะ ต ำม ม ำ ด ้ว ยบ ิ ต ท ี ่เป ็ นห นึ่ง  "1" จ ำ นว น 16 bits จำ ก นั ้ นจ ึง ต ำม ม ำ ด ้ ว ยห ม ำย เล ข IPv4 address ด ั ง นั ้ น ถ ้ำห ำก ม ี ห ม ำ ยเ ล ข  
+IPv4 address เป ็ น 222.1.41.90 ก ็ จะ ม ีห ม ำยเล ขท ี่ อ ยู่แ บ บ  IPv4-Mapped IPv 6 address เป ็ น ::FFFF: 222.1.41.90
+•site-local address ม ี  prefix เ ป ็ น  FEC0::/10 เ ป ็ น ห ม ำ ยเ ล ข IPv6 address ส  ำ ห ร ั บ ใ ช ้ภำ ยใ น อ ง ค ์ ก ร  ถ ูก ก  ำ ห น ด ไ ว ้ ใ น  
+RFC2373 แ ต ่ใ น  RFC4291 ไ ด ้ ยก เ ล ิก ก ำ ร ใ ช ้ ง ำ น ไ ป แ ล ้ ว  แ ล ะ ไ ป ใ ช ้ง ำ น  unique local address (ULA) แ ท น
+=== Page 21 ===
+Multicast Addresses
+• ใ ช ้ ต ิ ด ต ่อ ก ั น แ บ บ  one-to-many ใ ช ้ ใ น ก ำ ร Routing แ บ บ  Multicasting ( ถ ูก ใ ช ้ ใ น ก ล ุ่มขอ ง Application ท ี่ เ ป ็ น 
+Multicast ด ้ ว ย ก ั น  เ ช ่น  ใ น  Routing Protocol พ ว ก  RIPv2, OSPF) ใ น  Multicasting เ ค ร ื ่อ งแ ต ่ล ะเ ค ร ื่ อ งจ ะถ ูก
+ก  ำ หน ด ใ ห ้ อ ย ู ่ ใ น  Group ( 1 เ ค ร ื ่อ งอ ำ จ จ ะอ ย ู ่ไ ด ้ มำ ก ก ว ่ำ  1 Group) แ ต ่ล ะ Group จ ะม ี  Multicast Address  เ ป ็ น
+ต ั ว ก  ำ หน ด  เ ค ร ื ่อ งท ี่ ม ี  Multicast Address เ ด ี ยว ก ั น ก ็ จ ะหมำ ยค ว ำ มว ่ำ อ ย ู ่ใ น  Group เ ด ี ย ว ก ั น  เ ม ื ่อ ไ หร่ก ็ ต ำ มท ี่ เ รำ
+ส ่งข ้ อ ม ู ล ไ ป ย ั ง Multicast Address เ ค ร ื ่อ งทุก เ ค ร ื ่อ งใ น  Group น ั ้ น ก ็ จ ะไ ด ้ ร ั บ ข ้ อ ม ู ล ขอ งเ รำ  ก ำ รท  ำ Multicasting 
+ท ำ ใ ห ้ ล ด ค ว ำ มซ  ้ำ ซ ้อ น ใ น ก ำ รส ่ งข ้ อ มูล ไ ป หำ เ ค ร ื่ อ งหล ำ ย  ๆ  เ ค ร ื ่อ ง
+=== Page 22 ===
+Anycast Addresses
+• ใ ช ้ ต ิ ด ต ่อ ก ั น แ บ บ  one-to-one-of-many จ ะม ี ส ิ ่ งท ี ่เ หม ื อ น ก ั น ก ั บ  Multicasting ค ื อ ม ี แ บ ่งเ ป ็ น ก ล ุ่ม ท ี่ เ ร ี ยก ว ่ำ  set แ ต ่
+ล ะ set จ ะถ ูก ก  ำ หน ด ใ ห ้ ใ ช ้  Anycast Address ข ้ อ แ ต ก ต ่ำ งขอ ง Anycast ก ั บ  Multicast ก ็ ค ื อ เ ม ื ่อ เ รำ ส ่ งข ้ อ มูล ไ ป
+ย ั ง Anycast Address เ ค ร ื ่อ งใ ด เ ค ร ื่ อ งหน ึ ่ งใ น  set ใ ห ้ ไ ด ้ร ั บ ข ้ อ มูล ขอ งเ รำ  จ ะเ ป ็ น เ ค ร ื่ อ งท ี ่อ ย ู ่ใ ก ล ้ เ รำ ท ี ่ส ุ ด  โ ด ย
+ต ั ว อ ย ่ ำ งก ำ รใ ช ้ Anycast Address ก ็ อ ย ่ำ งเ ช ่น  Router ส ่งข ้ อ ม ู ล  Routing Information ไ ป ย ั ง Router ใ ก ล ้ เ ค ี ยง
+=== Page 23 ===
+Address Allocation
+• ใ น ก ำ รจ ั ด ส รร แ จ ก จ ่ ำ ย หมำ ย เ ล ข IPv6 ใ ห ้ แ ต ่ล ะเ ค ร ื ่อ งไ ม ่ซ  ้ำ ก ั น น ั ้ น  จ  ำ เ ป ็ น ต ้ อ งม ี อ งค ์ก รหร ื อ หน ่ ว ยงำ น ก ล ำ งเ ป ็ น
+ผ ู ้ ด ู แ ล จ ั ด ก ำ ร ข ึ้ น  IANA (Internet Assigned Number Authority) ซ ึ ่งเ ป ็ น อ งค ์ ก รท ี่ ด ูแ ล ก ำ รอ อ ก หมำ ย เ ล ข IP 
+Address โ ด ยก ระจ ำ ยไ ป ใ ห ้  RIR (Regional Registry) ขอ งแ ต ่ล ะภ ูม ิ ภ ำ ค ท ั ้ งห มด  5 ภ ู ม ิ ภ ำ ค ด ้ ว ยก ั น  ใ น ส ่ ว น
+ภ ู ม ิ ภ ำ ค เ อ เ ช ี ย น ั ้ น  APNIC (Asia -Pacific Network Information Centre) จ ะเ ป ็ น ผ ู ้ ด ูแ ล
+
+=== Page 24 ===
+Simulation

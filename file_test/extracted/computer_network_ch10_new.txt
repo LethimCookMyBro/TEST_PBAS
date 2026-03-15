@@ -1,0 +1,194 @@
+
+=== Page 1 ===
+88723165
+Computer Network Technology
+CH10: Access Control Lists
+=== Page 2 ===
+ACL คืออะไร? 
+Access Control List (ACL) เป็นกลไกที่ใช้ควบคุมการเข้าถึงเครือข่ายโดยการกรอง แพ็กเก็ต
+ที่เข้าหรือออกจากเรา เตอร์หรืออุปกรณ์เครือข่ายอื่น ๆ สามารถใช้ ACL เพื่อก าหนดว่าข้อมูล
+ประเภทใดที่สามารถผ่านเครือข่ายได้
+=== Page 3 ===
+ประเภทของ ACL
+1. Standard ACL (หมายเลข 1–99 และ 1300–1999)
+•กรองแพ็กเก็ตตามsource IP address เท่านั้น
+2. Extended ACL (หมายเลข 100–199 และ 2000–2699)
+•กรองแพ็กเก็ตตามsource และ destination IP, protocol (TCP, UDP, ICMP), port number
+=== Page 4 ===
+รูปแบบการตั้งค่า ACL
+1. Number ACL
+•Standard -> 1-99
+•Extend -> 100-199
+2. Name ACL
+•ใช้การตั้งชื่อแทนตัวเลข
+=== Page 5 ===
+Access Control Lists Selection Criteria
+=== Page 6 ===
+Standard Access Control Lists
+
+=== Page 7 ===
+Standard Access Control Lists
+
+=== Page 8 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10
+Destination IP Address : 192.168.10.10
+=== Page 9 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+=== Page 10 ===
+Standard Access Control Lists
+Source IP Address : 192.168.10.10 
+=== Page 11 ===
+ขั้นตอนการตั้งค่า ACL
+1. สร้าง ACL
+2. ประกาศใช้ ACL (Interface)
+=== Page 12 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10 1. สร้าง ACL
+=== Page 13 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10ipaccess -list standard TEST
+1. สร้าง ACL
+=== Page 14 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10ipaccess -list standard TEST
+
+=== Page 15 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10ipaccess -list standard TEST
+
+=== Page 16 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10ipaccess -list standard TEST
+
+=== Page 17 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10ipaccess -list standard TEST
+=== Page 18 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10ipaccess -list standard TESTF0/0 F0/1
+access -group TEST ininterface F 0/0
+2. ประกาศใช้ ACL (Interface)
+=== Page 19 ===
+Standard Access Control Lists
+Source IP Address : 10.0.0.10 
+permit host 10.0.0.10ipaccess -list standard TESTF0/0 F0/1
+access -group TEST outinterface F 0/1
+2. ประกาศใช้ ACL (Interface)
+=== Page 20 ===
+การเลือกจุดใช้ ACL
+192.168.100.10
+10.10.0.10Fa0/1
+Fa0/2
+ Serverin
+inOutG 0/1
+=== Page 21 ===
+Wildcard Mask
+=== Page 22 ===
+Subnet Mark
+
+=== Page 23 ===
+Wildcard Mark
+
+=== Page 24 ===
+Wildcard Mark
+
+=== Page 25 ===
+Wildcard Mark
+
+=== Page 26 ===
+Wildcard Mark
+
+=== Page 27 ===
+Wildcard Mark
+
+=== Page 28 ===
+Wildcard Mark
+
+=== Page 29 ===
+Wildcard Mark
+
+=== Page 30 ===
+Wildcard Mark
+
+=== Page 31 ===
+Wildcard Mark
+
+=== Page 32 ===
+Wildcard Mark
+
+=== Page 33 ===
+Standard Access Control Lists
+
+=== Page 34 ===
+Standard Access Control Lists
+
+=== Page 35 ===
+Standard ACL Syntax -Numbered
+
+=== Page 36 ===
+Standard ACL Syntax -Named
+
+=== Page 37 ===
+Standard ACL Syntax -Named
+
+=== Page 38 ===
+Standard Access Control Lists
+
+=== Page 39 ===
+Standard Access Control Lists
+
+=== Page 40 ===
+Extended Access Control List
+=== Page 41 ===
+Extended ACL Syntax
+
+=== Page 42 ===
+Extended Access Control List
+
+=== Page 43 ===
+Extended Access Control List
+
+=== Page 44 ===
+Extended Access Control List
+
+=== Page 45 ===
+Extended Access Control List
+
+=== Page 46 ===
+Extended Access Control List
+
+=== Page 47 ===
+Extended Access Control List
+
+=== Page 48 ===
+Extended Access Control List
+
+=== Page 49 ===
+Extended Access Control List
+
+=== Page 50 ===
+Extended Access Control List
+
+=== Page 51 ===
+Extended Access Control List
+
+=== Page 52 ===
+Extended Access Control List
+
+=== Page 53 ===
+Extended Access Control List
+
+=== Page 54 ===
+Extended Access Control List
+
+=== Page 55 ===
+Simulation

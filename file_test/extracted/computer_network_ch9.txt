@@ -1,0 +1,80 @@
+
+=== Page 1 ===
+88723165
+Computer Network Technology
+CH9: InterVLAN  routing and L3 Switch routing
+=== Page 2 ===
+Agenda
+•InterVLAN  routing
+•L3 Switch routing
+=== Page 3 ===
+InterVLAN  routing
+=== Page 4 ===
+InterVLAN  routing
+•Inter-VLAN Routing คือการท าให้ host ( PC,Notebook,Server ) ที่อยู่ต่าง VLAN กัน ติดต่อกันได้ โดยต้องมี
+อุปกรณ์ที่อยู่ใน Layer 3 มาช่วย
+•Route -on-a-stick (ROAS)
+•เมื่ออุปกรณ์ใน VLAN หนึ่งต้องการสื่อสารกับ VLAN อื่น ข้อมูลจะถูกส่งไปที่ Router และ Route กลับไปยัง VLAN ปลายทาง
+•Router จะมี Sub-interfaces แต่ละตัวแทน VLAN ต่าง ๆ
+•Switch Virtual Interface (SVI)
+•ใช้ Layer 3 Switch  ที่รองรับ Routing โดยไม่ต้องใช้ Router เพิ่ม
+•ก าหนด SVI (Switched Virtual Interface) เป็น Gateway ส าหรับแต่ละ VLAN
+•ใช้ค าสั่ง ip routing บน Switch เพื่อเปิดใช้งาน Inter-VLAN Routing
+=== Page 5 ===
+Router on a Stick
+=== Page 6 ===
+Router on a Stick
+
+=== Page 7 ===
+Router on a Stick
+
+=== Page 8 ===
+Configuration
+Router
+•Router(config)#interface GigabitEthernet  0/0/0.10
+•Router(config -if)# encapsulation dot1q 10
+•Router(config -if)# ip address 192.168.10.1 255.255.255.0
+•Router(config)#interface GigabitEthernet  0/0/0.20
+•Router(config -if)# encapsulation dot1q 20
+•Router(config -if)# ip address 192.168.20.1 255.255.255.0
+=== Page 9 ===
+Route -on-a-stick (ROAS)
+•เมื่อเครื่อง 192.168.10.10 จะส่งข้อมูลให้เครื่ อง 
+192.168.20.10
+•Router จะเลือกรับเฟรมที่ Tag VLAN 10 บน sub-
+interface Fa 0/0/0.10 (ขึ้นอยู่กับตอนสั่ง 
+encapsulation dot 1q 10)
+•Router ถอด Frame Header นี้ออก แล้วน า
+แพ๊กเก็ตมาหาเส้นทางเพื่อเลือกอินเตอร์ เฟสไปหาวง 
+192.168.20.0 /24 ตามปกติ
+•ขากลับส่งไปยัง  sub-interface Fa 0/0/0.20ที่ติด 
+Tag VLAN 20 แล้วส่งกลับไปยัง  switch ผ่าน Trunk
+=== Page 10 ===
+Switch Virtual Interface (SVI)
+=== Page 11 ===
+Switch Virtual Interface (SVI)
+•ปกติ Router จะใช้ Physical interface หรือ 
+Sub-interface ในการท า Routing ทราฟิกข้าม 
+VLAN
+•Multilayer Switch จะใช้ SVIs ในการท า
+Routing ทราฟิกข้ามแต่ละ VLAN
+•SVI เป็น Virtual Interface ของแต่ละ VLAN 
+ไม่ได้เฉพาะเจาะจงอยู่กับ Physical Interface อัน
+ใดอันหนึ่ง  
+=== Page 12 ===
+L3 switch Configuration
+Config VLAN Interface
+•Switch(config)# vlan 10
+•Switch(config)#exit
+•Switch(config)# vlan 20
+•Switch(config)#exit
+•Switch(config -if)# interface vlan 10
+•Switch(config -if)# ip address 192.168.10.1 255.255.255.0
+•Switch(config -if)# interface vlan 20
+•Switch(config -if)# ip address 192.168.20.1 255.255.255.0Config Switch L3 enable routing
+•Switch(config)# ip routing
+•Switch (config)#interface gigabit 0/1
+•Switch (config -if)#switchport trunk encapsulation dot1q
+•Switch (config -if)#switchport mode trunk
+=== Page 13 ===
+End

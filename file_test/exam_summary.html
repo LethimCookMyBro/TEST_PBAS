@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Network - Exam Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0f1a;--sf:#1a1a2e;--sf2:#16213e;--cd:#1e2746;--ac:#00d2ff;--ac2:#7b2ff7;--tx:#e0e0ff;--tx2:#8892b0;--bd:#2d3561;--gn:#00e676;--yw:#ffd740;--rd:#ff5252}
+body{font-family:'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--tx);display:flex;min-height:100vh}
+.sb{width:300px;background:var(--sf);border-right:1px solid var(--bd);position:fixed;height:100vh;overflow-y:auto;z-index:100;transition:transform .3s}
+.sb-h{padding:20px;background:linear-gradient(135deg,var(--ac2),var(--ac));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center}
+.sb-h h1{font-size:1.3em;font-weight:700}.sb-h p{font-size:.85em;-webkit-text-fill-color:var(--tx2)}
+.nd{padding:12px 20px 6px;font-size:.75em;font-weight:600;color:var(--ac);text-transform:uppercase;letter-spacing:2px}
+.ni{display:flex;align-items:center;gap:10px;padding:12px 20px;color:var(--tx2);text-decoration:none;font-size:.9em;transition:all .2s;border-left:3px solid transparent;cursor:pointer}
+.ni:hover,.ni.act{background:rgba(0,210,255,.08);color:var(--ac);border-left-color:var(--ac)}
+.mn{margin-left:300px;flex:1;padding:30px;max-width:1200px}
+.cs{display:none}.cs.act{display:block}
+.cs h2{font-size:1.8em;margin-bottom:24px;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:12px;border-bottom:2px solid var(--bd)}
+.st{font-size:1.2em;margin:24px 0 16px;color:var(--yw)}
+.sc{background:var(--cd);border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--bd);transition:transform .2s}
+.sc:hover{transform:translateY(-2px);border-color:var(--ac)}
+.sc h3{color:var(--ac);font-size:1.15em;margin-bottom:12px}
+.sc h4{color:var(--yw);font-size:1em;margin:14px 0 8px}
+.sc p{line-height:1.8;color:var(--tx2)}.sc ul,.sc ol{padding-left:20px;color:var(--tx2);line-height:2}
+.sc li{margin-bottom:4px}.sc b{color:var(--tx)}
+.sc code{background:rgba(0,210,255,.15);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.85em;color:var(--ac)}
+.cb{background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:.85em;line-height:1.8;color:var(--gn);margin:8px 0;overflow-x:auto;white-space:pre-wrap}
+.cb .cm{color:#6a737d}.hl{color:var(--yw);font-weight:600}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9em}
+th{background:var(--ac2);color:white;padding:10px 14px;text-align:left;font-weight:500}
+td{padding:8px 14px;border-bottom:1px solid var(--bd);color:var(--tx2)}
+tr:hover td{background:rgba(0,210,255,.05)}
+.tm{background:var(--rd);color:white;padding:2px 8px;border-radius:10px;font-size:.8em;font-weight:500}
+.sg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.sl{background:var(--cd);border-radius:10px;overflow:hidden;border:1px solid var(--bd);transition:all .3s;cursor:pointer}
+.sl:hover{border-color:var(--ac);transform:scale(1.02)}
+.sl img{width:100%;display:block}
+.sn{text-align:center;padding:8px;font-size:.8em;color:var(--tx2);background:var(--sf2)}
+.mo{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:1000;justify-content:center;align-items:center;cursor:zoom-out}
+.mo.act{display:flex}.mo img{max-width:95vw;max-height:95vh;object-fit:contain;border-radius:8px}
+.mb{display:none;position:fixed;top:15px;left:15px;z-index:200;background:var(--ac);color:var(--bg);border:none;padding:10px 14px;border-radius:8px;font-size:1.2em;cursor:pointer}
+@media(max-width:768px){.sb{transform:translateX(-100%)}.sb.op{transform:translateX(0)}.mn{margin-left:0;padding:15px;padding-top:60px}.mb{display:block}.sg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<button class="mb" onclick="document.querySelector('.sb').classList.toggle('op')">&#9776;</button>
+<nav class="sb">
+<div class="sb-h"><h1>Computer Network</h1><p>Summary for Exam</p></div>
+<div class="nd">Chapters</div>
+<a class="ni" onclick="go('ch9')"><span>&#128214;</span>CH9: InterVLAN Routing & L3 Switch</a>
+<a class="ni" onclick="go('ch10')"><span>&#128214;</span>CH10: Spanning Tree Protocol (STP)</a>
+<a class="ni" onclick="go('ch10new')"><span>&#128214;</span>CH10 (ACL): Access Control Lists</a>
+<a class="ni" onclick="go('ch11')"><span>&#128214;</span>CH11: EtherChannel</a>
+<a class="ni" onclick="go('ch13')"><span>&#128214;</span>CH13: IPv6</a>
+<div class="nd">Labs</div>
+<a class="ni" onclick="go('lab9')"><span>&#128300;</span>LAB-09: InterVLAN Route</a>
+<a class="ni" onclick="go('lab10')"><span>&#128300;</span>LAB-10: ACL + VLAN</a>
+<a class="ni" onclick="go('lab12')"><span>&#128300;</span>LAB-12: EtherChannel</a>
+</nav>
+<main class="mn">
+<section id="ch9" class="cs">
+<h2>CH9: InterVLAN Routing & L3 Switch</h2>
+<h3 class="st">Summary</h3>
+<div class="sc"><h3>InterVLAN Routing</h3><p>คือการทำให้ Host ที่อยู่ <b>ต่าง VLAN กัน</b> ติดต่อกันได้ โดยต้องมีอุปกรณ์ Layer 3 มาช่วย</p></div><div class="sc"><h3>วิธีที่ 1: Router-on-a-Stick (ROAS)</h3><ul><li>ใช้ Router ต่อกับ Switch ผ่าน <b>Trunk link 1 เส้น</b></li><li>Router มี <b>Sub-interfaces</b> แต่ละตัวแทน VLAN</li><li>ข้อมูลถูกส่งไป Router แล้ว Route กลับไปยัง VLAN ปลายทาง</li></ul><h4>Config Router (ROAS)</h4><div class="cb">Router(config)# interface GigabitEthernet 0/0/0.10
+Router(config-if)# encapsulation dot1q 10
+Router(config-if)# ip address 192.168.10.1 255.255.255.0
+
+Router(config)# interface GigabitEthernet 0/0/0.20
+Router(config-if)# encapsulation dot1q 20
+Router(config-if)# ip address 192.168.20.1 255.255.255.0</div><h4>การทำงาน ROAS</h4><ol><li>192.168.10.10 ส่งข้อมูลให้ 192.168.20.10</li><li>Router รับเฟรม Tag VLAN 10 บน sub-interface</li><li>Router ถอด Frame Header หาเส้นทางไปวง 192.168.20.0/24</li><li>ส่งไป sub-interface ที่ติด Tag VLAN 20 กลับไป Switch ผ่าน Trunk</li></ol></div><div class="sc"><h3>วิธีที่ 2: Switch Virtual Interface (SVI)</h3><ul><li>ใช้ <b>L3 Switch</b> ที่รองรับ Routing โดยไม่ต้องใช้ Router เพิ่ม</li><li>SVI = Virtual Interface ของแต่ละ VLAN</li><li>ใช้คำสั่ง <code>ip routing</code> เปิดใช้งาน</li></ul><h4>Config L3 Switch (SVI)</h4><div class="cb">Switch(config)# vlan 10
+Switch(config)# exit
+Switch(config)# vlan 20
+Switch(config)# exit
+Switch(config)# interface vlan 10
+Switch(config-if)# ip address 192.168.10.1 255.255.255.0
+Switch(config)# interface vlan 20
+Switch(config-if)# ip address 192.168.20.1 255.255.255.0
+
+<span class="hl">Switch(config)# ip routing</span>
+Switch(config)# interface gigabit 0/1
+Switch(config-if)# switchport trunk encapsulation dot1q
+Switch(config-if)# switchport mode trunk</div></div><div class="sc"><h3>ROAS vs SVI</h3><table><tr><th>หัวข้อ</th><th>ROAS</th><th>SVI</th></tr><tr><td>อุปกรณ์</td><td>Router + Switch</td><td>L3 Switch ตัวเดียว</td></tr><tr><td>คำสั่ง</td><td>encapsulation dot1q</td><td>interface vlan + ip routing</td></tr><tr><td>ประสิทธิภาพ</td><td>ต่ำกว่า (คอขวดที่ Router)</td><td>สูงกว่า</td></tr></table></div>
+<h3 class="st">Slides (13 pages)</h3>
+<div class="sg">
+<div class="sl"><img src="images/computer_network_ch9/page_01.png" alt="p1" loading="lazy"><div class="sn">Slide 1/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_02.png" alt="p2" loading="lazy"><div class="sn">Slide 2/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_03.png" alt="p3" loading="lazy"><div class="sn">Slide 3/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_04.png" alt="p4" loading="lazy"><div class="sn">Slide 4/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_05.png" alt="p5" loading="lazy"><div class="sn">Slide 5/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_06.png" alt="p6" loading="lazy"><div class="sn">Slide 6/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_07.png" alt="p7" loading="lazy"><div class="sn">Slide 7/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_08.png" alt="p8" loading="lazy"><div class="sn">Slide 8/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_09.png" alt="p9" loading="lazy"><div class="sn">Slide 9/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_10.png" alt="p10" loading="lazy"><div class="sn">Slide 10/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_11.png" alt="p11" loading="lazy"><div class="sn">Slide 11/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_12.png" alt="p12" loading="lazy"><div class="sn">Slide 12/13</div></div>
+<div class="sl"><img src="images/computer_network_ch9/page_13.png" alt="p13" loading="lazy"><div class="sn">Slide 13/13</div></div>
+</div>
+</section>
+<section id="ch10" class="cs">
+<h2>CH10: Spanning Tree Protocol (STP)</h2>
+<h3 class="st">Summary</h3>
+<div class="sc"><h3>ปัญหาของ Network Redundancy</h3><ol><li><b>Broadcast Storm</b> - Switch ส่ง broadcast ต่อกันไม่สิ้นสุด เครือข่ายล่ม</li><li><b>Multiple Frame Transmission</b> - เครื่องปลายทางรับ Frame ซ้ำ เสีย bandwidth</li><li><b>MAC Database Instability</b> - MAC table สับสน ส่งกลับไม่ถูก</li></ol></div><div class="sc"><h3>STP (Spanning Tree Protocol)</h3><p>โปรโตคอล Layer 2 ป้องกัน Loop ในเครือข่าย Ethernet</p><h4>หลักการทำงาน</h4><ol><li>เลือก <b>Root Bridge</b></li><li>คำนวณเส้นทางดีสุด (<b>Root Path Cost</b>)</li><li>เลือก Port ที่จะ <b>Block</b></li><li>ส่ง <b>BPDU</b></li></ol></div><div class="sc"><h3>BPDU (Bridge Protocol Data Units)</h3><p>เฟรมพิเศษที่ส่งระหว่าง Switch</p><ul><li>Root Bridge ID</li><li>Cost to Root Bridge</li><li>Sender Bridge ID</li><li>Port ID</li><li>STP timers</li></ul></div><div class="sc"><h3>การเลือก Root Bridge</h3><ul><li><b>Bridge ID = Priority + MAC Address</b></li><li>ค่าเริ่มต้น Priority = <b>32768</b></li><li>ช่วง: 0-61440 (หาร 4096 ลงตัว)</li><li>Bridge ID <b>ต่ำสุด</b> = Root Bridge</li><li>Priority เท่ากัน → เทียบ MAC Address</li></ul><div class="cb">VLAN 1: 32768 + 1 = 32769
+VLAN 10: 32768 + 10 = 32778
+VLAN 100: 32768 + 100 = 32868</div></div><div class="sc"><h3>STP Port Costs</h3><table><tr><th>ความเร็ว</th><th>Cost</th></tr><tr><td>10 Gbps</td><td>2</td></tr><tr><td>1 Gbps</td><td>4</td></tr><tr><td>100 Mbps (FastEthernet)</td><td>19</td></tr><tr><td>10 Mbps</td><td>100</td></tr></table><h4>ประเภท Port</h4><table><tr><th>Port</th><th>คำอธิบาย</th></tr><tr><td><b>Root Port (RP)</b></td><td>เส้นทางดีสุดไป Root Bridge (ทุก Non-Root Switch มี 1 RP)</td></tr><tr><td><b>Designated Port (DP)</b></td><td>ตัวแทนในแต่ละ segment รับ-ส่ง frame (ไม่ซ้ำ RP)</td></tr><tr><td><b>Non-Designated (NDP)</b></td><td>ถูก Block เพื่อหยุด Loop (cost มากสุด)</td></tr></table></div><div class="sc"><h3>STP Process & Timers</h3><h4>Normal (เสียบสายใหม่)</h4><ol><li>BLOCKING</li><li>LISTENING (15s) - ส่ง/รับ BPDU</li><li>LEARNING (15s) - เรียนรู้ MAC</li><li>FORWARDING - ส่งข้อมูลได้</li></ol><h4>Switch Link Down</h4><ol><li>BLOCKING (20s)</li><li>LISTENING (15s)</li><li>LEARNING (15s)</li><li>FORWARDING</li></ol><p><b class="hl">รวม = 20+15+15 = 50 วินาที</b></p><h4>คำสั่ง STP</h4><div class="cb"><span class="cm">! ปิด STP</span>
+Switch(config)# no spanning-tree vlan 1
+<span class="cm">! เปิด STP</span>
+Switch(config)# spanning-tree vlan 1
+<span class="cm">! ดูสถานะ</span>
+Switch# show spanning-tree</div></div>
+<h3 class="st">Slides (48 pages)</h3>
+<div class="sg">
+<div class="sl"><img src="images/computer_network_ch10/page_01.png" alt="p1" loading="lazy"><div class="sn">Slide 1/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_02.png" alt="p2" loading="lazy"><div class="sn">Slide 2/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_03.png" alt="p3" loading="lazy"><div class="sn">Slide 3/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_04.png" alt="p4" loading="lazy"><div class="sn">Slide 4/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_05.png" alt="p5" loading="lazy"><div class="sn">Slide 5/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_06.png" alt="p6" loading="lazy"><div class="sn">Slide 6/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_07.png" alt="p7" loading="lazy"><div class="sn">Slide 7/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_08.png" alt="p8" loading="lazy"><div class="sn">Slide 8/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_09.png" alt="p9" loading="lazy"><div class="sn">Slide 9/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_10.png" alt="p10" loading="lazy"><div class="sn">Slide 10/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_11.png" alt="p11" loading="lazy"><div class="sn">Slide 11/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_12.png" alt="p12" loading="lazy"><div class="sn">Slide 12/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_13.png" alt="p13" loading="lazy"><div class="sn">Slide 13/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_14.png" alt="p14" loading="lazy"><div class="sn">Slide 14/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_15.png" alt="p15" loading="lazy"><div class="sn">Slide 15/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_16.png" alt="p16" loading="lazy"><div class="sn">Slide 16/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_17.png" alt="p17" loading="lazy"><div class="sn">Slide 17/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_18.png" alt="p18" loading="lazy"><div class="sn">Slide 18/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_19.png" alt="p19" loading="lazy"><div class="sn">Slide 19/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_20.png" alt="p20" loading="lazy"><div class="sn">Slide 20/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_21.png" alt="p21" loading="lazy"><div class="sn">Slide 21/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_22.png" alt="p22" loading="lazy"><div class="sn">Slide 22/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_23.png" alt="p23" loading="lazy"><div class="sn">Slide 23/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_24.png" alt="p24" loading="lazy"><div class="sn">Slide 24/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_25.png" alt="p25" loading="lazy"><div class="sn">Slide 25/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_26.png" alt="p26" loading="lazy"><div class="sn">Slide 26/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_27.png" alt="p27" loading="lazy"><div class="sn">Slide 27/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_28.png" alt="p28" loading="lazy"><div class="sn">Slide 28/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_29.png" alt="p29" loading="lazy"><div class="sn">Slide 29/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_30.png" alt="p30" loading="lazy"><div class="sn">Slide 30/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_31.png" alt="p31" loading="lazy"><div class="sn">Slide 31/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_32.png" alt="p32" loading="lazy"><div class="sn">Slide 32/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_33.png" alt="p33" loading="lazy"><div class="sn">Slide 33/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_34.png" alt="p34" loading="lazy"><div class="sn">Slide 34/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_35.png" alt="p35" loading="lazy"><div class="sn">Slide 35/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_36.png" alt="p36" loading="lazy"><div class="sn">Slide 36/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_37.png" alt="p37" loading="lazy"><div class="sn">Slide 37/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_38.png" alt="p38" loading="lazy"><div class="sn">Slide 38/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_39.png" alt="p39" loading="lazy"><div class="sn">Slide 39/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_40.png" alt="p40" loading="lazy"><div class="sn">Slide 40/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_41.png" alt="p41" loading="lazy"><div class="sn">Slide 41/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_42.png" alt="p42" loading="lazy"><div class="sn">Slide 42/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_43.png" alt="p43" loading="lazy"><div class="sn">Slide 43/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_44.png" alt="p44" loading="lazy"><div class="sn">Slide 44/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_45.png" alt="p45" loading="lazy"><div class="sn">Slide 45/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_46.png" alt="p46" loading="lazy"><div class="sn">Slide 46/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_47.png" alt="p47" loading="lazy"><div class="sn">Slide 47/48</div></div>
+<div class="sl"><img src="images/computer_network_ch10/page_48.png" alt="p48" loading="lazy"><div class="sn">Slide 48/48</div></div>
+</div>
+</section>
+<section id="ch10new" class="cs">
+<h2>CH10 (ACL): Access Control Lists</h2>
+<h3 class="st">Summary</h3>
+<div class="sc"><h3>ACL (Access Control List)</h3><p>กลไก<b>ควบคุมการเข้าถึงเครือข่าย</b>โดยกรองแพ็กเก็ตที่เข้า/ออกจาก Router</p></div><div class="sc"><h3>ประเภท ACL</h3><table><tr><th>ประเภท</th><th>หมายเลข</th><th>กรองตาม</th></tr><tr><td><b>Standard</b></td><td>1-99, 1300-1999</td><td>Source IP <b>เท่านั้น</b></td></tr><tr><td><b>Extended</b></td><td>100-199, 2000-2699</td><td>Source/Dest IP, Protocol, Port</td></tr></table><h4>รูปแบบ</h4><table><tr><th>แบบ</th><th>ตัวอย่าง</th></tr><tr><td>Number</td><td>Standard 1-99, Extended 100-199</td></tr><tr><td>Named</td><td>ใช้ชื่อแทนตัวเลข</td></tr></table></div><div class="sc"><h3>ขั้นตอนตั้งค่า ACL</h3><ol><li><b>สร้าง ACL</b></li><li><b>ประกาศใช้ ACL</b> (ผูกกับ Interface)</li></ol><h4>Standard ACL Named</h4><div class="cb"><span class="cm">! สร้าง ACL</span>
+Router(config)# ip access-list standard TEST
+Router(config-std-nacl)# permit host 10.0.0.10
+
+<span class="cm">! ประกาศใช้ ACL</span>
+Router(config)# interface F0/0
+Router(config-if)# ip access-group TEST in
+<span class="cm">! หรือ</span>
+Router(config-if)# ip access-group TEST out</div></div><div class="sc"><h3>Wildcard Mask</h3><p>คำนวณ: <b>255.255.255.255 - Subnet Mask</b></p><table><tr><th>Subnet Mask</th><th>Wildcard</th><th>ความหมาย</th></tr><tr><td>255.255.255.255</td><td><b>0.0.0.0</b></td><td>ตรง host เดียว</td></tr><tr><td>255.255.255.0</td><td><b>0.0.0.255</b></td><td>Network /24</td></tr><tr><td>255.255.0.0</td><td><b>0.0.255.255</b></td><td>Network /16</td></tr><tr><td>0.0.0.0</td><td><b>255.255.255.255</b></td><td>ทุก IP (any)</td></tr></table><p><b>0</b> = ต้องตรง | <b>255</b> = ไม่สนใจ</p></div><div class="sc"><h3>การเลือกจุดใช้ ACL</h3><ul><li><b>Standard ACL</b> วางใกล้ <b>Destination</b> (ปลายทาง)</li><li><b>Extended ACL</b> วางใกล้ <b>Source</b> (ต้นทาง)</li><li><b>in</b> = กรองแพ็กเก็ตที่เข้า interface</li><li><b>out</b> = กรองแพ็กเก็ตที่ออก interface</li></ul></div><div class="sc"><h3>Extended ACL</h3><div class="cb">Router(config)# ip access-list extended [NAME]
+Router(config-ext-nacl)# [permit/deny] [protocol] [source] [wildcard] [dest] [wildcard] eq [port]
+
+<span class="cm">! ตัวอย่าง: บล็อก 10.0.0.10 ไม่ให้เข้าเว็บ 192.168.10.10</span>
+access-list 100 deny tcp host 10.0.0.10 host 192.168.10.10 eq 80
+access-list 100 permit ip any any</div><p class="hl">ท้าย ACL มี implicit deny any เสมอ - ต้องใส่ permit ip any any</p></div>
+<h3 class="st">Slides (55 pages)</h3>
+<div class="sg">
+<div class="sl"><img src="images/computer_network_ch10_new/page_01.png" alt="p1" loading="lazy"><div class="sn">Slide 1/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_02.png" alt="p2" loading="lazy"><div class="sn">Slide 2/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_03.png" alt="p3" loading="lazy"><div class="sn">Slide 3/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_04.png" alt="p4" loading="lazy"><div class="sn">Slide 4/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_05.png" alt="p5" loading="lazy"><div class="sn">Slide 5/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_06.png" alt="p6" loading="lazy"><div class="sn">Slide 6/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_07.png" alt="p7" loading="lazy"><div class="sn">Slide 7/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_08.png" alt="p8" loading="lazy"><div class="sn">Slide 8/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_09.png" alt="p9" loading="lazy"><div class="sn">Slide 9/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_10.png" alt="p10" loading="lazy"><div class="sn">Slide 10/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_11.png" alt="p11" loading="lazy"><div class="sn">Slide 11/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_12.png" alt="p12" loading="lazy"><div class="sn">Slide 12/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_13.png" alt="p13" loading="lazy"><div class="sn">Slide 13/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_14.png" alt="p14" loading="lazy"><div class="sn">Slide 14/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_15.png" alt="p15" loading="lazy"><div class="sn">Slide 15/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_16.png" alt="p16" loading="lazy"><div class="sn">Slide 16/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_17.png" alt="p17" loading="lazy"><div class="sn">Slide 17/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_18.png" alt="p18" loading="lazy"><div class="sn">Slide 18/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_19.png" alt="p19" loading="lazy"><div class="sn">Slide 19/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_20.png" alt="p20" loading="lazy"><div class="sn">Slide 20/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_21.png" alt="p21" loading="lazy"><div class="sn">Slide 21/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_22.png" alt="p22" loading="lazy"><div class="sn">Slide 22/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_23.png" alt="p23" loading="lazy"><div class="sn">Slide 23/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_24.png" alt="p24" loading="lazy"><div class="sn">Slide 24/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_25.png" alt="p25" loading="lazy"><div class="sn">Slide 25/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_26.png" alt="p26" loading="lazy"><div class="sn">Slide 26/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_27.png" alt="p27" loading="lazy"><div class="sn">Slide 27/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_28.png" alt="p28" loading="lazy"><div class="sn">Slide 28/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_29.png" alt="p29" loading="lazy"><div class="sn">Slide 29/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_30.png" alt="p30" loading="lazy"><div class="sn">Slide 30/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_31.png" alt="p31" loading="lazy"><div class="sn">Slide 31/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_32.png" alt="p32" loading="lazy"><div class="sn">Slide 32/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_33.png" alt="p33" loading="lazy"><div class="sn">Slide 33/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_34.png" alt="p34" loading="lazy"><div class="sn">Slide 34/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_35.png" alt="p35" loading="lazy"><div class="sn">Slide 35/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_36.png" alt="p36" loading="lazy"><div class="sn">Slide 36/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_37.png" alt="p37" loading="lazy"><div class="sn">Slide 37/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_38.png" alt="p38" loading="lazy"><div class="sn">Slide 38/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_39.png" alt="p39" loading="lazy"><div class="sn">Slide 39/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_40.png" alt="p40" loading="lazy"><div class="sn">Slide 40/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_41.png" alt="p41" loading="lazy"><div class="sn">Slide 41/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_42.png" alt="p42" loading="lazy"><div class="sn">Slide 42/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_43.png" alt="p43" loading="lazy"><div class="sn">Slide 43/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_44.png" alt="p44" loading="lazy"><div class="sn">Slide 44/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_45.png" alt="p45" loading="lazy"><div class="sn">Slide 45/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_46.png" alt="p46" loading="lazy"><div class="sn">Slide 46/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_47.png" alt="p47" loading="lazy"><div class="sn">Slide 47/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_48.png" alt="p48" loading="lazy"><div class="sn">Slide 48/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_49.png" alt="p49" loading="lazy"><div class="sn">Slide 49/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_50.png" alt="p50" loading="lazy"><div class="sn">Slide 50/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_51.png" alt="p51" loading="lazy"><div class="sn">Slide 51/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_52.png" alt="p52" loading="lazy"><div class="sn">Slide 52/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_53.png" alt="p53" loading="lazy"><div class="sn">Slide 53/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_54.png" alt="p54" loading="lazy"><div class="sn">Slide 54/55</div></div>
+<div class="sl"><img src="images/computer_network_ch10_new/page_55.png" alt="p55" loading="lazy"><div class="sn">Slide 55/55</div></div>
+</div>
+</section>
+<section id="ch11" class="cs">
+<h2>CH11: EtherChannel</h2>
+<h3 class="st">Summary</h3>
+<div class="sc"><h3>EtherChannel คืออะไร?</h3><p>รวม link หลายเส้นเข้าด้วยกัน เพิ่ม bandwidth+ความทนทาน สูงสุด <b>8 พอร์ต</b>/channel</p><ul><li><b>Bandwidth</b>: 2x1Gbps = 2Gbps, 4x1Gbps = 4Gbps</li><li><b>Redundancy</b>: link หนึ่งล้ม ที่เหลือยังทำงาน</li><li><b>ลดภาระ STP</b>: มองเป็น link เดียว</li></ul></div><div class="sc"><h3>ข้อจำกัด</h3><ul><li>Port ต้อง<b>ความเร็วเท่ากัน</b></li><li>Port ต้อง<b>โหมดเดียวกัน</b></li><li>สูงสุด <b>8 links</b>/channel</li><li>ต้องรวม<b>ทั้งสองฝั่ง</b></li></ul></div><div class="sc"><h3>โหมด EtherChannel</h3><table><tr><th>โหมด</th><th>Protocol</th><th>คำอธิบาย</th><th>ใช้ร่วมกับ</th></tr><tr><td><b>on</b></td><td>Manual</td><td>กำหนดเอง ไม่เจรจา</td><td>on</td></tr><tr><td><b>desirable</b></td><td>PAgP (Cisco)</td><td>เริ่มร้องขอ</td><td>auto, desirable</td></tr><tr><td><b>auto</b></td><td>PAgP (Cisco)</td><td>รอฝั่งตรงข้าม</td><td>desirable</td></tr><tr><td><b>active</b></td><td>LACP (IEEE)</td><td>เริ่มร้องขอ</td><td>passive, active</td></tr><tr><td><b>passive</b></td><td>LACP (IEEE)</td><td>รอฝั่งตรงข้าม</td><td>active</td></tr></table><p class="hl">PAgP = Cisco | LACP = IEEE 802.3ad ทุกยี่ห้อ</p></div><div class="sc"><h3>คำสั่ง Config</h3><h4>Static (on)</h4><div class="cb">Switch(config)# interface range Gi1/0/1 - 2
+Switch(config-if-range)# channel-group 1 mode on</div><h4>PAgP</h4><div class="cb">Switch(config-if-range)# channel-group 1 mode desirable
+<span class="cm">! หรือ mode auto</span></div><h4>LACP</h4><div class="cb">Switch(config-if-range)# channel-group 1 mode active
+<span class="cm">! หรือ mode passive</span></div><h4>ดูการตั้งค่า</h4><div class="cb">Switch# show etherchannel summary</div></div>
+<h3 class="st">Slides (24 pages)</h3>
+<div class="sg">
+<div class="sl"><img src="images/computer_network_ch11/page_01.png" alt="p1" loading="lazy"><div class="sn">Slide 1/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_02.png" alt="p2" loading="lazy"><div class="sn">Slide 2/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_03.png" alt="p3" loading="lazy"><div class="sn">Slide 3/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_04.png" alt="p4" loading="lazy"><div class="sn">Slide 4/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_05.png" alt="p5" loading="lazy"><div class="sn">Slide 5/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_06.png" alt="p6" loading="lazy"><div class="sn">Slide 6/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_07.png" alt="p7" loading="lazy"><div class="sn">Slide 7/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_08.png" alt="p8" loading="lazy"><div class="sn">Slide 8/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_09.png" alt="p9" loading="lazy"><div class="sn">Slide 9/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_10.png" alt="p10" loading="lazy"><div class="sn">Slide 10/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_11.png" alt="p11" loading="lazy"><div class="sn">Slide 11/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_12.png" alt="p12" loading="lazy"><div class="sn">Slide 12/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_13.png" alt="p13" loading="lazy"><div class="sn">Slide 13/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_14.png" alt="p14" loading="lazy"><div class="sn">Slide 14/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_15.png" alt="p15" loading="lazy"><div class="sn">Slide 15/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_16.png" alt="p16" loading="lazy"><div class="sn">Slide 16/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_17.png" alt="p17" loading="lazy"><div class="sn">Slide 17/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_18.png" alt="p18" loading="lazy"><div class="sn">Slide 18/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_19.png" alt="p19" loading="lazy"><div class="sn">Slide 19/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_20.png" alt="p20" loading="lazy"><div class="sn">Slide 20/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_21.png" alt="p21" loading="lazy"><div class="sn">Slide 21/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_22.png" alt="p22" loading="lazy"><div class="sn">Slide 22/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_23.png" alt="p23" loading="lazy"><div class="sn">Slide 23/24</div></div>
+<div class="sl"><img src="images/computer_network_ch11/page_24.png" alt="p24" loading="lazy"><div class="sn">Slide 24/24</div></div>
+</div>
+</section>
+<section id="ch13" class="cs">
+<h2>CH13: IPv6</h2>
+<h3 class="st">Summary</h3>
+<div class="sc"><h3>IPv6 คืออะไร?</h3><ul><li>IPv4 = 32-bit ~ 4.3 พันล้าน</li><li>IPv6 = <b>128-bit</b> ~ 3.4 x 10<sup>38</sup> addresses</li></ul></div><div class="sc"><h3>IPv4 vs IPv6</h3><table><tr><th>หัวข้อ</th><th>IPv4</th><th>IPv6</th></tr><tr><td>Address</td><td>32-bit</td><td>128-bit</td></tr><tr><td>Header Fields</td><td>13</td><td>7 (เร็วขึ้น)</td></tr><tr><td>Header Size</td><td>ไม่แน่นอน</td><td>คงที่ 40 bytes</td></tr><tr><td>Checksum</td><td>มี</td><td>ไม่มี</td></tr><tr><td>Options</td><td>ใน Header</td><td>Extended Header</td></tr><tr><td>Auto Config</td><td>DHCP</td><td>Stateless+DHCP</td></tr><tr><td>Security</td><td>IPsec optional</td><td>IPsec mandated</td></tr><tr><td>Broadcast</td><td>มี</td><td><b>ไม่มี</b></td></tr><tr><td>Min MTU</td><td>576B</td><td>1280B</td></tr><tr><td>Fragment</td><td>Router ระหว่างทาง</td><td>Source เท่านั้น</td></tr><tr><td>TTL</td><td>Time-To-Live (วินาที)</td><td>Hop Limit (hops)</td></tr></table></div><div class="sc"><h3>การเขียน IPv6</h3><p>8 กลุ่ม x 16-bit เขียนเลขฐาน 16 คั่นด้วย <code>:</code></p><h4>กฎย่อ</h4><ol><li>ตัดเลข 0 นำหน้า: 0dcb &rarr; dcb</li><li>0000 เขียนเป็น 0</li><li>กลุ่ม 0000 ติดกัน แทนด้วย <code>::</code> (ทำได้ 1 ครั้ง)</li></ol><h4>ตัวอย่าง</h4><table><tr><th>เต็ม</th><th>ย่อ</th></tr><tr><td>fe80:0000:0000:0000:0202:b3ff:fe1e:8329</td><td><b>fe80::202:b3ff:fe1e:8329</b></td></tr><tr><td>2001:0000:0000:34fe:0000:0000:00ff:0321</td><td><b>2001::34fe:0:0:ff:321</b></td></tr><tr><td>0000:...:0001</td><td><b>::1</b></td></tr></table></div><div class="sc"><h3>ประเภท IPv6 Address</h3><table><tr><th>ประเภท</th><th>รูปแบบ</th><th>คำอธิบาย</th></tr><tr><td><b>Unicast</b></td><td>one-to-one</td><td>เครื่องหนึ่งไปอีกเครื่อง</td></tr><tr><td><b>Multicast</b></td><td>one-to-many</td><td>ส่งไปกลุ่ม Group</td></tr><tr><td><b>Anycast</b></td><td>one-to-one-of-many</td><td>ส่งไปเครื่องที่ใกล้สุดใน set</td></tr></table><p class="hl">IPv6 ไม่มี Broadcast!</p><h4>Unicast Types</h4><table><tr><th>ชนิด</th><th>Prefix</th><th>เทียบ IPv4</th></tr><tr><td>Global Unicast</td><td>2000::/3</td><td>Public IP</td></tr><tr><td>Link-Local</td><td>FE80::/10</td><td>169.254.x.x</td></tr><tr><td>Unique Local</td><td>FC00::/7</td><td>Private IP</td></tr></table></div><div class="sc"><h3>Extended Header</h3><ol><li><b>Hop-by-Hop</b> - ทุก Router ต้องอ่าน (Jumbogram max 2<sup>32</sup>B)</li><li><b>Destination Options</b></li><li><b>Routing</b> - Source Routing (Strict/Loose)</li><li><b>Fragment</b> - ที่ Source เท่านั้น (PMTUD)</li><li><b>Authentication</b> - IPsec</li><li><b>ESP</b> - Encryption</li></ol></div><div class="sc"><h3>Backward Compatibility</h3><ul><li><b>Dual Stack</b> - ใช้ IPv4+IPv6 พร้อมกัน</li><li><b>Tunneling</b> - ห่อ IPv6 ด้วย IPv4 Header</li><li><b>Translation</b> - แปลง IPv6&#8596;IPv4</li><li><b>IPv4-mapped</b>: 222.1.41.90 &rarr; <code>::FFFF:222.1.41.90</code></li></ul></div>
+<h3 class="st">Slides (24 pages)</h3>
+<div class="sg">
+<div class="sl"><img src="images/computer_network_ch13/page_01.png" alt="p1" loading="lazy"><div class="sn">Slide 1/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_02.png" alt="p2" loading="lazy"><div class="sn">Slide 2/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_03.png" alt="p3" loading="lazy"><div class="sn">Slide 3/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_04.png" alt="p4" loading="lazy"><div class="sn">Slide 4/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_05.png" alt="p5" loading="lazy"><div class="sn">Slide 5/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_06.png" alt="p6" loading="lazy"><div class="sn">Slide 6/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_07.png" alt="p7" loading="lazy"><div class="sn">Slide 7/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_08.png" alt="p8" loading="lazy"><div class="sn">Slide 8/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_09.png" alt="p9" loading="lazy"><div class="sn">Slide 9/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_10.png" alt="p10" loading="lazy"><div class="sn">Slide 10/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_11.png" alt="p11" loading="lazy"><div class="sn">Slide 11/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_12.png" alt="p12" loading="lazy"><div class="sn">Slide 12/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_13.png" alt="p13" loading="lazy"><div class="sn">Slide 13/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_14.png" alt="p14" loading="lazy"><div class="sn">Slide 14/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_15.png" alt="p15" loading="lazy"><div class="sn">Slide 15/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_16.png" alt="p16" loading="lazy"><div class="sn">Slide 16/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_17.png" alt="p17" loading="lazy"><div class="sn">Slide 17/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_18.png" alt="p18" loading="lazy"><div class="sn">Slide 18/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_19.png" alt="p19" loading="lazy"><div class="sn">Slide 19/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_20.png" alt="p20" loading="lazy"><div class="sn">Slide 20/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_21.png" alt="p21" loading="lazy"><div class="sn">Slide 21/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_22.png" alt="p22" loading="lazy"><div class="sn">Slide 22/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_23.png" alt="p23" loading="lazy"><div class="sn">Slide 23/24</div></div>
+<div class="sl"><img src="images/computer_network_ch13/page_24.png" alt="p24" loading="lazy"><div class="sn">Slide 24/24</div></div>
+</div>
+</section>
+<section id="lab9" class="cs">
+<h2>LAB-09: InterVLAN Route</h2>
+<div class="sc"><h3>LAB-09: InterVLAN Routing</h3><h4>Part 1: Router on a Stick</h4><div class="cb">enable
+configure terminal
+interface gigabitEthernet 0/0/0
+no shutdown
+exit
+interface gigabitEthernet 0/0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+interface gigabitEthernet 0/0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+exit
+end</div><h4>Part 2: SVI (L3 Switch)</h4><div class="cb">enable
+configure terminal
+vlan 10
+exit
+vlan 20
+exit
+interface vlan 10
+ip address 192.168.10.1 255.255.255.0
+no shutdown
+exit
+interface vlan 20
+ip address 192.168.20.1 255.255.255.0
+no shutdown
+exit
+<span class="hl">ip routing</span>
+end</div></div>
+<h3 class="st">Images (7)</h3>
+<div class="sg">
+<div class="sl"><img src="images/67160003_Chutiphon Jitrungraungsuk - LAB-09 Intervlan route/image_01.png" alt="image_01.png" loading="lazy"><div class="sn">image_01.png</div></div>
+<div class="sl"><img src="images/67160003_Chutiphon Jitrungraungsuk - LAB-09 Intervlan route/image_02.png" alt="image_02.png" loading="lazy"><div class="sn">image_02.png</div></div>
+<div class="sl"><img src="images/67160003_Chutiphon Jitrungraungsuk - LAB-09 Intervlan route/image_03.png" alt="image_03.png" loading="lazy"><div class="sn">image_03.png</div></div>
+<div class="sl"><img src="images/67160003_Chutiphon Jitrungraungsuk - LAB-09 Intervlan route/image_04.png" alt="image_04.png" loading="lazy"><div class="sn">image_04.png</div></div>
+<div class="sl"><img src="images/67160003_Chutiphon Jitrungraungsuk - LAB-09 Intervlan route/image_05.png" alt="image_05.png" loading="lazy"><div class="sn">image_05.png</div></div>
+<div class="sl"><img src="images/67160003_Chutiphon Jitrungraungsuk - LAB-09 Intervlan route/image_06.png" alt="image_06.png" loading="lazy"><div class="sn">image_06.png</div></div>
+<div class="sl"><img src="images/67160003_Chutiphon Jitrungraungsuk - LAB-09 Intervlan route/image_07.png" alt="image_07.png" loading="lazy"><div class="sn">image_07.png</div></div>
+</div>
+</section>
+<section id="lab10" class="cs">
+<h2>LAB-10: ACL + VLAN</h2>
+<div class="sc"><h3>LAB-10: ACL + VLAN</h3><table><tr><th>กลุ่ม</th><th>VLAN</th><th>Network</th></tr><tr><td>Teacher</td><td>10</td><td>192.168.10.0/24</td></tr><tr><td>Student</td><td>20</td><td>192.168.20.0/24</td></tr><tr><td>Staff</td><td>30</td><td>192.168.30.0/24</td></tr><tr><td>Server</td><td>1</td><td>10.80.1.0/24</td></tr></table><h4>เงื่อนไข ACL</h4><ol><li>ทุก VLAN เข้าเว็บได้ (10.80.1.16)</li><li>Student ping Teacher ไม่ได้</li><li>Student ping Staff ไม่ได้</li><li>Teacher+Staff ping กันได้</li></ol></div>
+<h3 class="st">Images (8)</h3>
+<div class="sg">
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_01.png" alt="image_01.png" loading="lazy"><div class="sn">image_01.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_02.png" alt="image_02.png" loading="lazy"><div class="sn">image_02.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_03.png" alt="image_03.png" loading="lazy"><div class="sn">image_03.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_04.png" alt="image_04.png" loading="lazy"><div class="sn">image_04.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_05.png" alt="image_05.png" loading="lazy"><div class="sn">image_05.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_06.png" alt="image_06.png" loading="lazy"><div class="sn">image_06.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_07.png" alt="image_07.png" loading="lazy"><div class="sn">image_07.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_08.png" alt="image_08.png" loading="lazy"><div class="sn">image_08.png</div></div>
+</div>
+</section>
+<section id="lab12" class="cs">
+<h2>LAB-12: EtherChannel</h2>
+<div class="sc"><h3>LAB-12: EtherChannel</h3><p>ตั้งค่า EtherChannel รวมหลายลิงก์เป็น 1 logical link แล้ว Ping ทดสอบ</p></div>
+<h3 class="st">Images (4)</h3>
+<div class="sg">
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_12/image_01.png" alt="image_01.png" loading="lazy"><div class="sn">image_01.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_12/image_02.png" alt="image_02.png" loading="lazy"><div class="sn">image_02.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_12/image_03.png" alt="image_03.png" loading="lazy"><div class="sn">image_03.png</div></div>
+<div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_12/image_04.png" alt="image_04.png" loading="lazy"><div class="sn">image_04.png</div></div>
+</div>
+</section>
+</main>
+<div class="mo" onclick="this.classList.remove('act')"><img src="" alt="zoom"></div>
+<script>
+function go(id){
+document.querySelectorAll('.cs').forEach(s=>s.classList.remove('act'));
+document.querySelectorAll('.ni').forEach(n=>n.classList.remove('act'));
+var s=document.getElementById(id);if(s)s.classList.add('act');
+document.querySelectorAll('.ni').forEach(n=>{if(n.getAttribute('onclick').indexOf(id)>-1)n.classList.add('act')});
+document.querySelector('.sb').classList.remove('op');
+window.scrollTo(0,0);
+}
+document.addEventListener('click',function(e){
+if(e.target.closest('.sl img')){
+e.stopPropagation();
+var m=document.querySelector('.mo');
+m.querySelector('img').src=e.target.src;
+m.classList.add('act');
+}
+});
+go('ch9');
+</script>
+</body></html>
