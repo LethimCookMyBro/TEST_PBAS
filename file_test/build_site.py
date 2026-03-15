@@ -81,6 +81,7 @@ tr:hover td{background:rgba(0,210,255,.05)}
 """)
 
 # Nav items
+parts.append('<a class="ni" onclick="go(\'concept\')" style="color:#ff8a00;font-weight:bold;"><span>💡</span>สรุปเปรียบเทียบ (ก่อนสอบ)</a>\n')
 parts.append('<a class="ni" onclick="go(\'mock\')" style="color:#00e5ff;font-weight:bold;"><span>📝</span>ข้อสอบจำลอง 30 ข้อ</a>\n')
 parts.append('<a class="ni" onclick="go(\'leak\')" style="color:var(--yw);font-weight:bold;"><span>&#127919;</span>เก็งข้อสอบ (จากโพย)</a>\n')
 for cid, title, _, _ in chapters:
@@ -105,6 +106,68 @@ summary_files = {
 
 # Write each summary to a temp file, then read back
 summaries = {}
+
+summaries["concept"] = '<div class="sc" style="border-color:#ff8a00; background:rgba(255, 138, 0, 0.05)"><h3 style="color:#ff8a00; font-size:1.3em;">💡 สรุปเปรียบเทียบ (7 จุดสำคัญที่ต้องแยกให้ออก)</h3>'
+
+# 1. ISP vs IANA
+summaries["concept"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #ff8a00;">'
+summaries["concept"] += '<h4 style="color:#ff8a00; margin-top:0; font-size:1.1em;">1. ใครเป็นคนจ่าย IP ให้เน็ตบ้าน?</h4>'
+summaries["concept"] += '<p style="color:var(--tx); margin-bottom:5px;"><b>คำตอบ: <span style="color:var(--yw);">ISP (Internet Service Provider)</span></b> หรือผู้ให้บริการอินเทอร์เน็ต เช่น AIS, True, Dtac</p>'
+summaries["concept"] += '<p style="color:#ff4444; font-size:0.9em; margin-bottom:0;"><b>⚠️ ข้อควรระวัง:</b> อย่าสับสนกับ <b>IANA</b> (องค์กรที่จัดสรรหมายเลข IP ระดับโลก ไม่ได้แจก IP ตรงให้ผู้ใช้บ้านๆ)</p>'
+summaries["concept"] += '</div>'
+
+# 2. Hub vs Switch
+summaries["concept"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #00e5ff;">'
+summaries["concept"] += '<h4 style="color:#00e5ff; margin-top:0; font-size:1.1em;">2. ความแตกต่างระหว่าง Hub กับ Switch</h4>'
+summaries["concept"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["concept"] += '<li style="margin-bottom:5px;"><b>Hub (Layer 1):</b> ทำงานแบบ <b>Broadcast</b> คือได้รับข้อมูลมา จะส่งกระจายออกไปทุกพอร์ตพร้อมกัน ทำให้เกิดการชนกันของข้อมูล (Collision) ได้ง่าย</li>'
+summaries["concept"] += '<li><b>Switch (Layer 2):</b> ฉลาดกว่า Hub เพราะจะจำ <b>MAC Address</b> ของอุปกรณ์แต่ละเครื่อง และส่งข้อมูลตรงไปยังพอร์ตปลายทางที่ถูกต้องเท่านั้น ทำให้ข้อมูลไม่ชนกันและเครือข่ายเร็วกว่า</li>'
+summaries["concept"] += '</ul>'
+summaries["concept"] += '</div>'
+
+# 3. VLAN
+summaries["concept"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #4CAF50;">'
+summaries["concept"] += '<h4 style="color:#4CAF50; margin-top:0; font-size:1.1em;">3. หน้าที่หลักของ VLAN (Virtual LAN)</h4>'
+summaries["concept"] += '<p style="color:var(--tx); margin-bottom:0;"><b>คำตอบ:</b> ใช้แบ่งเครือข่ายวงใหญ่ (Physical) ออกเป็นเครือข่ายย่อยๆ (Logical) เพื่อลดการกระจายข้อมูล (Broadcast Domain) ที่ไม่จำเป็น ช่วยให้เครือข่ายทำงานได้เร็วขึ้น และเพิ่มความปลอดภัยเพราะแต่ละ VLAN จะคุยกันข้ามวงไม่ได้ถ้าไม่มีการทำ Routing</p>'
+summaries["concept"] += '</div>'
+
+# 4. Inter-VLAN
+summaries["concept"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #9c27b0;">'
+summaries["concept"] += '<h4 style="color:#9c27b0; margin-top:0; font-size:1.1em;">4. Inter-VLAN Routing 2 รูปแบบใช้อุปกรณ์ต่างกันอย่างไร?</h4>'
+summaries["concept"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["concept"] += '<li style="margin-bottom:5px;"><b>Router on a stick:</b> ใช้ <b>Router</b> ทำงานร่วมกับ Switch โดยเชื่อมต่อสายเพียงเส้นเดียว (Trunk port) เพื่อเป็นทางผ่านให้ VLAN ต่างๆ คุยกันได้</li>'
+summaries["concept"] += '<li><b>SVI (Switch Virtual Interface):</b> ใช้ <b>Layer 3 Switch (Multilayer Switch)</b> ตัวเดียวจบ โดยสร้าง Interface เสมือนขึ้นมาเพื่อทำหน้าที่ Routing ภายในตัว Switch เองเลย ไม่ต้องพึ่ง Router ภายนอก</li>'
+summaries["concept"] += '</ul>'
+summaries["concept"] += '</div>'
+
+# 5. STP Cost
+summaries["concept"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #e91e63;">'
+summaries["concept"] += '<h4 style="color:#e91e63; margin-top:0; font-size:1.1em;">5. ค่า Cost ของ Spanning Tree Protocol (STP)</h4>'
+summaries["concept"] += '<p style="color:var(--tx); margin-bottom:5px;">ค่า Cost จะแปรผกผันกับความเร็วของสายแลน (Bandwidth) <b>ยิ่งเน็ตเร็ว ค่า Cost ยิ่งต่ำ:</b></p>'
+summaries["concept"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["concept"] += '<li style="margin-bottom:5px;">ความเร็ว <b>1 Gbps</b> = ค่า Cost <span style="color:var(--yw);"><b>4</b></span></li>'
+summaries["concept"] += '<li>ความเร็ว <b>100 Mbps</b> (Fast Ethernet) = ค่า Cost <span style="color:var(--yw);"><b>19</b></span></li>'
+summaries["concept"] += '</ul>'
+summaries["concept"] += '</div>'
+
+# 6. EtherChannel
+summaries["concept"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px; border-left:4px solid #2196F3;">'
+summaries["concept"] += '<h4 style="color:#2196F3; margin-top:0; font-size:1.1em;">6. EtherChannel 2 รูปแบบ (โปรโตคอลและโหมด)</h4>'
+summaries["concept"] += '<ul style="color:var(--tx); margin-bottom:0; padding-left:20px;">'
+summaries["concept"] += '<li style="margin-bottom:5px;"><b>PAgP (ของ Cisco):</b> โหมดที่ใช้จับคู่กันคือ <b>Desirable</b> (ฝ่ายเริ่มทักก่อน) และ <b>Auto</b> (ฝ่ายรอรับการทัก)</li>'
+summaries["concept"] += '<li><b>LACP (มาตรฐานสากล IEEE):</b> โหมดที่ใช้จับคู่กันคือ <b>Active</b> (ฝ่ายเริ่มทักก่อน) และ <b>Passive</b> (ฝ่ายรอรับการทัก)</li>'
+summaries["concept"] += '</ul>'
+summaries["concept"] += '</div>'
+
+# 7. ACL Orders
+summaries["concept"] += '<div style="background:#222; padding:15px; border-radius:8px; margin-bottom:0; border-left:4px solid #f44336;">'
+summaries["concept"] += '<h4 style="color:#f44336; margin-top:0; font-size:1.1em;">7. ลำดับของ ACL (Access Control List) ที่ต้องระวัง!</h4>'
+summaries["concept"] += '<p style="color:var(--tx); margin-bottom:5px;"><b>คำตอบ:</b> Router จะอ่านกฎ ACL จาก <b>"บนลงล่าง" (Top-down)</b> เสมอ</p>'
+summaries["concept"] += '<p style="color:#ff4444; font-size:0.9em; margin-bottom:5px;"><b>⚠️ ปัญหาที่เจอบ่อย:</b> ถ้าคุณใส่กฎ <code>Deny Any Any</code> (บล็อกทุกอย่าง) ไว้บรรทัดล่างสุด แล้ววันหลังมากดเพิ่มกฎ (เช่น อนุญาตให้บางเครื่องเข้าได้) กฎใหม่มันจะไปต่อท้าย <code>Deny Any Any</code> ทำให้กฎใหม่ไม่ทำงานเพราะถูกบล็อกไปตั้งแต่บรรทัดก่อนหน้าแล้ว</p>'
+summaries["concept"] += '<p style="color:#4CAF50; font-size:0.9em; margin-bottom:0;"><b>✅ วิธีแก้รันกฎ:</b> ต้องลบ <code>Deny Any Any</code> อันเก่าทิ้งก่อน -> ใส่กฎใหม่ที่ต้องการเข้าไป -> แล้วค่อยพิมพ์ <code>Deny Any Any</code> ปิดท้ายระบบอีกครั้งครับ</p>'
+summaries["concept"] += '</div>'
+
+summaries["concept"] += '</div>'
 
 summaries["mock"] = '<div class="sc" style="border-color:#00e5ff; background:rgba(0, 229, 255, 0.05)"><h3 style="color:#00e5ff; font-size:1.3em;">📝 ข้อสอบจำลอง 30 ข้อ (ยึดตามคลิปเสียงอาจารย์เป๊ะๆ + ภาพประกอบ)</h3>'
 summaries["mock"] += '<p style="margin-bottom:15px; font-size:1.1em; color:var(--tx);">อ้างอิง: ออก 25-30 ข้อ / ครึ่งเทอมหลัง / เน้นหลักการการทำงาน / มีคำนวณและ CLI เบาๆ</p>'
