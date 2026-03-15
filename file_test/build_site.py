@@ -81,6 +81,7 @@ tr:hover td{background:rgba(0,210,255,.05)}
 """)
 
 # Nav items
+parts.append('<a class="ni" onclick="go(\'mock\')" style="color:#00e5ff;font-weight:bold;"><span>📝</span>ข้อสอบจำลอง 30 ข้อ</a>\n')
 parts.append('<a class="ni" onclick="go(\'leak\')" style="color:var(--yw);font-weight:bold;"><span>&#127919;</span>เก็งข้อสอบ (จากโพย)</a>\n')
 for cid, title, _, _ in chapters:
     parts.append(f'<a class="ni" onclick="go(\'{cid}\')"><span>&#128214;</span>{title}</a>\n')
@@ -104,6 +105,41 @@ summary_files = {
 
 # Write each summary to a temp file, then read back
 summaries = {}
+
+summaries["mock"] = '<div class="sc" style="border-color:#00e5ff; background:rgba(0, 229, 255, 0.05)"><h3 style="color:#00e5ff; font-size:1.3em;">📝 ข้อสอบจำลอง 30 ข้อ (แนวอาจารย์)</h3>'
+summaries["mock"] += '<p style="margin-bottom:15px; font-size:1.1em; color:var(--tx);">อ้างอิงจากคำใบ้: ออก 25-30 ข้อ / เฉพาะเนื้อหาครึ่งหลัง (Ch9-13) / เน้นหลักการการทำงาน / มีคำนวณและ CLI ประมาณ 3 ข้อ</p>'
+summaries["mock"] += '<ol style="line-height:1.6; padding-left:20px; color:var(--tx);">'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>ใครเป็นคนจ่าย IP ให้เราเวลาติดเน็ตบ้าน?</b> (อาจารย์เฉลยแล้วข้อนี้)<br><span style="color:var(--yw)">ตอบ:</span> Internet Service Provider (ISP) เช่น AIS, True, 3BB</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>อุปกรณ์ใดทำหน้าที่สำคัญที่สุดในการทำ Inter-VLAN Routing?</b><br><span style="color:var(--yw)">ตอบ:</span> Layer 3 Switch หรือ Router</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>ข้อดีหลักของการทำ Inter-VLAN แบบ SVI (Switch Virtual Interface) เมื่อเทียบกับ ROAS (Router-on-a-Stick) คืออะไร?</b><br><span style="color:var(--yw)">ตอบ:</span> ประสิทธิภาพสูงกว่า เพราะจัดการ Routing ด้วยฮาร์ดแวร์ของ L3 Switch โดยตรง ไม่เกิดคอขวดที่สาย Trunk เส้นเดียว</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>คำสั่ง <code class="hl">encapsulation dot1Q 10</code> บน Router Sub-interface มีไว้เพื่ออะไร?</b><br><span style="color:var(--yw)">ตอบ:</span> เพื่อระบุว่า Sub-interface นั้นจะจัดการกับเฟรมข้อมูลที่ถูก Tagged ด้วย VLAN ID 10</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>หากต้องการให้ Layer 3 Switch สามารถส่งข้อมูลข้าม VLAN ได้ เริ่มแรกสุดต้องใช้คำสั่งใดเพื่อเปิดใช้งานฟีเจอร์นี้?</b><br><span style="color:var(--yw)">ตอบ:</span> <code class="hl">ip routing</code> ใน Global Configuration Mode</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>Spanning Tree Protocol (STP) มีหน้าที่หลักเพื่อป้องกันปัญหาใดในระบบเครือข่าย Layer 2?</b><br><span style="color:var(--yw)">ตอบ:</span> ป้องกันการเกิด Switching Loop (และ Broadcast Storm ที่ตามมา)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>Bridge ID (BID) ในโปรโตคอล STP ใช้สำหรับเลือก Root Bridge ประกอบด้วยค่า 2 ส่วนคืออะไรบ้าง?</b><br><span style="color:var(--yw)">ตอบ:</span> Priority (ค่าเริ่มต้น 32768) + MAC Address ของสวิตช์ตัวนั้น</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>พอร์ตความเร็ว Gigabit Ethernet (1 Gbps) และ Fast Ethernet (100 Mbps) มีค่า STP Cost มาตรฐานเท่าใดตามลำดับ?</b><br><span style="color:var(--yw)">ตอบ:</span> 4 และ 19</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>ในการเลือก Root Bridge ของโปรโตคอล STP สวิตช์ตัวใดจะถูกเลือกเสมอ?</b><br><span style="color:var(--yw)">ตอบ:</span> สวิตช์ที่มี Bridge ID <u>น้อยที่สุด</u> (ถ้า Priority เท่ากันให้ดู MAC Address ต่ำสุด)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>พอร์ตของ Switch ที่ถูกมองว่าเป็นเส้นทางที่ดีที่สุดในการวิ่งเข้าหา Root Bridge เรียกว่าอะไร?</b><br><span style="color:var(--yw)">ตอบ:</span> Root Port (RP)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>Standard ACL ใช้ข้อมูลใดใน IP Packet เป็นหลักในการตัดสินใจอนุญาตหรือปฏิเสธ?</b><br><span style="color:var(--yw)">ตอบ:</span> Source IP Address (ไอพีต้นทาง) <u>เท่านั้น</u></li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>Extended ACL มักจะใช้หมายเลข (Number) ในช่วงใดในการคอนฟิก?</b><br><span style="color:var(--yw)">ตอบ:</span> เบอร์ 100 - 199 (หรือ 2000 - 2699)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>กฎข้อใดที่เป็นความจริงเสมอเมื่อพูดถึงลำดับการทำงานของ Access Control List (ACL)?</b><br><span style="color:var(--yw)">ตอบ:</span> มี <u>Implicit Deny (ปฏิเสธทุกอย่าง)</u> ซ่อนอยู่บรรทัดสุดท้ายเสมอ หากไม่ตรงเงื่อนไขใดเลยข้างบน 패็กเก็ตจะถูกดรอปทิ้งทันที</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>หลักการวาง Standard ACL ที่ดีควรวางไว้ที่ใดใน Topology เครือข่าย?</b><br><span style="color:var(--yw)">ตอบ:</span> วางไว้ <u>ใกล้กับเป้าหมาย (Destination) ปลายทาง</u> ให้มากที่สุด</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>หากต้องการกำหนดวงเครือข่าย <code class="hl">192.168.1.0/24</code> จะต้องใช้ Wildcard Mask ค่าใดในคำสั่ง ACL?</b><br><span style="color:var(--yw)">ตอบ:</span> <code class="hl">0.0.0.255</code> (คิดจากการเอา 255.255.255.255 ตั้งลบด้วย 255.255.255.0)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>ประโยชน์หลักๆ ของการทำ EtherChannel มีอะไรบ้าง?</b><br><span style="color:var(--yw)">ตอบ:</span> เพิ่ม Bandwidth ด้วยการรวมท่อ และทำ Redundancy (ลิงก์หลักขาด ลิงก์ที่เหลือยังทำงานได้ต่อเนื่อง)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>EtherChannel 1 กลุ่ม (Logical Port) รองรับการนำลิงก์ (Physical port) มารวมกันได้สูงสุดกี่เส้น?</b><br><span style="color:var(--yw)">ตอบ:</span> 8 ลิงก์</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>พอร์ตทั้งสองฝั่งที่จะทำ EtherChannel กัน ต้องมีคุณสมบัติใดที่เหมือนกันบ้าง?</b><br><span style="color:var(--yw)">ตอบ:</span> ต้องมีความเร็ว (Speed), Duplex, และโหมด (Access/Trunk) ตรงกันเท่านั้น</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>โปรโตคอล PAgP (Port Aggregation Protocol) หากตั้งโหมดฝั่งหนึ่งเป็น <code class="hl">auto</code> อีกฝั่งหนึ่งต้องเป็นโหมดใดจึงจะสร้าง Channel สำเร็จ?</b><br><span style="color:var(--yw)">ตอบ:</span> <code class="hl">desirable</code> (เพราะ auto ทั้งคู่จะรอให้ฝั่งตรงข้ามดึงมือ ไม่ยอมลงมือทำทั้งคู่)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>โปรโตคอลที่ทำหน้าที่เดียวกับ PAgP แต่เป็นมาตรฐานเปิด (Standard IEEE 802.3ad) ที่ใช้เชื่อมอุปกรณ์ต่างยี่ห้อได้คือโปรโตคอลใด?</b><br><span style="color:var(--yw)">ตอบ:</span> LACP (Link Aggregation Control Protocol)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>IPv6 ถูกออกแบบและพัฒนาขึ้นมาเพื่อแก้ปัญหาใดของ IPv4 และมีขนาดบิตเท่าไร?</b><br><span style="color:var(--yw)">ตอบ:</span> แก้ปัญหาไอพี (Address) ไม่พอ โดยมีขนาดกว้างขวางถึง <u>128 บิต</u></li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>จงเลือกรูปแบบการย่อ IPv6 <code class="hl">2001:0db8:0000:0000:0000:ff00:0042:8329</code> ให้สั้นที่สุดอย่างถูกต้องตามกฎ?</b><br><span style="color:var(--yw)">ตอบ:</span> <code class="hl">2001:db8::ff00:42:8329</code> (ตัด 0 ข้างหน้าและใช้ :: แทนกลุ่มศูนย์ที่อยู่ติดกันหลายๆ กลุ่ม)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>ใน IPv6 จะไม่มีการรับส่งข้อมูลประเภทใดอีกต่อไป (ถูกนำออกไปจากมาตรฐาน IPv4)?</b><br><span style="color:var(--yw)">ตอบ:</span> แบบ <u>Broadcast</u> (จะใช้รูปแบบ Multicast แบบเฉพาะเจาะจงแทน)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>ประเภทที่อยู่ (Address Type) ของ IPv6 ชนิดใดที่เทียบเท่ากับ Public IP ใน IPv4 และเริ่มต้นด้วยรหัส 2000::/3?</b><br><span style="color:var(--yw)">ตอบ:</span> Global Unicast Address</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>Link-Local Address ใน IPv6 ซึ่งสร้างขึ้นอัตโนมัติบนทุกอินเทอร์เฟซ มักจะขึ้นต้นด้วยชุดตัวอักษร 4 ตัวแรกคืออะไร?</b><br><span style="color:var(--yw)">ตอบ:</span> <code class="hl">FE80</code></li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>คำสั่งใดที่ใช้บ่อยที่สุดเพื่อตรวจสอบดูค่าสถานะและโปรโตคอลของลิงก์ที่เอามามัดรวมกันเป็นท่อเดียว?</b><br><span style="color:var(--yw)">ตอบ:</span> <code class="hl">show etherchannel summary</code></li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>ทำไมในการเขียนกระบวนการกรองข้อมูลด้วย Access List (ACL) ผู้ดูแลระบบถึงมักจะใส่คำสั่ง <code class="hl">permit ip any any</code> ปิดท้ายไว้เสมอ?</b><br><span style="color:var(--yw)">ตอบ:</span> เพื่อให้แพ็กเก็ตอื่นๆ ที่ไม่ติดเงื่อนไข Deny ก่อนหน้า สามารถผ่านไปได้ (หักล้างกับ Implicit Deny Any ท้ายสุด)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>(คำนวณ) หากมีสวิตช์ตัวหนึ่งตั้งค่าเป็น VLAN 20 ในระบบ PVST+ หากใช้ Priority ค่าเริ่มต้น (32768) ค่า Bridge ID ของสวิตช์ตัวนี้จะเป็นเท่าผลลัพธ์เป็นเท่าไร (ไม่รวม MAC)?</b><br><span style="color:var(--yw)">ตอบ:</span> <code class="hl">32788</code> (มาจาก Priority 32768 + VLAN ID 20)</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>(วิเคราะห์) สาเหตุหลักใดที่ทำให้ L3 Switch ถึงสามารถทำงานและประมวลผล Inter-VLAN ได้รวดเร็วกว่า Router-on-a-Stick อย่างมีนัยยะ?</b><br><span style="color:var(--yw)">ตอบ:</span> L3 Switch ประมวลผลการระบุเส้นทางด้วยระดับฮาร์ดแวร์เฉพาะ (ASIC) ภายในตัว โดยไม่ต้องส่งข้อมูลผ่านสาย Trunk ไปกลับหา Router ให้เป็นคอขวด</li>'
+summaries["mock"] += '<li style="margin-bottom:15px"><b>จากคำวิจารณ์ปัญหาในระบบ Spanning Tree Protocol (STP) ค่าเวลาปกติที่ STP ต้องรอหากมีการเสียบสายใหม่ (Listening -> Learning -> Forwarding) คือประมาณกี่วินาที?</b><br><span style="color:var(--yw)">ตอบ:</span> 30 วินาที (สถานะละ 15 วินาที) หรือรวมตั้งแต่ Blocking จะเป็น 50 วินาที</li>'
+summaries["mock"] += '</ol></div>'
 
 summaries["leak"] = '<div class="sc" style="border-color:var(--yw); background:rgba(255, 215, 64, 0.05)"><h3 style="color:var(--yw); font-size:1.3em;">🔥 เก็งข้อสอบ 100% (คำอธิบายแบบเอาไปจดเข้าห้องสอบ)</h3>'
 
@@ -234,6 +270,7 @@ summaries["lab12"] += '<span class="cm">! ตรวจสอบผล</span>\n'
 summaries["lab12"] += 'SwitchA# show etherchannel summary</div></div>'
 
 # Add leak section
+parts.append(f'<section id="mock" class="cs">\n<h2>📝 ข้อสอบจำลอง 30 ข้อ (แนวอาจารย์)</h2>\n{summaries["mock"]}\n</section>\n')
 parts.append(f'<section id="leak" class="cs">\n<h2>🎯 เก็งข้อสอบ 100% (จากโพย)</h2>\n{summaries["leak"]}\n</section>\n')
 
 # Build chapter sections with images
@@ -278,7 +315,7 @@ m.querySelector('img').src=e.target.src;
 m.classList.add('act');
 }
 });
-go('leak');
+go('mock');
 </script>
 </body></html>""")
 
