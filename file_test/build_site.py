@@ -81,6 +81,7 @@ tr:hover td{background:rgba(0,210,255,.05)}
 """)
 
 # Nav items
+parts.append('<a class="ni" onclick="go(\'leak\')" style="color:var(--yw);font-weight:bold;"><span>&#127919;</span>เก็งข้อสอบ (จากโพย)</a>\n')
 for cid, title, _, _ in chapters:
     parts.append(f'<a class="ni" onclick="go(\'{cid}\')"><span>&#128214;</span>{title}</a>\n')
 parts.append('<div class="nd">Labs</div>\n')
@@ -103,6 +104,19 @@ summary_files = {
 
 # Write each summary to a temp file, then read back
 summaries = {}
+
+summaries["leak"] = '<div class="sc" style="border-color:var(--yw)"><h3 style="color:var(--yw)">🔥 เฉลยตรงเผงจาก "โพยข้อสอบ"</h3>'
+summaries["leak"] += '<p>จากรูปโพย นี่คือคำตอบแบบกระชับ รวบยอด เพื่อจดเข้าห้องสอบ:</p><ul>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>Hub vs Switch ต่างกันยังไง:</b> <br><u>Hub (Layer 1)</u>: ทำงานแบบ Broadcast ส่งข้อมูลออกทุกพอร์ต (เสี่ยงชนกัน Collisions/Half-Duplex)<br><u>Switch (Layer 2)</u>: จำ IP/MAC Address ส่งข้อมูลหาปลายทางได้ตรงเครื่อง (Unicast/Full-Duplex ทำงานไวกว่า)</li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>การทำ Broadcast CLI:</b> <br>ไม่มีคำสั่งตั้งค่า Broadcast ตรงๆ แต่มักจะหมายถึง Broadcast Storm ที่แก้ด้วย <code class="hl">spanning-tree vlan X</code> หรือถ้าบอกว่า "Broadcast Domain" คือการที่ Router/VLAN กั้น Domain ไว้ไม่ให้ข้อมูลทะลักไปวงอื่น</li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>Encapsulation CLI:</b> <br>คำสั่งตอนทำ InterVLAN ฝั่ง Router (ROAS) คือ <code class="hl">encapsulation dot1Q [vlan_id]</code> เพื่อระบุว่า Sub-interface นี้ทำงานกับ VLAN หมายเลขอะไร</li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>Route CLI:</b> <br>คำสั่งเปิดการ Routing บน L3 Switch คือ <code class="hl">ip routing</code> (สำคัญมาก ขาดไป PING ไม่เจอ) หากเป็น Router ทั่วไปคือพวก <code class="hl">ip route 0.0.0.0 0.0.0.0 [next-hop]</code></li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>InterVLAN Route concept (ลักษณะ 2 แบบ):</b> <br>1. <u>Router-on-a-Stick (ROAS)</u>: ใช้ Router + Switch ต่อสาย Trunk 1 เส้น โหลดหนักที่ Router เป็นคอขวด<br>2. <u>Switch Virtual Interface (SVI)</u>: ใช้ L3 Switch ตัวเดียว ตั้งค่า IP ที่คำสั่ง <code class="hl">interface vlan</code> ประสิทธิภาพสูงกว่า</li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>Protocol Spanning-Tree (cost etc. 4, 19):</b> <br>ค่า Cost สำหรับหา Root Port:<br>- พอร์ต 1 Gbps (GigabitEthernet) = <u>Cost 4</u><br>- พอร์ต 100 Mbps (FastEthernet) = <u>Cost 19</u></li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>Etherchannel ประโยชน์ / การทำ 2 แบบ:</b> <br><u>ประโยชน์</u>: รวมสาย Lan เพิ่ม Bandwidth และทำ Redundancy (เส้นนึงขาด อีกเส้นวิ่งแทน ไม่เน็ตหลุด)<br><u>การทำ 2 แบบ (Protocol)</u>:<br>- PAgP (ของ Cisco ผูกขาด) ใช้โหมด: desirable หรือ auto<br>- LACP (ของ IEEE กลาง) ใช้โหมด: active หรือ passive</li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>วิธีเขียน IPv6:</b> <br>กฎ 3 ข้อ: 1. ตัดเลข 0 ข้างหน้าทิ้ง (0202 -> 202) / 2. 0000 เขียนย่อเป็น 0 / 3. กลุ่ม 0 ที่ติดกันยาวๆ ยุบเป็น <code class="hl">::</code> (แต่ทำได้แค่ 1 ครั้งต่อ IP ป้องกันความสับสน)</li>'
+summaries["leak"] += '<li style="margin-bottom:10px"><b>ACL รูปแบบ ลำดับ (deny any latest):</b> <br>ทำงานแบบ Top-Down (เช็คทีละบรรทัดจากบนลงล่าง) <u>กฎตายตัว</u>: บรรทัดสุดท้ายของ ACL จะมี "Implicit Deny Any" ซ่อนอยู่เพื่อบล็อกทุกอย่าง แปลว่าบรรทัดสุดท้าย(latest) ก่อนจบ เรามักต้องใส่ <code class="hl">permit ip any any</code> เพื่ออนุญาตคนที่เหลือเสมอ</li>'
+summaries["leak"] += '</ul></div>'
 
 summaries["ch9"] = '<div class="sc"><h3>InterVLAN Routing</h3><p>คือการทำให้ Host ที่อยู่ <b>ต่าง VLAN กัน</b> ติดต่อกันได้ โดยต้องมีอุปกรณ์ Layer 3 มาช่วย</p></div>'
 summaries["ch9"] += '<div class="sc"><h3>วิธีที่ 1: Router-on-a-Stick (ROAS)</h3><ul><li>ใช้ Router ต่อกับ Switch ผ่าน <b>Trunk link 1 เส้น</b></li><li>Router มี <b>Sub-interfaces</b> แต่ละตัวแทน VLAN</li><li>ข้อมูลถูกส่งไป Router แล้ว Route กลับไปยัง VLAN ปลายทาง</li></ul>'
@@ -153,6 +167,9 @@ summaries["lab10"] = '<div class="sc"><h3>LAB-10: ACL + VLAN</h3><table><tr><th>
 
 summaries["lab12"] = '<div class="sc"><h3>LAB-12: EtherChannel</h3><p>ตั้งค่า EtherChannel รวมหลายลิงก์เป็น 1 logical link แล้ว Ping ทดสอบ</p></div>'
 
+# Add leak section
+parts.append(f'<section id="leak" class="cs">\n<h2>🎯 เก็งข้อสอบ 100% (จากโพย)</h2>\n{summaries["leak"]}\n</section>\n')
+
 # Build chapter sections with images
 for cid, title, img_dir, page_count in chapters:
     parts.append(f'<section id="{cid}" class="cs">\n<h2>{title}</h2>\n')
@@ -195,7 +212,7 @@ m.querySelector('img').src=e.target.src;
 m.classList.add('act');
 }
 });
-go('ch9');
+go('leak');
 </script>
 </body></html>""")
 
