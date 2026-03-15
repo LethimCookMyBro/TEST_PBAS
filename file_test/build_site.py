@@ -105,18 +105,50 @@ summary_files = {
 # Write each summary to a temp file, then read back
 summaries = {}
 
-summaries["leak"] = '<div class="sc" style="border-color:var(--yw)"><h3 style="color:var(--yw)">🔥 เฉลยตรงเผงจาก "โพยข้อสอบ"</h3>'
-summaries["leak"] += '<p>จากรูปโพย นี่คือคำตอบแบบกระชับ รวบยอด เพื่อจดเข้าห้องสอบ:</p><ul>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>Hub vs Switch ต่างกันยังไง:</b> <br><u>Hub (Layer 1)</u>: ทำงานแบบ Broadcast ส่งข้อมูลออกทุกพอร์ต (เสี่ยงชนกัน Collisions/Half-Duplex)<br><u>Switch (Layer 2)</u>: จำ IP/MAC Address ส่งข้อมูลหาปลายทางได้ตรงเครื่อง (Unicast/Full-Duplex ทำงานไวกว่า)</li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>การทำ Broadcast CLI:</b> <br>ไม่มีคำสั่งตั้งค่า Broadcast ตรงๆ แต่มักจะหมายถึง Broadcast Storm ที่แก้ด้วย <code class="hl">spanning-tree vlan X</code> หรือถ้าบอกว่า "Broadcast Domain" คือการที่ Router/VLAN กั้น Domain ไว้ไม่ให้ข้อมูลทะลักไปวงอื่น</li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>Encapsulation CLI:</b> <br>คำสั่งตอนทำ InterVLAN ฝั่ง Router (ROAS) คือ <code class="hl">encapsulation dot1Q [vlan_id]</code> เพื่อระบุว่า Sub-interface นี้ทำงานกับ VLAN หมายเลขอะไร</li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>Route CLI:</b> <br>คำสั่งเปิดการ Routing บน L3 Switch คือ <code class="hl">ip routing</code> (สำคัญมาก ขาดไป PING ไม่เจอ) หากเป็น Router ทั่วไปคือพวก <code class="hl">ip route 0.0.0.0 0.0.0.0 [next-hop]</code></li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>InterVLAN Route concept (ลักษณะ 2 แบบ):</b> <br>1. <u>Router-on-a-Stick (ROAS)</u>: ใช้ Router + Switch ต่อสาย Trunk 1 เส้น โหลดหนักที่ Router เป็นคอขวด<br>2. <u>Switch Virtual Interface (SVI)</u>: ใช้ L3 Switch ตัวเดียว ตั้งค่า IP ที่คำสั่ง <code class="hl">interface vlan</code> ประสิทธิภาพสูงกว่า</li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>Protocol Spanning-Tree (cost etc. 4, 19):</b> <br>ค่า Cost สำหรับหา Root Port:<br>- พอร์ต 1 Gbps (GigabitEthernet) = <u>Cost 4</u><br>- พอร์ต 100 Mbps (FastEthernet) = <u>Cost 19</u></li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>Etherchannel ประโยชน์ / การทำ 2 แบบ:</b> <br><u>ประโยชน์</u>: รวมสาย Lan เพิ่ม Bandwidth และทำ Redundancy (เส้นนึงขาด อีกเส้นวิ่งแทน ไม่เน็ตหลุด)<br><u>การทำ 2 แบบ (Protocol)</u>:<br>- PAgP (ของ Cisco ผูกขาด) ใช้โหมด: desirable หรือ auto<br>- LACP (ของ IEEE กลาง) ใช้โหมด: active หรือ passive</li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>วิธีเขียน IPv6:</b> <br>กฎ 3 ข้อ: 1. ตัดเลข 0 ข้างหน้าทิ้ง (0202 -> 202) / 2. 0000 เขียนย่อเป็น 0 / 3. กลุ่ม 0 ที่ติดกันยาวๆ ยุบเป็น <code class="hl">::</code> (แต่ทำได้แค่ 1 ครั้งต่อ IP ป้องกันความสับสน)</li>'
-summaries["leak"] += '<li style="margin-bottom:10px"><b>ACL รูปแบบ ลำดับ (deny any latest):</b> <br>ทำงานแบบ Top-Down (เช็คทีละบรรทัดจากบนลงล่าง) <u>กฎตายตัว</u>: บรรทัดสุดท้ายของ ACL จะมี "Implicit Deny Any" ซ่อนอยู่เพื่อบล็อกทุกอย่าง แปลว่าบรรทัดสุดท้าย(latest) ก่อนจบ เรามักต้องใส่ <code class="hl">permit ip any any</code> เพื่ออนุญาตคนที่เหลือเสมอ</li>'
-summaries["leak"] += '</ul></div>'
+summaries["leak"] = '<div class="sc" style="border-color:var(--yw); background:rgba(255, 215, 64, 0.05)"><h3 style="color:var(--yw); font-size:1.3em;">🔥 เก็งข้อสอบ 100% (คำอธิบายแบบเอาไปจดเข้าห้องสอบ)</h3>'
+summaries["leak"] += '<p style="margin-bottom:15px; font-size:1.1em; color:var(--tx);">สรุปเนื้อหาแบบเนื้อๆ เน้นๆ พร้อมคำสั่ง (Command) ที่ต้องใช้จริง สั้น กระชับ จำง่าย:</p>'
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>1. Hub vs Switch ต่างกันยังไง</h4>'
+summaries["leak"] += '<p><b>Hub (Layer 1):</b> ทำงานแบบ <u>Broadcast</u> คือส่งข้อมูลออกไปทุกช่องจิ๋วๆ เสี่ยงชนกัน (Collision) ทำงานแบบสลับกันส่ง (Half-Duplex)</p>'
+summaries["leak"] += '<p><b>Switch (Layer 2):</b> ฉลาดกว่า จำ <u>MAC Address</u> ได้ ส่งข้อมูลหาปลายทางได้ตรงเครื่องเป๊ะๆ (Unicast) ทำงานพร้อมกันได้ (Full-Duplex) ไวกว่าเยอะ</p></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>2. การทำ Broadcast CLI</h4>'
+summaries["leak"] += '<p>ปกติ <b>Router ทั่วไปจะมีหน้าที่กั้น Broadcast Domain อยู่แล้ว</b> (ไม่ให้วงแลนซ้ายส่ง Broadcast ไปกวนวงแลนขวา) แต่ถ้าเจอคำถามว่าแก้อาการ Broadcast Storm ใน Switch ยังไง คำตอบคือเปิด <b>STP</b>:</p>'
+summaries["leak"] += '<div class="cb">Switch(config)# spanning-tree vlan 1</div></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>3. Encapsulation CLI</h4>'
+summaries["leak"] += '<p>คำสั่งสำคัญมาก <b>ใช้บน Router ตอนทำวิธี Router-on-a-Stick (ROAS)</b> เพื่อบอกว่า Sub-interface นี้ (เช่น .10) จะรับผิดชอบ VLAN หมายเลขอะไร (เช่น VLAN 10)</p>'
+summaries["leak"] += '<div class="cb">Router(config)# interface gigabitEthernet 0/0/0.10\n<span class="hl">Router(config-subif)# encapsulation dot1Q 10</span></div></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>4. Route CLI</h4>'
+summaries["leak"] += '<p>ถ้าข้อสอบออกเรื่อง <b>L3 Switch</b> (Switch ที่ทำ Routing ได้) กฎเหล็กคือต้องพิมพ์คำสั่งเปิดโหมด Route ก่อน ไม่งั้น Ping ข้าม VLAN ไม่ได้เด็ดขาด!</p>'
+summaries["leak"] += '<div class="cb">Switch(config)# <span class="hl">ip routing</span></div></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>5. InterVLAN Route concept (ลักษณะ 2 แบบ)</h4>'
+summaries["leak"] += '<table style="margin-top:10px"><tr><th>วิธีที่ 1: Router-on-a-Stick (ROAS)</th><th>วิธีที่ 2: Switch Virtual Interface (SVI)</th></tr>'
+summaries["leak"] += '<tr><td>ใช้ Router แยกประกอบกับ Switch<br>ต่อสาย Trunk 1 เส้นหา Router<br><b>ข้อเสีย:</b> โหลดไปกองที่ Router (เป็นคอขวด)</td><td>ใช้ Layer 3 Switch ตัวเดียวจบ<br>สร้าง Virtual Interface ตัวแทนแต่ละ VLAN<br><b>ข้อดี:</b> ประสิทธิภาพสูงมาก ประมวลผลในฮาร์ดแวร์</td></tr></table></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>6. Protocol Spanning-Tree (cost etc. 4, 19)</h4>'
+summaries["leak"] += '<p>ค่า Cost ใช้เป็น "คะแนน" หาเส้นทางที่สั้นที่สุด (Root Port) <b>จำเลข 2 ตัวนี้ไปตอบ:</b></p>'
+summaries["leak"] += '<ul><li>พอร์ตความเร็ว <b>1 Gbps</b> (GigabitEthernet) = <b><span class="hl">Cost 4</span></b></li>'
+summaries["leak"] += '<li>พอร์ตความเร็ว <b>100 Mbps</b> (FastEthernet) = <b><span class="hl">Cost 19</span></b></li></ul></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>7. Etherchannel ประโยชน์ / การทำ 2 แบบ</h4>'
+summaries["leak"] += '<p><b>ประโยชน์:</b> เอาสาย LAN หลายเส้นมัดรวมกันเพื่อ 1. เพิ่ม Bandwidth 2. ทำ Redundancy (เส้นนึงขาด อีกเส้นสำรองไม่เน็ตหลุด)</p>'
+summaries["leak"] += '<ul><li><b>แบบที่ 1 PAgP:</b> ของ Cisco ผูกขาด <br><u>Command โหมด</u>: <code class="hl">desirable</code> (เริ่มขอ) หรือ <code class="hl">auto</code> (รอเขาขอ)</li>'
+summaries["leak"] += '<li><b>แบบที่ 2 LACP:</b> มาตรฐานกลาง IEEE ยี่ห้อไหนก็ใช้ได้ <br><u>Command โหมด</u>: <code class="hl">active</code> (เริ่มขอ) หรือ <code class="hl">passive</code> (รอเขาขอ)</li></ul></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>8. วิธีเขียน IPv6</h4>'
+summaries["leak"] += '<p>กฎการย่อ (จำง่ายๆ):</p>'
+summaries["leak"] += '<ol><li>ตัด 0 ข้างหน้าสุดทิ้งได้ <code>0202</code> &rarr; <code>202</code></li>'
+summaries["leak"] += '<li>ถ้ากลุ่มนั้นมีแต่ 0000 ให้เขียน <code>0</code> ตัวเดียวพอ</li>'
+summaries["leak"] += '<li>ถ้าเจอกลุ่มตัวเลข 0 รวดติดกันยาวๆ ยุบรวมเป็น <code>::</code> <span class="hl">(ห้ามทำเกิน 1 ครั้งใน IP เดียว!)</span></li></ol></div>'
+
+summaries["leak"] += '<div style="margin-bottom:20px;"><h4>9. ACL รูปแบบ ลำดับ (deny any latest)</h4>'
+summaries["leak"] += '<p>ACL จะเช็คเงื่อนไขทีละบรรทัดจากบนลงล่าง (Top-Down)</p>'
+summaries["leak"] += '<p><b>กฎสำคัญ:</b> บรรทัดสุดท้ายล่างสุดของ ACL จะมีคำสั่งผี <b>"Implicit Deny Any"</b> (บล็อกทุกการเชื่อมต่อ) ซ่อนอยู่เสมอ! ดังนั้นก่อนจบ ACL มักจะต้องพิมพ์อนุญาตทุกคนที่เหลือด้วยคำสั่งนี้ด้านล่างสุด (latest):</p>'
+summaries["leak"] += '<div class="cb">Router(config-ext-nacl)# <span class="hl">permit ip any any</span></div></div>'
+
+summaries["leak"] += '</div>'
 
 summaries["ch9"] = '<div class="sc"><h3>InterVLAN Routing</h3><p>คือการทำให้ Host ที่อยู่ <b>ต่าง VLAN กัน</b> ติดต่อกันได้ โดยต้องมีอุปกรณ์ Layer 3 มาช่วย</p></div>'
 summaries["ch9"] += '<div class="sc"><h3>วิธีที่ 1: Router-on-a-Stick (ROAS)</h3><ul><li>ใช้ Router ต่อกับ Switch ผ่าน <b>Trunk link 1 เส้น</b></li><li>Router มี <b>Sub-interfaces</b> แต่ละตัวแทน VLAN</li><li>ข้อมูลถูกส่งไป Router แล้ว Route กลับไปยัง VLAN ปลายทาง</li></ul>'
