@@ -195,9 +195,32 @@ summaries["ch13"] += '<div class="sc"><h3>Backward Compatibility</h3><ul><li><b>
 # Labs
 summaries["lab9"] = '<div class="sc"><h3>LAB-09: InterVLAN Routing</h3><h4>Part 1: Router on a Stick</h4><div class="cb">enable\nconfigure terminal\ninterface gigabitEthernet 0/0/0\nno shutdown\nexit\ninterface gigabitEthernet 0/0/0.10\nencapsulation dot1Q 10\nip address 192.168.10.1 255.255.255.0\nexit\ninterface gigabitEthernet 0/0/0.20\nencapsulation dot1Q 20\nip address 192.168.20.1 255.255.255.0\nexit\nend</div><h4>Part 2: SVI (L3 Switch)</h4><div class="cb">enable\nconfigure terminal\nvlan 10\nexit\nvlan 20\nexit\ninterface vlan 10\nip address 192.168.10.1 255.255.255.0\nno shutdown\nexit\ninterface vlan 20\nip address 192.168.20.1 255.255.255.0\nno shutdown\nexit\n<span class="hl">ip routing</span>\nend</div></div>'
 
-summaries["lab10"] = '<div class="sc"><h3>LAB-10: ACL + VLAN</h3><table><tr><th>กลุ่ม</th><th>VLAN</th><th>Network</th></tr><tr><td>Teacher</td><td>10</td><td>192.168.10.0/24</td></tr><tr><td>Student</td><td>20</td><td>192.168.20.0/24</td></tr><tr><td>Staff</td><td>30</td><td>192.168.30.0/24</td></tr><tr><td>Server</td><td>1</td><td>10.80.1.0/24</td></tr></table><h4>เงื่อนไข ACL</h4><ol><li>ทุก VLAN เข้าเว็บได้ (10.80.1.16)</li><li>Student ping Teacher ไม่ได้</li><li>Student ping Staff ไม่ได้</li><li>Teacher+Staff ping กันได้</li></ol></div>'
+summaries["lab10"] = '<div class="sc"><h3>LAB-10: ACL + VLAN</h3><table><tr><th>กลุ่ม</th><th>VLAN</th><th>Network</th></tr><tr><td>Teacher</td><td>10</td><td>192.168.10.0/24</td></tr><tr><td>Student</td><td>20</td><td>192.168.20.0/24</td></tr><tr><td>Staff</td><td>30</td><td>192.168.30.0/24</td></tr><tr><td>Server</td><td>1</td><td>10.80.1.0/24</td></tr></table><h4>เงื่อนไข ACL</h4><ol><li>ทุก VLAN เข้าเว็บได้ (10.80.1.16)</li><li>Student ping Teacher ไม่ได้</li><li>Student ping Staff ไม่ได้</li><li>Teacher+Staff ping กันได้</li></ol>'
+summaries["lab10"] += '<h4>แนวทางการ Config ACL (จากโจทย์)</h4><p>ใน Lab นี้ใช้ <b>Extended ACL</b> เบอร์ 100 ผูกไว้ที่ Interface ของ Student (VLAN 20) แบบ <b>in</b> (กันตั้งแต่ด่านแรก)</p>'
+summaries["lab10"] += '<div class="cb">Router(config)# access-list 100 permit tcp 192.168.20.0 0.0.0.255 host 10.80.1.16 eq 80\n'
+summaries["lab10"] += '<span class="cm">! อนุญาตให้ Student เข้าเว็บ (TCP port 80) ของ Server ได้</span>\n\n'
+summaries["lab10"] += 'Router(config)# access-list 100 deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255\n'
+summaries["lab10"] += '<span class="cm">! บล็อกไม่ให้ Student ping หา Teacher</span>\n\n'
+summaries["lab10"] += 'Router(config)# access-list 100 deny ip 192.168.20.0 0.0.0.255 192.168.30.0 0.0.0.255\n'
+summaries["lab10"] += '<span class="cm">! บล็อกไม่ให้ Student ping หา Staff</span>\n\n'
+summaries["lab10"] += 'Router(config)# access-list 100 permit ip any any\n'
+summaries["lab10"] += '<span class="cm">! อนุญาตให้คำขออื่นๆ (เช่น Teacher/Staff ping กัน) ทำงานได้ปกติ</span>\n\n'
+summaries["lab10"] += 'Router(config)# interface gigabitEthernet 0/0/0.20\n'
+summaries["lab10"] += 'Router(config-subif)# ip access-group 100 in\n'
+summaries["lab10"] += '<span class="cm">! นำ ACL เบอร์ 100 ไปบังคับใช้กับทางเข้าของ VLAN 20</span></div></div>'
 
-summaries["lab12"] = '<div class="sc"><h3>LAB-12: EtherChannel</h3><p>ตั้งค่า EtherChannel รวมหลายลิงก์เป็น 1 logical link แล้ว Ping ทดสอบ</p></div>'
+summaries["lab12"] = '<div class="sc"><h3>LAB-12: EtherChannel</h3><p>ตั้งค่า EtherChannel รวมหลายลิงก์เป็น 1 logical link แล้ว Ping ทดสอบ</p>'
+summaries["lab12"] += '<h4>ตัวอย่างคำสั่งใน Lab</h4>'
+summaries["lab12"] += '<div class="cb"><span class="cm">! ฝั่ง Switch A</span>\n'
+summaries["lab12"] += 'SwitchA(config)# interface range FastEthernet0/1 - 2\n'
+summaries["lab12"] += 'SwitchA(config-if-range)# switchport mode trunk\n'
+summaries["lab12"] += 'SwitchA(config-if-range)# channel-group 1 mode desirable\n\n'
+summaries["lab12"] += '<span class="cm">! ฝั่ง Switch B</span>\n'
+summaries["lab12"] += 'SwitchB(config)# interface range FastEthernet0/1 - 2\n'
+summaries["lab12"] += 'SwitchB(config-if-range)# switchport mode trunk\n'
+summaries["lab12"] += 'SwitchB(config-if-range)# channel-group 1 mode auto\n\n'
+summaries["lab12"] += '<span class="cm">! ตรวจสอบผล</span>\n'
+summaries["lab12"] += 'SwitchA# show etherchannel summary</div></div>'
 
 # Add leak section
 parts.append(f'<section id="leak" class="cs">\n<h2>🎯 เก็งข้อสอบ 100% (จากโพย)</h2>\n{summaries["leak"]}\n</section>\n')

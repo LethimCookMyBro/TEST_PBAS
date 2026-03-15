@@ -355,7 +355,21 @@ end</div></div>
 </section>
 <section id="lab10" class="cs">
 <h2>LAB-10: ACL + VLAN</h2>
-<div class="sc"><h3>LAB-10: ACL + VLAN</h3><table><tr><th>กลุ่ม</th><th>VLAN</th><th>Network</th></tr><tr><td>Teacher</td><td>10</td><td>192.168.10.0/24</td></tr><tr><td>Student</td><td>20</td><td>192.168.20.0/24</td></tr><tr><td>Staff</td><td>30</td><td>192.168.30.0/24</td></tr><tr><td>Server</td><td>1</td><td>10.80.1.0/24</td></tr></table><h4>เงื่อนไข ACL</h4><ol><li>ทุก VLAN เข้าเว็บได้ (10.80.1.16)</li><li>Student ping Teacher ไม่ได้</li><li>Student ping Staff ไม่ได้</li><li>Teacher+Staff ping กันได้</li></ol></div>
+<div class="sc"><h3>LAB-10: ACL + VLAN</h3><table><tr><th>กลุ่ม</th><th>VLAN</th><th>Network</th></tr><tr><td>Teacher</td><td>10</td><td>192.168.10.0/24</td></tr><tr><td>Student</td><td>20</td><td>192.168.20.0/24</td></tr><tr><td>Staff</td><td>30</td><td>192.168.30.0/24</td></tr><tr><td>Server</td><td>1</td><td>10.80.1.0/24</td></tr></table><h4>เงื่อนไข ACL</h4><ol><li>ทุก VLAN เข้าเว็บได้ (10.80.1.16)</li><li>Student ping Teacher ไม่ได้</li><li>Student ping Staff ไม่ได้</li><li>Teacher+Staff ping กันได้</li></ol><h4>แนวทางการ Config ACL (จากโจทย์)</h4><p>ใน Lab นี้ใช้ <b>Extended ACL</b> เบอร์ 100 ผูกไว้ที่ Interface ของ Student (VLAN 20) แบบ <b>in</b> (กันตั้งแต่ด่านแรก)</p><div class="cb">Router(config)# access-list 100 permit tcp 192.168.20.0 0.0.0.255 host 10.80.1.16 eq 80
+<span class="cm">! อนุญาตให้ Student เข้าเว็บ (TCP port 80) ของ Server ได้</span>
+
+Router(config)# access-list 100 deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255
+<span class="cm">! บล็อกไม่ให้ Student ping หา Teacher</span>
+
+Router(config)# access-list 100 deny ip 192.168.20.0 0.0.0.255 192.168.30.0 0.0.0.255
+<span class="cm">! บล็อกไม่ให้ Student ping หา Staff</span>
+
+Router(config)# access-list 100 permit ip any any
+<span class="cm">! อนุญาตให้คำขออื่นๆ (เช่น Teacher/Staff ping กัน) ทำงานได้ปกติ</span>
+
+Router(config)# interface gigabitEthernet 0/0/0.20
+Router(config-subif)# ip access-group 100 in
+<span class="cm">! นำ ACL เบอร์ 100 ไปบังคับใช้กับทางเข้าของ VLAN 20</span></div></div>
 <h3 class="st">Images (8)</h3>
 <div class="sg">
 <div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_10_new/image_01.png" alt="image_01.png" loading="lazy"><div class="sn">image_01.png</div></div>
@@ -370,7 +384,18 @@ end</div></div>
 </section>
 <section id="lab12" class="cs">
 <h2>LAB-12: EtherChannel</h2>
-<div class="sc"><h3>LAB-12: EtherChannel</h3><p>ตั้งค่า EtherChannel รวมหลายลิงก์เป็น 1 logical link แล้ว Ping ทดสอบ</p></div>
+<div class="sc"><h3>LAB-12: EtherChannel</h3><p>ตั้งค่า EtherChannel รวมหลายลิงก์เป็น 1 logical link แล้ว Ping ทดสอบ</p><h4>ตัวอย่างคำสั่งใน Lab</h4><div class="cb"><span class="cm">! ฝั่ง Switch A</span>
+SwitchA(config)# interface range FastEthernet0/1 - 2
+SwitchA(config-if-range)# switchport mode trunk
+SwitchA(config-if-range)# channel-group 1 mode desirable
+
+<span class="cm">! ฝั่ง Switch B</span>
+SwitchB(config)# interface range FastEthernet0/1 - 2
+SwitchB(config-if-range)# switchport mode trunk
+SwitchB(config-if-range)# channel-group 1 mode auto
+
+<span class="cm">! ตรวจสอบผล</span>
+SwitchA# show etherchannel summary</div></div>
 <h3 class="st">Images (4)</h3>
 <div class="sg">
 <div class="sl"><img src="images/Chutiphon Jitrungraungsuk - LAB_12/image_01.png" alt="image_01.png" loading="lazy"><div class="sn">image_01.png</div></div>
